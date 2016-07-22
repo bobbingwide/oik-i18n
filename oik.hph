@@ -1,0 +1,58 @@
+<?php
+gobang();
+/*
+Plugin Name: oik internationalization 
+Plugin URI: http://www.oik-plugins.com/oik-i18n
+Description: Internationalization for oik and related plugins
+Version: 2.0
+Author: bobbingwide
+Author URI: http://www.bobbingwide.com
+License: GPL2
+
+    Copyright 2013 Bobbing Wide (email : herb@bobbingwide.com )
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License version 2,
+    as published by the Free Software Foundation.
+
+    You may NOT assume that you can use any other version of the GPL.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    The license for this software can likely be found here:
+    http://www.gnu.org/licenses/gpl-2.0.html
+
+*/
+
+/**
+ * Implement "oik_loaded" for oik-i18n
+ * 
+ */
+function oiki18n_oik_loaded() {
+  oiki18n_load_plugin_textdomain();
+}
+
+/** 
+ * Let's ask some questions
+ * 
+ * - Do we really need a whole load of textdomains for each of the oik plugins or can we get away with one?
+ * - How many installations actually need language versions anyway?
+ * - What's the difference between load_textdomain() and load_plugin_textdomain()
+ */ 
+function oiki18n_load_plugin_textdomain( ) {
+  load_plugin_textdomain( $domain, false, dirname( plugin_basename(__FILE__)).'/languages/' );
+} 
+
+/**
+ * 
+ */
+function oiki18n_plugin_loaded() {
+  add_action( "oik_loaded", "oiki18n_oik_loaded" );    
+}
+
+oiki18n_plugin_loaded();
+
+

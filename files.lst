@@ -1,0 +1,222 @@
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bobbcomp.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bobbforms.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bobbfunc.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bobbnotwp.inc_
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw-bn-icon.gif
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw-pp-icon.gif
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw-sc-icon.gif
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bwlink.css
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bwlink.min.css
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bwtrace.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bwtrace_boot.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_block.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_block_25.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_block_30.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_block_31.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_block_40.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_block_41.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\bw_metadata.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\fg
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\FLH0GREP.CSV
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\flh0grep.dtl
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\flh0grep.tab
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\FLH0GREP.TXT
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-add-shortcodes.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-button-shortcodes.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-paypal-shortcodes.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-quicktags.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-shortc-shortcodes.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik.css
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik.min.css
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik_boot.inc
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\readme.txt
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-1.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-10.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-11.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-12.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-2.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-3.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-4.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-5.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-6.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-7.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-8.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\screenshot-9.png
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\bw-bn-icon.gif
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\bw-pp-icon.gif
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\bw-sc-icon.gif
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\bw_shortcodes.js
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\custom.css
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-activation.php
+x C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-admin.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-bwaction.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-bwtrace.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-depends.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-header.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-plugins.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-relocate.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik-themes.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik_button_plugin.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik_paypal_plugin.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik_quicktags.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\admin\oik_shortc_plugin.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\blank.gif
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\datepicker.css
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancybox-x.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancybox-y.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancybox.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_close.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_loading.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_nav_left.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_nav_right.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_e.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_n.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_ne.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_nw.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_s.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_se.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_sw.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_shadow_w.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_title_left.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_title_main.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_title_over.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\fancy_title_right.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\flexslider.css
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\jquery-ui-1.9.2.custom.css
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\jquery.countdown.css
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\jquery.fancybox-1.3.4.css
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\jquery.ui.datepicker.css
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\bg_direction_nav.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_diagonals-thick_18_b81900_40x40.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_diagonals-thick_20_666666_40x40.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_flat_10_000000_40x100.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_glass_100_f6f6f6_1x400.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_glass_100_fdf5ce_1x400.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_glass_65_ffffff_1x400.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_gloss-wave_35_f6a828_500x100.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_highlight-soft_100_eeeeee_1x100.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-bg_highlight-soft_75_ffe45c_1x100.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-icons_222222_256x240.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-icons_228ef1_256x240.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-icons_ef8c08_256x240.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-icons_ffd27a_256x240.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\images\ui-icons_ffffff_256x240.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\theme\bg_control_nav.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\css\theme\bg_direction_nav.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\blogger_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\delicious_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\digg_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\editcss_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\facebook_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\flickr_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\googleplus_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\google_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\google_plus_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\green_tick_64x64.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\linkedin_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\oik-icon.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\oik-trace_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\oik_trace_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\page_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\paypal_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\pdficon_large.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\pdficon_small.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\picasa_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\post_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\red_x_60x60.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\red_x_64x64.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\stumbleupon_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\technorati_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\twitter_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\wordpress_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\yahoo_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\youtube_48.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\images\banner\linkedin-large.png
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bwtrace.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_error.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_fields.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_formatter.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_images.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_jquery.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_posts.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\bw_register.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\deprecated-bobblink.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\deprecated-bwlink.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\deprecated.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-bwtrace.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-contact-form-email.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-filters.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-menus.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-remote.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-sc-help.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\includes\oik-theme.inc
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\languages\oik-bb_BB.mo
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\languages\oik-bb_BB.po
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\languages\oik.pot
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\FLH0GREP.CSV
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\flh0grep.dtl
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\flh0grep.tab
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\FLH0GREP.TXT
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-accordion.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-address.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-attachments.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-blocks.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-bob-bing-wide.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-bookmarks.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-button.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-codes.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-company.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-contact-form.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-countdown.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-cycle.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-domain.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-email.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-flex.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-follow.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-galleries.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-geo.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-googlemap.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-iframe.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-jquery.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-link.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-list.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-login.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-logo.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-pages.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-parent.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-paypal.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-phone.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-posts.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-qrcode.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-slideshows.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-table.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-tabs.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-thumbs.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-tides.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-trace.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-tree.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik-wtf.php
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\oik_bw_logo.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\eoci-captions.txt
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.captions.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.captions.pack.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.countdown.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.countdown.min.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.cycle.all.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.cycle.all.min.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.cycle2.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.cycle2.min.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.easing-1.3.pack.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.easy-confirm-dialog.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.easy-confirm-dialog.min.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.external.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.fancybox-1.3.4.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.fancybox-1.3.4.pack.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.flexslider.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.flexslider.pack.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.mousewheel-3.0.4.pack.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.pullquote.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.pullquote.pack.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.target-blank.js
+C:\apache\htdocs\wordpress\wp-content\plugins\oik\shortcodes\jquery\jquery.target-blank.pack.js

@@ -47,9 +47,15 @@ function la_CY( $plugin ) {
 		
 		la_CY_translate( $plugin, $locale, $content, $outfile );
 		// Perform some test translations
-		_e( "About WordPress", $locale);
-		_e( "Powered by WordPress", $locale );
-		_e( "Weight/Country", $plugin );
+		//_e( "About WordPress", $locale);
+		//_e( "Powered by WordPress", $locale );
+		//_e( "Weight/Country", $plugin );
+		//la_CY_trace_l10n();
+		//_e( '%1$s may not be fully functional.', $locale );
+		//_e( '%1$s may not be fully functional.', $plugin );
+		//_e( '%1$s may not be fully functional.', "oik" );
+		
+		
 		la_CY_msgfmt( $plugin, $locale );
 		la_CY_copytoplugin( $plugin, $locale );
 		
@@ -98,6 +104,11 @@ function la_CY_load_plugin_locale( $plugin, $locale ) {
 	unload_textdomain( $plugin );
 	$result = load_plugin_textdomain( $plugin, false, "$plugin/languages" );
 	print_r( $result );
+}
+
+function la_CY_trace_l10n() {
+	global $l10n;
+	bw_trace2( $l10n, "global l10n" );
 }
 
 /**
@@ -165,15 +176,26 @@ function la_CY_load_locale( $locale ) {
   // $files = "themes/twentyfourteen-$locale.mo";
   $files = bw_as_array( $files );
   foreach ( $files as $file ) {
-    echo "Loading $file " . PHP_EOL;
-    load_textdomain( $locale, WP_LANG_DIR . "/" . $file ); 
+    echo "Loading: " . WP_LANG_DIR . "/" . $file . PHP_EOL;
+    $result = load_textdomain( $locale, WP_LANG_DIR . "/" . $file ); 
+    print_r( $result );
   }
 	
+	$plugins = array( "oik-weightcountry-shipping", "oik-weight-zone-shipping", "oik-weight-zone-shipping-pro", "oik-weightcountry-shipping-pro" 
+									, "oik-types", "oik-fields", "oik" 
+									);
+	//$plugins = array( "oik" );
 	
-	$plugins = array( "oik-weightcountry-shipping" );
+	//$locale = "oik"; 									
 	foreach ( $plugins as $key => $plugin ) {
 		echo "Loading $plugin into $locale" . PHP_EOL;
-		$result = load_plugin_textdomain( $locale, false, "$plugin/languages" );
+		//$result = load_plugin_textdomain( $locale, false, "$plugin/languages" );
+		$path = oik_path( "languages/$plugin-$locale.mo", $plugin );
+		$result = load_textdomain( $locale, $path );
+    print_r( $result );
+		if ( !$result ) {
+			//gob();
+		}
 	}
 	
 	$actual_locale = get_locale();
@@ -198,11 +220,19 @@ function la_CY_prepare_po( $plugin, $locale ) {
 /**
  * Return the locales for this plugin
  * 
- * @TODO Make it work with the local files already present in the plugin's directory
+ * @TODO Make it work with the locale files already present in the plugin's directory
  * In the mean time we just work with whatever's in the current directory.
  *
- * Note: oik-weightcountry-shipping and oik-weightcountry-shipping-pro have been translated into French
- * No plugins have yet been translated into British English but that shouldn't be hard! 
+ * Note: oik-weightcountry-shipping and oik-weightcountry-shipping-pro have been translated into French.
+ * oik-weight-zone-shipping and oik-weight-zone-shipping-pro will be similar.
+ *
+ * The French glossary at https://translate.wordpress.org/projects/wp/dev/fr/default/glossary
+ * has been downloaded to wp-dev-fr-glossary.csv
+ * 
+ *
+ *
+ * No plugins have yet been translated into British English ( en_GB ) but that shouldn't be hard! 
+ * There's a .csv file that contains mapping for words from US English to other English speaking countries
  *
  * @param string $plugin - plugin name future use 
  * @return array locales 
@@ -249,6 +279,9 @@ function la_CY_translate_string( $text, $plugin, $locale ) {
 	if ( $la_CY_text == $text ) {
 		$la_CY_text = __( $text, $locale );
 		echo "$locale: " . $la_CY_text . PHP_EOL;
+		
+		$la_CY_oik_text = __( $text, "oik" );
+		echo "oik: " . $la_CY_oik_text . PHP_EOL;
 	}
 	
 	$la_CY_text = la_CY_check_utf8( $la_CY_text, $text ); 

@@ -1,7 +1,18 @@
 <?php // (C) Copyright Bobbing Wide 2013-2016
 
+/**
+ * Syntax: oikwp l10n.php plugin langs
+ * from oik-i18n directory
+ *
+ * Invoke l10n directly to perform localization of the selected plugin for the given lang(s)
+ *
+ 
+ */
+
 /** 
  * Return the list of internationalized plugins to localize 
+ * 
+ * @return array 
  */
 function l10n_plugin_list() {
   $plugins  = "oik,oik-nivo-slider,";
@@ -13,8 +24,20 @@ function l10n_plugin_list() {
   $plugins .= "oik-responsive-menu,oik-rwd,oik-sc-help,oik-shortcodes,oik-sidebar,oik-signup-user-notification,oik-squeeze,oik-testimonials,";
   $plugins .= "oik-themes,oik-thesis-featurebox,oik-tos,oik-tunes,oik-types,oik-user,oik-video,oik-window-width,oik-woo,oik-working-feedback,";
   $plugins .= "setup,uk-tides,unserialize,us-tides,";
-	$plugins .= "oik-weightcountry-shipping,oik-weightcountry-shipping-pro";
+	$plugins .= "oik-weightcountry-shipping,oik-weightcountry-shipping-pro,";
+	$plugins .= "oik-weight-zone-shipping,oik-weight-zone-shipping-pro,";
   return( bw_as_array( $plugins ) ); 
+}
+
+/**
+ * Return the list of locales to process
+ * 
+ * @param string $plugin the plugin to process
+ * @return array array of locales possibly including bb_BB and most likely fr_FR and en_GB
+ */
+function l10n_list_locales( $plugin ) {
+	gob();
+	return( "fr_FR" );
 }
 
 /**
@@ -25,7 +48,7 @@ function l10n_plugin_list() {
  * This allows us to operate on oik-i18n as well
  *
  */ 
-function do_main( $argc, $argv) {
+function l10n_run_l10n() {
   oik_require( "bobbcomp.inc" );
   
   echo getcwd();
@@ -37,44 +60,55 @@ function do_main( $argc, $argv) {
 
   //echo $argc;
   //print_r( $argv );
-  if ( $argc > 1 ) {
-    $plugins = bw_as_array( $argv[1] );
+	$plugins = oik_batch_query_value_from_argv( 1, null );
+  if ( $plugins ) {
+    $plugins = bw_as_array( $plugins );
   } else {
     $plugins = l10n_plugin_list();
     echo "Processing plugin list";
     gobang();
-  } 
+  }
+	$lang = oik_batch_query_value_from_argv( 2, "fr_FR" );
+	 
 	bw_trace2( $plugins, "plugins" ); 
   foreach ( $plugins as $plugin ) {
-    do_plugin( $plugin );
+		
+		if ( !$lang ) {
+			$lang = l10n_list_locales( $plugin );
+		}	
+    do_plugin( $plugin, $lang );
   }
 }
 
 
 /**
  * Function to invoke when l10n is loaded
- *  
+ * 
+ * The original logic tested to see if we were the first file.
+ * Now we need to respond either to run_l10n.php or have a function such as  invoked directly
+ * 
  */
 function l10n_loaded() {
+	add_action( "run_l10n.php", "l10n_run_l10n" );
   //echo __FILE__;
   //echo __FUNCTION__;
   //echo $_SERVER['argc'];
   //print_r( $_SERVER['argv'] );
   //echo PHP_EOL; 
-  $included_files = get_included_files();
+  //$included_files = get_included_files();
   //print_r( $included_files );
-  if ($included_files[0] == __FILE__) {
+  //if ($included_files[0] == __FILE__) {
 		// Actually this is no good now since we need to be invoked from oikwp
-    do_main( $_SERVER['argc'], $_SERVER['argv'] );
-  } else {
-		if ( isset( $_SERVER['argc'] ) ) {
-			echo "I'm not main";
-			do_main( $_SERVER['argc'], $_SERVER['argv'] );
-		}
-  }   
+    //do_main( $_SERVER['argc'], $_SERVER['argv'] );
+  //} else {
+	//	if ( isset( $_SERVER['argc'] ) ) {
+	 // 	echo "I'm not main";
+	 // 	do_main( $_SERVER['argc'], $_SERVER['argv'] );
+	 // }
+  //}   
 } 
 
-//l10n_loaded(); 
+l10n_loaded(); 
 
 /**
  * Build a plugin's language files
@@ -112,7 +146,7 @@ function l10n_loaded() {
  
  */
 
-function do_plugin( $plugin, $lang ) {
+function do_plugin( $plugin, $lang="fr_FR" ) {
   echo "processing $plugin";
   echo PHP_EOL;
   $res = do_makeoik( $plugin );

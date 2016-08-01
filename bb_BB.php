@@ -128,8 +128,21 @@ function bb_BB_outfile( $file, $line ) {
  * 
  */
 function bb_BB( $plugin ) {
-  $real_file = "$plugin.pot" ;
-  $outfile = "$plugin-bb_BB.po";
+	switch ( $plugin ) {
+		case "admin-":
+		case "admin-network-":
+		case "":
+			$real_file = $plugin . "en_GB.po";
+			$outfile = $plugin . "bb_BB.po";
+			chdir( WP_LANG_DIR );
+			echo WP_LANG_DIR . PHP_EOL;
+			//gob();
+			break;
+			
+		default:
+      $real_file = "$plugin.pot" ;
+			$outfile = "$plugin-bb_BB.po";
+	}
   
   if ( is_file($outfile) ) {
     unlink( $outfile ); 

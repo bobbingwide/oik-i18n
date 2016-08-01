@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2015
+<?php // (C) Copyright Bobbing Wide 2013-2016
 
 /** 
  * Return the list of internationalized plugins to localize 
@@ -22,7 +22,7 @@ function l10n_plugin_list() {
  *
  * We perform the main processing in the working directory
  * and copy the generated files to the plugin's languages directory
- * This allows use to operate on oik-i18n as well
+ * This allows us to operate on oik-i18n as well
  *
  */ 
 function do_main( $argc, $argv) {
@@ -74,7 +74,7 @@ function l10n_loaded() {
   }   
 } 
 
-l10n_loaded(); 
+//l10n_loaded(); 
 
 /**
  * Build a plugin's language files
@@ -102,11 +102,17 @@ l10n_loaded();
  * `
  * 
  * Notes:
- * makeoik - is an extended makepot which deals with oik's extension APIs
- * bb_BB - is the bbboing language version - used for testing 
+ * - makeoik - is an extended makepot which deals with oik's extension APIs
+ * - bb_BB - is the bbboing language version - used for testing
+ * - we always build the bb_BB version
+ *
+ * @param string $plugin the plugin folder name
+ * @param string $lang the language versions to create
+ *
+ 
  */
 
-function do_plugin( $plugin ) {
+function do_plugin( $plugin, $lang ) {
   echo "processing $plugin";
   echo PHP_EOL;
   $res = do_makeoik( $plugin );
@@ -114,7 +120,7 @@ function do_plugin( $plugin ) {
     $res = do_bb_BB( $plugin ); 
     $res = do_msgfmt( $plugin );
     $res = do_copytoplugin( $plugin );
-		$res = do_otherlangs( $plugin );
+		$res = do_otherlangs( $plugin, $lang );
   } else {
     echo "do_makeoik failed";
   }  
@@ -122,6 +128,11 @@ function do_plugin( $plugin ) {
 
 /**
  * Perform the first step - extract the translatable strings
+ *
+ * Here we use makeoik.php rather than makepot.php since we have additional functions from which we extract the 
+ * translatable strings. 
+ *
+ * @param string $plugin
  */
 function do_makeoik( $plugin ) {
   oik_require( "makeoik.php", "oik-i18n" );
@@ -155,11 +166,12 @@ function do_bb_BB( $plugin ) {
  * Translate the plugin into other languages
  *
  * @param string $plugin the plugin folder
+ * @param string $lang the required language(s)
  * @return bool result of the translations
  */ 
-function do_otherlangs( $plugin ) {
+function do_otherlangs( $plugin, $lang ) {
 	oik_require( "la_CY.php", "oik-i18n" );
-	la_CY( $plugin );
+	la_CY( $plugin, $lang );
 	return( true ); 
 } 
 

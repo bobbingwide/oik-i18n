@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php // (C) Copyright Bobbing Wide 2015,2016
 
 /**
  *
@@ -32,7 +32,9 @@ function la_CY( $plugin ) {
 	//gob();
 	//var_dump( debug_backtrace() );
 	//bw_backtrace();
-	if ( $c ) gob();
+	if ( $c ) {
+		//gob();
+	}
 	$c++;
 	
 	foreach ( $locales as $new_locale ) {
@@ -484,7 +486,7 @@ function la_CY_loaded() {
   if ( $included_files[0] == __FILE__ ) {
     la_CY( "oik-i18n" );
   } else {
-    echo "I'm not main - this is just a test";
+    echo "I'm not main - this is just a test" . PHP_EOL;
 		echo PHP_EOL;
     //do_main( $_SERVER['argc'], $_SERVER['argv'] );
 		//la_CY( "oik-i18n" );

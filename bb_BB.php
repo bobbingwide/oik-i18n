@@ -68,8 +68,11 @@ msgstr[1]    repl_plural                  next blank line
 
 /**
  * Determine the real file name given the plugin name
+ * 
+ * @TODO Check if this is needed.
+ * 
  */
-function bb_BB_real_file( $argc, $argc ) {
+function bb_BB_real_file( $argc, $argv ) {
   if ( $argc > 1 ) {
     $file = $argv[1];
     switch ( $file ) {

@@ -1,5 +1,21 @@
-<?php
+<?php // (C) Copyright Bobbing Wide 2013-2016
 //namespace oiki18n\bb_BB;
+
+/** 
+ * Create a bbboing language .po file for a given .pot file
+ * 
+ * Purpose: Localize a plugin's .pot file into the "bbboing language" ( bb ), country code ( BB )
+ * This can be used to test two things:
+ * 1. Whether or not the code is fully Internationalized - missed strings will not be "bbboinged"
+ * 2. Whether or not the code is properly Internationalized - detects "poorly" i18n'ed can be detected.
+ *  
+ * Package: bb_BB  
+ * @TODO check this ... Syntax: php bb_BB.php plugin.pot > plugin-bb_BB.po 
+ * 
+ * then use:
+ * msgfmt  
+ * 
+ */
 
 
 /**
@@ -69,7 +85,7 @@ msgstr[1]    repl_plural                  next blank line
 /**
  * Determine the real file name given the plugin name
  * 
- * @TODO Check if this is needed.
+ * @TODO Check if this is still needed.
  * 
  */
 function bb_BB_real_file( $argc, $argv ) {
@@ -164,7 +180,7 @@ function bb_BB( $plugin ) {
     if ( "msgid_plural" == substr( $line. "              ", 0, 12 ) ) {
       //echo __LINE__ . " " ;
       bb_BB_outfile( $outfile, "$line\n" );   
-      $repl_plural = str_replace( "msgid_plural ", "", $line );
+      //$repl_plural = str_replace( "msgid_plural ", "", $line );
       $repl_plural = substr( $line, 13 );
       $repl_plural = do_bbboing( $repl_plural );
       //echo "^$repl_plural^";
@@ -179,15 +195,23 @@ function bb_BB( $plugin ) {
       $plural = false;
       
     } elseif ( "msgstr[0]" == substr( $line. "      ", 0, 9 ) ) { 
-      $line = str_replace( '""', $repl, $line );
+			// @TODO Not sure if the next line is strictly necessary
+      //$line = str_replace( '""', $repl, $line );
+			// @TODO Actually, if this is non blank then it's this version that we need to translate to $repl
+			// But this'll do for now while it's only en_GB we're dealing with.
+			// A different matter if we wanted to bbboing another language.
       $plural = false;
       
     } elseif ( "msgstr[1]" == substr( $line. "      ", 0, 9 ) ) { 
-      $line = str_replace( '""', $repl_plural, $line );
+			// @TODO Not sure if the next line is strictly necessary
+      //$line = str_replace( '""', $repl_plural, $line );
+			
+			// @TODO Actually, if this is non blank then it's this version that we need to translate to $repl_plural
       $plural = true;
       
     } elseif ( "msgstr " == substr( $line. "      ", 0, 7 ) ) {
-      $line = str_replace( '""', $repl, $line );
+      //$line = str_replace( '""', $repl, $line );
+			//$line = "msgstr " . $repl;
       //echo __LINE__ . " ";
       if ($first ) {
         // echo "$line";

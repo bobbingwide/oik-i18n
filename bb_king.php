@@ -1,7 +1,18 @@
 <?php // (C) Copyright Bobbing Wide 2016
 
 /** 
- * Syntax oikwp bb_king.php 
+ * Syntax oikwp bb_king.php
+ * run from the oik-i18n directory
+ * 
+ * Create the bb_BB.po and .mo files from the English language version files for WordPress
+ *
+ * Process
+ * - Update WordPress to the latest level
+ * - Update the translations for the English language version
+ * - Run bb_king.php
+ 
+ * Note: bb_BB.php needs to work off .po files as well as .pot files
+ *
  
  
 

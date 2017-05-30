@@ -214,38 +214,40 @@ function bb_BB( $plugin ) {
       //$line = str_replace( '""', $repl, $line );
 			//$line = "msgstr " . $repl;
       //echo __LINE__ . " ";
-			$line = maybe_bbboing( $line, $repl );
-      if ($first ) {
+      if ( $first ) {
         // echo "$line";
         
         bb_BB_outfile( $outfile, "$line\n" );   
       } else { 
-        //echo "$line\n";  
+        //echo "$line\n"; 
+				$line = maybe_bbboing( $line, $repl );
         bb_BB_outfile( $outfile, "$line\n" );   
+			$in_msgstr = true;
       }  
       $plural = false;
-			$in_msgstr = true;
       
     } elseif ( '"' == substr( $line." ", 0, 1 ) ) {
       //echo "$line\n";
 			if ( !$in_msgstr ) {
-  			bb_BB_outfile( $outfile, "$line\n" );   
+				bb_BB_outfile( $outfile, "$line\n" );   
 			}
-      if ( $first  && substr( $line, 0, 18 ) == "\"MIME-Version: 1.0" ) {
-        //echo "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n";
+			if ( $first ) {
+				if ( substr( $line, 0, 18 ) == "\"MIME-Version: 1.0" ) {
+					//echo "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n";
         
-        bb_BB_outfile( $outfile, "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n" );   
-        bb_BB_outfile( $outfile, "\"Language: bb_BB\\n\"\n" );
-      } else {  
-        $line = do_bbboing( $line );
-        if ( $plural ) {
-          $repl_plural .= $line;
-        } else {
-          $repl .= $line;
-        }
-      }
+					bb_BB_outfile( $outfile, "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n" );   
+					bb_BB_outfile( $outfile, "\"Language: bb_BB\\n\"\n" );
+				}
+			} else {  
+				$line = do_bbboing( $line );
+				if ( $plural ) {
+					$repl_plural .= $line;
+				} else {
+					$repl .= $line;
+				}
+			}
 			if ( $in_msgstr ) {
-  			bb_BB_outfile( $outfile, "$line" );   
+				bb_BB_outfile( $outfile, "$line" );   
 			}   
       
     } elseif ( $line == "" || ( "#." == substr( $line, 0, 2 ) &&  $last_blank++ == $count) ) {
@@ -513,11 +515,13 @@ function maybe_bbboing( $line, $repl ) {
 	if ( 9 == strlen( $line ) ) {
 		$translate_subsequent = true;
 		if ( $repl ) {
+			$line = "msgstr ";
+			$line .= $repl;
 		}
 	} else {
 		// we need to translate this
 		$bbboing_this = substr( $line, 7 );
-		//echo $bbboing_this;
+		echo $bbboing_this;
 		$line = "msgstr ";
 		$line .= bbboing( $bbboing_this );
 		

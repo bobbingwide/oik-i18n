@@ -31,11 +31,12 @@ class PotExtMeta {
 		exit(1);
 	}
 
-	function load_from_file($ext_filename) {
-		$source = MakePOT::get_first_lines($ext_filename);
+	function load_from_file( $ext_filename ) {
+	  $makepot = new MakePOT;
+		$source = $makepot->get_first_lines($ext_filename);
 		$pot = '';
-		foreach($this->headers as $header) {
-			$string = MakePOT::get_addon_header($header, $source);
+		foreach( $this->headers as $header ) {
+			$string = $makepot->get_addon_header($header, $source);
 			if (!$string) continue;
 			$args = array(
 				'singular' => $string,

@@ -6,9 +6,22 @@
  *
  * Invoke l10n directly to perform localization of the selected plugin for the given lang(s)
  *
+ * 
+ * Note: If the plugin is hosted on wordpress.org and has been translated to a selected language
+ * then we can download the .po and .mo files and rename them
+ * e.g. For oik-weight-zone-shipping
+ * https://translate.wordpress.org/projects/wp-plugins/oik-weight-zone-shipping/dev/fr/default
+ * 
+ * file | rename/copy to
+ * ----- | -------------
+ * wp-plugins-oik-weight-zone-shipping-dev-fr.mo | oik-weight-zone-shipping-fr_FR.mo
+ * wp-plugins-oik-weight-zone-shipping-dev-fr.po | oik-weight-zone-shipping-fr_FR.po
  
+ * wp-plugins-oik-weight-zone-shipping-dev-en-gb.po	| oik-weight-zone-shipping-en_GB.po
+ * 
+ * We can download the file by visting: 
+ * https://translate.wordpress.org/projects/wp-plugins/oik-weight-zone-shipping/dev/fr/default/export-translations?format=mo
  */
-
 /** 
  * Return the list of internationalized plugins to localize 
  * 

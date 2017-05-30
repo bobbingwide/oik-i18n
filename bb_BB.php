@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2016
+<?php // (C) Copyright Bobbing Wide 2013-2017
 //namespace oiki18n\bb_BB;
 
 /** 
@@ -172,6 +172,7 @@ function bb_BB( $plugin ) {
   $plural = false;
   $first = true;
   $last_blank = 0;
+	$in_msgstr = false;
   foreach ( $content as $line ) {
     $count++;
     $line = trim( $line );
@@ -213,20 +214,23 @@ function bb_BB( $plugin ) {
       //$line = str_replace( '""', $repl, $line );
 			//$line = "msgstr " . $repl;
       //echo __LINE__ . " ";
+			$line = maybe_bbboing( $line, $repl );
       if ($first ) {
         // echo "$line";
         
-        bb_BB_outfile( $outfile, "$line" );   
+        bb_BB_outfile( $outfile, "$line\n" );   
       } else { 
         //echo "$line\n";  
         bb_BB_outfile( $outfile, "$line\n" );   
       }  
       $plural = false;
+			$in_msgstr = true;
       
     } elseif ( '"' == substr( $line." ", 0, 1 ) ) {
       //echo "$line\n";
-      
-      bb_BB_outfile( $outfile, "$line\n" );   
+			if ( !$in_msgstr ) {
+  			bb_BB_outfile( $outfile, "$line\n" );   
+			}
       if ( $first  && substr( $line, 0, 18 ) == "\"MIME-Version: 1.0" ) {
         //echo "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n";
         
@@ -239,7 +243,10 @@ function bb_BB( $plugin ) {
         } else {
           $repl .= $line;
         }
-      }   
+      }
+			if ( $in_msgstr ) {
+  			bb_BB_outfile( $outfile, "$line" );   
+			}   
       
     } elseif ( $line == "" || ( "#." == substr( $line, 0, 2 ) &&  $last_blank++ == $count) ) {
       if ( !$first ) {
@@ -257,10 +264,12 @@ function bb_BB( $plugin ) {
           bb_BB_outfile( $outfile, "$line\n" );
         } else {
           //echo $repl;
+					bb_BB_outfile( $outfile, "\n" );
         } 
       }
       $plural = false;
-      $first = false;   
+      $first = false; 
+			$in_msgstr = false;  
       
     } else {  
     //echo "$count($line)";
@@ -486,6 +495,34 @@ function bboing2( $word ) {
     $wrod = $word; 
   }  
   return( $wrod );
+}
+
+
+/**
+ * Possibly bbboing the msgstr line
+ *  
+ * We have to cater for msgstr which has already been translated into UK English
+ * msgstr ""
+ * msgstr "some translated text to bbboing"
+ * 
+ * @param string $line e.g. msgstr "" or msgstr "blah"
+ * @param string $repl 
+ * @return string 
+ */
+function maybe_bbboing( $line, $repl ) {
+	if ( 9 == strlen( $line ) ) {
+		$translate_subsequent = true;
+		if ( $repl ) {
+		}
+	} else {
+		// we need to translate this
+		$bbboing_this = substr( $line, 7 );
+		//echo $bbboing_this;
+		$line = "msgstr ";
+		$line .= bbboing( $bbboing_this );
+		
+	}
+	return $line;
 }
 
 

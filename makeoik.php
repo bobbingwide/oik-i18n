@@ -44,7 +44,14 @@ function add_oik_rules( $rules ) {
   $rules['bw_textarea_cb_arr'] = array( null, 'string' ); // missing the remaining parms as a test.
   $rules['oik_box'] = array( null, null, 'string' );
   $rules['oik_menu_header'] = array( 'string', null );
+	
+	// Are we having problems with wrapper functions?
+	// even when they're prefixed by static class name?
+	// Test by commenting out p()
+	
   $rules['p'] = array( 'string' );
+	
+	
   //$rules['h1'] = array( 'string' );
   //$rules['h2'] = array( 'string' );
   //$rules['h3'] = array( 'string' );
@@ -61,9 +68,10 @@ function add_oik_rules( $rules ) {
   $rules['td'] = array( 'string' );
   $rules['bw_register_field'] = array( null, null, 'string' );
   $rules['bw_tt'] = array( null, 'string' );
-  $rules['_bwtnt'] = array( 'string', null );
+//  $rules['_bwtnt'] = array( 'string', null );
   $rules['bw_skv'] = array( null, 'string', 'string' );
   $rules['ehwhat'] = array( 'string' );
+	$rules['br'] = array( 'string' );
   
   return( $rules ); 
 } 
@@ -207,7 +215,7 @@ class MakePOT {
 	);
 
 	function __construct($deprecated = true) {
-          $this->rules = add_oik_rules( $this->rules );
+    $this->rules = add_oik_rules( $this->rules );
 		$this->extractor = new StringExtractor( $this->rules );
 	}
 
@@ -509,9 +517,11 @@ class MakePOT {
 		$placeholders['author'] = $this->get_addon_header('Author', $source);
 		$placeholders['name'] = $this->get_addon_header('Plugin Name', $source);
 		$placeholders['slug'] = $slug;
+		
+		$excludes = array( "tests/.*" );
 
 		$output = is_null($output)? "$slug.pot" : $output;
-		$res = $this->xgettext('wp-plugin', $dir, $output, $placeholders);
+		$res = $this->xgettext('wp-plugin', $dir, $output, $placeholders, $excludes );
 		if (!$res) return false;
 		$potextmeta = new PotExtMeta;
 		$res = $potextmeta->append($main_file, $output);

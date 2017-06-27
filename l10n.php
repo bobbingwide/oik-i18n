@@ -162,12 +162,15 @@ l10n_loaded();
 function do_plugin( $plugin, $lang="fr_FR" ) {
   echo "processing $plugin";
   echo PHP_EOL;
+	//$res = do_makepot( $plugin );
+	
   $res = do_makeoik( $plugin );
+	//gob();
   if ( $res ) {
     $res = do_bb_BB( $plugin ); 
     $res = do_msgfmt( $plugin );
     $res = do_copytoplugin( $plugin );
-		$res = do_otherlangs( $plugin, $lang );
+		//$res = do_otherlangs( $plugin, $lang );
   } else {
     echo "do_makeoik failed";
   }  
@@ -183,6 +186,31 @@ function do_plugin( $plugin, $lang="fr_FR" ) {
  */
 function do_makeoik( $plugin ) {
   oik_require( "makeoik.php", "oik-i18n" );
+  $plugin_path = oik_path( null, $plugin );
+  $makepot = new MakePOT;
+  $res = call_user_func( array( &$makepot, "wp_plugin" )
+                       , $plugin_path
+                       , null 
+                       );
+  //f ((3 == count($argv) || 4 == count($argv)) && in_array($method = str_replace('-', '_', $argv[1]), get_class_methods($makepot))) {
+  // $res = call_user_func(array(&$makepot, $method), realpath($argv[2]), isset($argv[3])? $argv[3] : null);
+  if (false === $res) {
+    fwrite(STDERR, "Couldn't generate POT file!\n");
+  }
+  return( $res );
+}
+
+
+
+/**
+ * Perform the first step - extract the translatable strings
+ *
+ * Here we use makepot.php 
+ *
+ * @param string $plugin
+ */
+function do_makepot( $plugin ) {
+  oik_require( "makepot.php", "oik-i18n" );
   $plugin_path = oik_path( null, $plugin );
   $makepot = new MakePOT;
   $res = call_user_func( array( &$makepot, "wp_plugin" )

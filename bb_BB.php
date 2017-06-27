@@ -289,9 +289,9 @@ function bb_BB( $plugin ) {
  */
 function do_bbboing( $text ) { 
   if ( !function_exists( "bbboing" ) ) {
-  
-    require_once( "../oik/oik_boot.inc" );
-    oik_require( "bbboing.inc", "bbboing" );
+  	gob();
+    //require_once( "../oik/oik_boot.inc" );
+    //oik_require( "bbboing.inc", "bbboing" );
   }  
   $text = trim( $text );
   // It's not safe to trim quotes as this could remove double quotes at the end leaving a single '\' rather than a '\"'
@@ -398,15 +398,51 @@ function boing( $word ) {
       $r = substr( $word, $count-1 ); 
       $mid = substr( $word, 1, $count-2 ); 
     
-      $dim = str_shuffle( $mid );
+      $dim = str_shiffle( $mid );
       if ( $dim == $mid ) {
-        $dim = str_shuffle( $mid );
+        $dim = str_shiffle( $mid );
       }  
       $wrod = $l . $dim . $r;
     break;
   }    
   return( $wrod );
 }
+
+/**
+ * shiffle rather than shuffle
+ * 
+ * Swaps odd and even letters leaving any odd letter at the end
+ *  
+ * 
+ * Examples
+ * original word | shiffled word
+ * ------------- | -------------
+ * be            | eb
+ * are           | rae
+ * word          | owdr
+ * boing         | obnig
+ * 
+ * 
+ * @param string $mid	- string to be shiffled
+ * @return string $dim
+ */
+function str_shiffle( $mid ) {
+	$dim = null;
+	$chars = str_split( $mid );
+	$len = count( $chars );
+	//print_r( $chars );
+	//echo $len;
+	for ( $i = 0; $i < $len-1; $i += 2 ) {
+		
+		$dim .= $chars[ $i+1 ];
+		$dim .= $chars[ $i ]; 
+	}
+	if ( $len & 1 ) {
+		$dim .= $chars[ $len -1 ];
+	}
+	return $dim;
+}
+
 
 /**
  * Perform boing() against a part of the word replacing the characters in the chars array

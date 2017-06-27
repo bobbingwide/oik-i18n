@@ -127,6 +127,7 @@ class StringExtractor {
 	function extract_entries( $code, $file_name ) {
 		$translations = new Translations;
 		$function_calls = $this->find_function_calls( array_keys( $this->rules ), $code );
+		//print_r( $function_calls );
 		foreach( $function_calls as $call ) {
 			$entry = $this->entry_from_call( $call, $file_name );
 			if ( is_array( $entry ) )
@@ -153,7 +154,9 @@ class StringExtractor {
 			$id = $text = null;
 			if ( is_array( $token ) ) list( $id, $text, $line ) = $token;
 			if ( T_WHITESPACE == $id ) continue;
-			if ( T_STRING == $id && in_array( $text, $function_names ) && !$in_func ) {
+			
+			//    if ( T_STRING == $id && in_array( $text, $function_names ) && !$in_func ) {
+			if ( T_STRING == $id && in_array( $text, $function_names ) ) {
 				$in_func = true;
 				$paren_level = -1;
 				$args = array();

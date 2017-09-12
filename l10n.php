@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2016
+<?php // (C) Copyright Bobbing Wide 2013-2017
 
 /**
  * Syntax: oikwp l10n.php plugin langs
@@ -9,21 +9,23 @@
  * 
  * Note: If the plugin is hosted on wordpress.org and has been translated to a selected language
  * then we can download the .po and .mo files and rename them
+ * 
  * e.g. For oik-weight-zone-shipping
  * https://translate.wordpress.org/projects/wp-plugins/oik-weight-zone-shipping/dev/fr/default
  * 
- * file | rename/copy to
+ * file  | rename/copy to
  * ----- | -------------
  * wp-plugins-oik-weight-zone-shipping-dev-fr.mo | oik-weight-zone-shipping-fr_FR.mo
  * wp-plugins-oik-weight-zone-shipping-dev-fr.po | oik-weight-zone-shipping-fr_FR.po
  
  * wp-plugins-oik-weight-zone-shipping-dev-en-gb.po	| oik-weight-zone-shipping-en_GB.po
  * 
- * We can download the file by visting: 
+ * We can download the file by visiting: 
  * https://translate.wordpress.org/projects/wp-plugins/oik-weight-zone-shipping/dev/fr/default/export-translations?format=mo
  */
+ 
 /** 
- * Return the list of internationalized plugins to localize 
+ * Returns the list of internationalized plugins to localize 
  * 
  * @return array 
  */
@@ -81,7 +83,7 @@ function l10n_run_l10n() {
     echo "Processing plugin list";
     gobang();
   }
-	$lang = oik_batch_query_value_from_argv( 2, "fr_FR" );
+	$lang = oik_batch_query_value_from_argv( 2, "en_GB" );
 	 
 	bw_trace2( $plugins, "plugins" ); 
   foreach ( $plugins as $plugin ) {
@@ -159,7 +161,7 @@ l10n_loaded();
  
  */
 
-function do_plugin( $plugin, $lang="fr_FR" ) {
+function do_plugin( $plugin, $lang="en_GB" ) {
   echo "processing $plugin";
   echo PHP_EOL;
 	//$res = do_makepot( $plugin );
@@ -170,7 +172,7 @@ function do_plugin( $plugin, $lang="fr_FR" ) {
     $res = do_bb_BB( $plugin ); 
     $res = do_msgfmt( $plugin );
     $res = do_copytoplugin( $plugin );
-		//$res = do_otherlangs( $plugin, $lang );
+		$res = do_otherlangs( $plugin, $lang );
   } else {
     echo "do_makeoik failed";
   }  

@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015,2016
+<?php // (C) Copyright Bobbing Wide 2015-2017
 
 /**
  *
@@ -243,11 +243,11 @@ function la_CY_get_locales( $plugin ) {
 	echo $source_dir;
 	echo PHP_EOL;
 	$locales = array();
-	$locales[] = "fr_FR";
+	//$locales[] = "fr_FR";
 	
 	// This wastes a bit of time! 
 	
-	//$locales[] = "en_GB";
+	$locales[] = "en_GB";
 	
 	
 	//$locales[] = "en_AU";
@@ -283,10 +283,13 @@ function la_CY_translate_string( $text, $plugin, $locale ) {
 		$la_CY_oik_text = __( $text, "oik" );
 		echo "oik: " . $la_CY_oik_text . PHP_EOL;
 	}
-	
 	$la_CY_text = la_CY_check_utf8( $la_CY_text, $text ); 
 	
-	if ( $la_CY_text == $text ) {
+	$la_CY_text = la_CY_variants( $text, $plugin, $locale );
+	echo "$locale: $la_CY_text" . PHP_EOL;
+	
+	
+	if ( $la_CY_text !== $text ) {
 		$la_CY_text = la_CY_request_translation( $text, $plugin, $locale );
 	}
 	$la_CY_text = str_replace( '"', '\"', $la_CY_text );
@@ -333,15 +336,24 @@ function la_CY_check_utf8( $utf8, $text ) {
  */
 function la_CY_request_translation( $text, $plugin, $locale ) {
 	if ( $text != "" ) {
-		if ( !(strpos( $text, "http:" ) === 0 ) ) {
+		if ( !(strpos( $text, "http" ) === 0 ) ) {
 			echo "Translation required: $locale: $text" . PHP_EOL;
-			$response = docontinue( "Type translation or press Enter." );
-			if ( $response ) {
-				$text = la_CY_utf8( $response );
-			} else {
-				echo "No translation is OK by me" . PHP_EOL;
-				$text = null;
-			}
+			$response = docontinue( "Type translation, or =,  or just press Enter." );
+			switch ( $response ) {
+				case '=':
+					break;
+					
+				default:
+					if ( $response ) {
+						$text = la_CY_utf8( $response );
+					} elseif ( $locale == 'en_GB' ) {
+						// Accept the original as UK English	
+					}	else {
+						 
+						echo "No translation is OK by me" . PHP_EOL;
+						$text = null;
+					}
+			}		
 		}
 	}
 	return( $text );
@@ -507,6 +519,39 @@ function la_CY_outfile( $file, $line ) {
   }
   return( $ret );
 }
+
+
+/**
+ * Load the English variants
+ * 
+ */
+function la_CY_load_variants( $locale ) {
+	static $variants = null;
+	if ( substr( $locale, 0, 2 ) == "en" ) {
+	
+		oik_require( "class-English-variants.php", "oik-i18n" );
+		//oik_require_class( "English_variants" );
+		$variants = new English_variants( $locale );
+	}
+	return $variants;
+}
+
+/**
+ * Returns the target locale's variant
+ * 
+ * 
+ */
+function la_CY_variants( $text, $plugin, $locale ) {
+	$la_CY_text = $text;
+	$variants = la_CY_load_variants( $locale );
+	if ( $variants ) {
+		$original_OK = $variants->check_original_language( $text );
+		if ( $original_OK ) { 
+			$la_CY_text = $variants->map( $text );
+		}
+	}
+	return $la_CY_text;
+}	
 
 
 

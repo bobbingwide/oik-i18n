@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik 3.1.4\n"
+"Project-Id-Version: oik 3.2.0-alpha-20170616\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik\n"
-"POT-Creation-Date: 2017-05-30 14:38:13+00:00\n"
+"POT-Creation-Date: 2017-06-27 21:11:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -137,76 +137,252 @@ msgid ""
 "Please install and activate the required minimum version of this plugin:"
 msgstr ""
 
-#: admin/oik-admin.inc:73
+#: admin/oik-admin.inc:75
 msgid "[oik] Options"
 msgstr ""
 
-#: admin/oik-admin.inc:73 admin/oik-admin.inc:78
+#: admin/oik-admin.inc:75 admin/oik-admin.inc:80
 msgid "oik options"
 msgstr ""
 
-#: admin/oik-admin.inc:76
+#: admin/oik-admin.inc:78
 msgid "oik overview"
 msgstr ""
 
-#: admin/oik-admin.inc:76
+#: admin/oik-admin.inc:78
 msgid "Overview"
 msgstr ""
 
-#: admin/oik-admin.inc:78
+#: admin/oik-admin.inc:80 admin/oik-admin.inc:110
 msgid "Options"
 msgstr ""
 
-#: admin/oik-admin.inc:80
+#: admin/oik-admin.inc:82
 msgid "oik options-1"
 msgstr ""
 
-#: admin/oik-admin.inc:80
+#: admin/oik-admin.inc:82
 msgid "More Options"
 msgstr ""
 
-#: admin/oik-admin.inc:82
+#: admin/oik-admin.inc:84
 msgid "oik plugins"
 msgstr ""
 
-#: admin/oik-admin.inc:82
+#: admin/oik-admin.inc:84 admin/oik-admin.inc:166
 msgid "Plugins"
 msgstr ""
 
-#: admin/oik-admin.inc:83
+#: admin/oik-admin.inc:85
 msgid "oik themes"
 msgstr ""
 
-#: admin/oik-admin.inc:83
+#: admin/oik-admin.inc:85 admin/oik-admin.inc:168
 msgid "Themes"
 msgstr ""
 
-#: admin/oik-admin.inc:84
+#: admin/oik-admin.inc:86
 msgid "oik buttons"
 msgstr ""
 
-#: admin/oik-admin.inc:84
+#: admin/oik-admin.inc:86 admin/oik-admin.inc:119
 msgid "Buttons"
 msgstr ""
 
-#: admin/oik-admin.inc:85
+#: admin/oik-admin.inc:87
 msgid "oik shortcode help"
 msgstr ""
 
-#: admin/oik-admin.inc:85
+#: admin/oik-admin.inc:87 admin/oik-admin.inc:116
 msgid "Shortcode help"
 msgstr ""
 
-#: admin/oik-admin.inc:208 admin/oik-admin.inc:257 admin/oik-admin.inc:534
-#: admin/oik-admin.inc:605
+#: admin/oik-admin.inc:98
+msgid "This box intentionally left blank"
+msgstr ""
+
+#: admin/oik-admin.inc:105
+msgid ""
+"oik provides sets of lazy smart shortcodes that you can use just about "
+"anywhere in your WordPress site."
+msgstr ""
+
+#: admin/oik-admin.inc:107
+msgid ""
+"You enter your common information, such as contact details, slogans, "
+"location information, PayPal payment information and your social networking "
+"and bookmarking information using oik Options"
+msgstr ""
+
+#: admin/oik-admin.inc:108
+msgid "If required, you enter alternative information using More options"
+msgstr ""
+
+#: admin/oik-admin.inc:110
+msgid "Enter your common information"
+msgstr ""
+
+#: admin/oik-admin.inc:112
+msgid "More options"
+msgstr ""
+
+#: admin/oik-admin.inc:112
+msgid "Enter additional information"
+msgstr ""
+
+#: admin/oik-admin.inc:114
+msgid ""
+"Discover the shortcodes that you can use in your content and widgets using "
+"Shortcode help"
+msgstr ""
+
+#: admin/oik-admin.inc:116
+msgid "Discover shortcodes you can use"
+msgstr ""
+
+#: admin/oik-admin.inc:118
+msgid ""
+"Choose the helper buttons that help you to insert shortcodes when editing "
+"your content"
+msgstr ""
+
+#: admin/oik-admin.inc:119
+msgid "Select TinyMCE and HTML edit helper buttons"
+msgstr ""
+
+#: admin/oik-admin.inc:128
+msgid ""
+"To style the output from shortcodes you can create and edit a custom CSS "
+"file for your theme."
+msgstr ""
+
+#: admin/oik-admin.inc:129
+msgid ""
+"Use the [bw_editcss] shortcode to create the <b>edit CSS</b> link anywhere "
+"on your website."
+msgstr ""
+
+#: admin/oik-admin.inc:130
+msgid ""
+"Note: If you change themes then you will start with a new custom CSS file."
+msgstr ""
+
+#: admin/oik-admin.inc:131
+msgid "You should save your custom CSS file before updating your theme."
+msgstr ""
+
+#: admin/oik-admin.inc:136
+msgid "Click on this button to edit your custom CSS file."
+msgstr ""
+
+#: admin/oik-admin.inc:139
+msgid "You have not defined a custom CSS file."
+msgstr ""
+
+#: admin/oik-admin.inc:140
+msgid "Name your custom CSS file"
+msgstr ""
+
+#: admin/oik-admin.inc:140
+msgid "Enter the name of your custom CSS file on the Options page"
+msgstr ""
+
+#: admin/oik-admin.inc:163
+msgid ""
+"Some oik plugins and themes are supported from servers other than WordPress."
+"org"
+msgstr ""
+
+#: admin/oik-admin.inc:164
+msgid "Premium plugin and theme versions require API keys."
+msgstr ""
+
+#: admin/oik-admin.inc:165
+msgid "Use the Plugins page to manage oik plugins servers and API keys"
+msgstr ""
+
+#: admin/oik-admin.inc:166
+msgid "Manage plugin servers and API keys"
+msgstr ""
+
+#: admin/oik-admin.inc:167
+msgid "Use the Themes page to manage oik themes servers and API keys"
+msgstr ""
+
+#: admin/oik-admin.inc:168
+msgid "Manage theme servers and API keys"
+msgstr ""
+
+#: admin/oik-admin.inc:200
+msgid "Button shortcodes"
+msgstr ""
+
+#: admin/oik-admin.inc:201
+msgid "PayPal shortcodes"
+msgstr ""
+
+#: admin/oik-admin.inc:202
+msgid "ALL shortcodes"
+msgstr ""
+
+#: admin/oik-admin.inc:203
+msgid " Button shortcodes"
+msgstr ""
+
+#: admin/oik-admin.inc:204
+msgid " PayPal shortcodes"
+msgstr ""
+
+#: admin/oik-admin.inc:205
+msgid " ALL shortcodes"
+msgstr ""
+
+#: admin/oik-admin.inc:206
+msgid "[] quicktag for HTML editor"
+msgstr ""
+
+#: admin/oik-admin.inc:207
+msgid "Integrate with shortcake"
+msgstr ""
+
+#: admin/oik-admin.inc:209 admin/oik-admin.inc:259 admin/oik-admin.inc:536
+#: admin/oik-admin.inc:607
 msgid "Save changes"
 msgstr ""
 
-#: admin/oik-admin.inc:244
+#: admin/oik-admin.inc:246
 msgid "Support the development of %1$s by making a donation to %2$s"
 msgstr ""
 
-#: admin/oik-admin.inc:486
+#: admin/oik-admin.inc:269
+msgid "overview"
+msgstr ""
+
+#: admin/oik-admin.inc:270
+msgid "Shortcode options"
+msgstr ""
+
+#: admin/oik-admin.inc:271
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/oik-admin.inc:273
+msgid "Servers and keys"
+msgstr ""
+
+#: admin/oik-admin.inc:276
+msgid "oik documentation"
+msgstr ""
+
+#: admin/oik-admin.inc:277
+msgid "support oik"
+msgstr ""
+
+#: admin/oik-admin.inc:278
+msgid "Admin options"
+msgstr ""
+
+#: admin/oik-admin.inc:488
 msgid "Custom jQuery UI CSS URL"
 msgstr ""
 
@@ -239,7 +415,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: libs/oik-admin.php:56
+#: libs/class-BW-.php:87 libs/oik-admin.php:56
 msgid "Click to toggle"
 msgstr ""
 
@@ -255,11 +431,11 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: oik.php:225
+#: oik.php:228
 msgid "oik custom image link URL"
 msgstr ""
 
-#: oik.php:280
+#: oik.php:283
 msgid "Howdy, %s"
 msgstr ""
 
@@ -267,11 +443,13 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: shortcodes/oik-codes.php:107
+#: shortcodes/oik-codes.php:107 tests/test-issue-9.php:163
+#: tests/test-issue-9.php:170 tests/test-issue-9.php:185
 msgid "No"
 msgstr ""
 
-#: shortcodes/oik-codes.php:109
+#: shortcodes/oik-codes.php:109 tests/test-issue-9.php:163
+#: tests/test-issue-9.php:169 tests/test-issue-9.php:184
 msgid "Yes"
 msgstr ""
 
@@ -302,6 +480,56 @@ msgstr ""
 
 #: shortcodes/oik-power.php:18
 msgid "Semantic Personal Publishing Platform"
+msgstr ""
+
+#: tests/test-issue-9.php:66
+msgid "This page left intentionally blank"
+msgstr ""
+
+#: tests/test-issue-9.php:73 tests/test-issue-9.php:84
+#: tests/test-issue-9.php:88 tests/test-issue-9.php:103
+msgid "Text"
+msgstr ""
+
+#: tests/test-issue-9.php:73
+msgid "Alt"
+msgstr ""
+
+#: tests/test-issue-9.php:115 tests/test-issue-9.php:122
+msgid "Text field"
+msgstr ""
+
+#: tests/test-issue-9.php:129 tests/test-issue-9.php:136
+msgid "Email field"
+msgstr ""
+
+#: tests/test-issue-9.php:143 tests/test-issue-9.php:150
+#: tests/test-issue-9.php:157
+msgid "Text area"
+msgstr ""
+
+#: tests/test-issue-9.php:163
+msgid "Radio button"
+msgstr ""
+
+#: tests/test-issue-9.php:171 tests/test-issue-9.php:186
+msgid "Maybe"
+msgstr ""
+
+#: tests/test-issue-9.php:177 tests/test-issue-9.php:192
+msgid "Select list"
+msgstr ""
+
+#: tests/test-issue-9.php:197
+msgid "Notes about arg"
+msgstr ""
+
+#: tests/test-issue-9.php:204
+msgid "List item text"
+msgstr ""
+
+#: tests/test-issue-9.php:210
+msgid "optional text"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

@@ -19,7 +19,66 @@ class tests_English_variants extends BW_UnitTestCase {
 		$actual = $variants->map( "analyze" );
 		$expected = "analyse";
 		$this->assertEquals( $expected, $actual );
+		
 	} 
+	
+	function test_map_word() {
+		$variants = English_variants::instance();
+		$actual = $variants->map_word( "analyze" );
+		$expected = "analyse";
+		$this->assertEquals( $expected, $actual );
+	}
+	
+	function test_map_mixed_case() {
+		$variants = English_variants::instance();
+		$actual = $variants->map( "Analyze your behavior." );
+		$expected = "Analyse your behaviour.";
+		$this->assertEquals( $expected, $actual );
+	}
+	
+	function test_check_original_language() {
+		$variants = English_variants::instance();
+		$actual = $variants->check_original_language( "analyze" );
+		$this->assertTrue( $actual ); 
+	}
+	
+	function test_check_original_language_wrong() {
+		$expectedOutputString = "Original text already in target locale." . PHP_EOL;
+		$expectedOutputString .= "en_US: analyse" . PHP_EOL;
+		$expectedOutputString .= "en_GB: analyze" . PHP_EOL;
+		$this->expectOutputString( $expectedOutputString ); 
+		$variants = English_variants::instance();
+		$actual = $variants->check_original_language( "analyse" );
+		$this->assertFalse( $actual ); 
+	}
+	
+	function dont_test_tokenize() {
+		$variants = English_variants::instance();
+		$tokens = $variants->tokenize( "Analyze your behavior with <b>more</b> than one space (  )." );
+		print_r( $tokens );
+		$expected = array();
+		$this->assertEquals( $expected, $tokens );
+	}
+	
+	function test_get_tokens() {
+		$variants = English_variants::instance();
+		$tokens = $variants->get_tokens( "Analyze  your <b>behavior.</b>" );
+		//print_r( $tokens );
+		$expected = array();
+		$expected[] = "Analyze";
+		$expected[] = "  ";
+		$expected[] = "your";
+		$expected[] = " ";
+		$expected[]	= "<";
+		$expected[] = "b";
+		$expected[] = ">";
+		$expected[] = "behavior";
+		$expected[] = ".</";
+		$expected[] = "b";
+		$expected[] = ">";
+		$this->assertEquals( $expected, $tokens );
+	}
+	
 
 
 }

@@ -69,7 +69,7 @@ function add_oik_rules( $rules ) {
   $rules['bw_register_field'] = array( null, null, 'string' );
   $rules['bw_tt'] = array( null, 'string' );
 //  $rules['_bwtnt'] = array( 'string', null );
-  $rules['bw_skv'] = array( null, 'string', 'string' );
+  $rules['bw_skv'] = array( null, null, 'string' );
   $rules['ehwhat'] = array( 'string' );
 	$rules['br'] = array( 'string' );
   

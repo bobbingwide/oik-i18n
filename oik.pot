@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik 3.2.0-alpha-20170616\n"
+"Project-Id-Version: oik 3.2.0-alpha-20170630\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik\n"
-"POT-Creation-Date: 2017-06-27 21:11:05+00:00\n"
+"POT-Creation-Date: 2017-07-01 17:03:12+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -345,45 +345,139 @@ msgstr ""
 msgid "Integrate with shortcake"
 msgstr ""
 
-#: admin/oik-admin.inc:209 admin/oik-admin.inc:259 admin/oik-admin.inc:536
-#: admin/oik-admin.inc:607
+#: admin/oik-admin.inc:209 admin/oik-admin.inc:258 admin/oik-admin.inc:538
+#: admin/oik-admin.inc:609
 msgid "Save changes"
 msgstr ""
 
-#: admin/oik-admin.inc:246
+#: admin/oik-admin.inc:222
+msgid "For more information:"
+msgstr ""
+
+#: admin/oik-admin.inc:225
+msgid "Getting started"
+msgstr ""
+
+#: admin/oik-admin.inc:228
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: admin/oik-admin.inc:231
+msgid "Forum"
+msgstr ""
+
+#: admin/oik-admin.inc:235 admin/oik-admin.inc:275
+msgid "oik documentation"
+msgstr ""
+
+#: admin/oik-admin.inc:235
+msgid "Read the documentation for the oik plugin"
+msgstr ""
+
+#: admin/oik-admin.inc:245
 msgid "Support the development of %1$s by making a donation to %2$s"
 msgstr ""
 
-#: admin/oik-admin.inc:269
+#: admin/oik-admin.inc:268
 msgid "overview"
 msgstr ""
 
-#: admin/oik-admin.inc:270
+#: admin/oik-admin.inc:269
 msgid "Shortcode options"
 msgstr ""
 
-#: admin/oik-admin.inc:271
+#: admin/oik-admin.inc:270
 msgid "Custom CSS"
 msgstr ""
 
-#: admin/oik-admin.inc:273
+#: admin/oik-admin.inc:272
 msgid "Servers and keys"
 msgstr ""
 
 #: admin/oik-admin.inc:276
-msgid "oik documentation"
-msgstr ""
-
-#: admin/oik-admin.inc:277
 msgid "support oik"
 msgstr ""
 
-#: admin/oik-admin.inc:278
+#: admin/oik-admin.inc:277
 msgid "Admin options"
 msgstr ""
 
+#: admin/oik-admin.inc:344
+msgid "shortcode options"
+msgstr ""
+
+#: admin/oik-admin.inc:345
+msgid "Often included key information"
+msgstr ""
+
+#: admin/oik-admin.inc:348
+msgid "Usage notes"
+msgstr ""
+
+#: admin/oik-admin.inc:482
+msgid "Google Map width"
+msgstr ""
+
+#: admin/oik-admin.inc:483
+msgid "Google Map height"
+msgstr ""
+
+#: admin/oik-admin.inc:484
+msgid "Google Maps API key"
+msgstr ""
+
+#: admin/oik-admin.inc:486
+msgid "Domain"
+msgstr ""
+
 #: admin/oik-admin.inc:488
+msgid ""
+"Do NOT use the oik.css styling. <br />Check this if you don't want to use "
+"the oik provided CSS styling"
+msgstr ""
+
+#: admin/oik-admin.inc:489
+msgid "Custom CSS in theme directory:<br />"
+msgstr ""
+
+#: admin/oik-admin.inc:491
 msgid "Custom jQuery UI CSS URL"
+msgstr ""
+
+#: admin/oik-admin.inc:495
+msgid "PayPal email"
+msgstr ""
+
+#: admin/oik-admin.inc:496
+msgid "PayPal country"
+msgstr ""
+
+#: admin/oik-admin.inc:513
+msgid "PayPal currency"
+msgstr ""
+
+#: admin/oik-admin.inc:519
+msgid "Logo image ID/URL/in uploads"
+msgstr ""
+
+#: admin/oik-admin.inc:520
+msgid "Use as login logo?"
+msgstr ""
+
+#: admin/oik-admin.inc:521
+msgid "QR code image in uploads"
+msgstr ""
+
+#: admin/oik-admin.inc:525
+msgid "Artisteer version"
+msgstr ""
+
+#: admin/oik-admin.inc:528
+msgid "Copyright from year"
+msgstr ""
+
+#: admin/oik-admin.inc:532
+msgid "'Howdy,' replacement string"
 msgstr ""
 
 #: bobbcomp.inc:263
@@ -417,6 +511,14 @@ msgstr ""
 
 #: libs/class-BW-.php:87 libs/oik-admin.php:56
 msgid "Click to toggle"
+msgstr ""
+
+#: libs/oik_plugins.php:36
+msgid "plugin server settings"
+msgstr ""
+
+#: libs/oik_plugins.php:57
+msgid "Check"
 msgstr ""
 
 #: oik-add-shortcodes.php:16
@@ -468,6 +570,10 @@ msgstr ""
 #: shortcodes/oik-follow.php:255 shortcodes/oik-follow.php:300
 #: shortcodes/oik-follow.php:313
 msgid "Follow %1$s on %2$s"
+msgstr ""
+
+#: shortcodes/oik-navi.php:199
+msgid "%1s to %2s of %3s"
 msgstr ""
 
 #: shortcodes/oik-navi.php:342

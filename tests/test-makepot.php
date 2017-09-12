@@ -42,6 +42,7 @@ class Tests_makepot extends BW_UnitTestCase {
 	}
 	
 	function test_makepot() {
+		$this->expectOutputString( "pot_filename: oik.pot" . PHP_EOL );
 		$res = $this->do_makepot( "oik" );
 		$this->assertEquals( $res, true );
 	}

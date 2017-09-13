@@ -19,7 +19,6 @@ class tests_English_variants extends BW_UnitTestCase {
 		$actual = $variants->map( "analyze" );
 		$expected = "analyse";
 		$this->assertEquals( $expected, $actual );
-		
 	} 
 	
 	function test_map_word() {
@@ -78,6 +77,44 @@ class tests_English_variants extends BW_UnitTestCase {
 		$expected[] = ">";
 		$this->assertEquals( $expected, $tokens );
 	}
+	
+	/**
+	 * Test the use of context. 
+	 * 
+	 * Note: We can't directly test map() passing $context 
+	 */
+	function test_map_with_context() {
+		$variants = English_variants::instance();
+		$actual = $variants->map( "check", "bank" );
+		$expected = "cheque";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "check" );
+		$expected = "check";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "Check", "bank" );
+		$expected = "Cheque";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "check", "examine" );
+		$expected = "check";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "Check color" );
+		$expected = "Check colour";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "Check color", "bank" );
+		$expected = "Cheque colour";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "check color", "examine" );
+		$expected = "check colour";
+		$this->assertEquals( $expected, $actual );
+		
+	}
+		
 	
 
 

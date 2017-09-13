@@ -264,10 +264,12 @@ function la_CY_get_locales( $plugin ) {
  * @param string $text the string to be translated
  * @param string $plugin the plugin domain it's supposed to be in
  * @param string $locale the target locale
+ * @param string $msgctxt context
+ * @param string $translators_note
  * @return string a possibly translated string
  *
  */
-function la_CY_translate_string( $text, $plugin, $locale ) {
+function la_CY_translate_string( $text, $plugin, $locale, $msgctxt, $translators_note ) {
 	echo "In : " . $text . PHP_EOL;
 	$text = str_replace( '\"', '"', $text ); 
 	
@@ -285,12 +287,12 @@ function la_CY_translate_string( $text, $plugin, $locale ) {
 	}
 	$la_CY_text = la_CY_check_utf8( $la_CY_text, $text ); 
 	
-	$la_CY_text = la_CY_variants( $text, $plugin, $locale );
-	echo "$locale: $la_CY_text" . PHP_EOL;
+	$la_CY_text = la_CY_variants( $text, $plugin, $locale, $msgctxt );
+	echo "$locale:$msgctxt: $la_CY_text" . PHP_EOL;
 	
 	
-	if ( $la_CY_text !== $text ) {
-		$la_CY_text = la_CY_request_translation( $text, $plugin, $locale );
+	if ( $la_CY_text !== $text || $translators_note ) {
+		$la_CY_text = la_CY_request_translation( $text, $plugin, $locale, $msgctxt, $translators_note );
 	}
 	$la_CY_text = str_replace( '"', '\"', $la_CY_text );
 	echo "Out: " . $la_CY_text . PHP_EOL ;
@@ -331,13 +333,16 @@ function la_CY_check_utf8( $utf8, $text ) {
  * @param string $text the string to be translated
  * @param string $plugin the plugin's text domain
  * @param string $locale the target locale ( la_CY )
+ * @param string|null $msgctxt context
+ * @param string|null $translators_note
  * @return string the translated string
  *
  */
-function la_CY_request_translation( $text, $plugin, $locale ) {
+function la_CY_request_translation( $text, $plugin, $locale, $msgctxt, $translators_note ) {
 	if ( $text != "" ) {
 		if ( !(strpos( $text, "http" ) === 0 ) ) {
-			echo "Translation required: $locale: $text" . PHP_EOL;
+			echo $translators_note;
+			echo "Translation required: $locale: $msgctxt: $text" . PHP_EOL;
 			$response = docontinue( "Type translation, or =,  or just press Enter." );
 			switch ( $response ) {
 				case '=':
@@ -395,6 +400,8 @@ function la_CY_translate( $plugin, $locale, $content, $outfile ) {
   $repl = null;
   $plural = false;
   $first = true;
+	$msgctxt = null;
+	$translators_note = null;
   $last_blank = 0;
 	$count_lines = count( $content );
 	while ( $count < $count_lines ) { 
@@ -403,14 +410,12 @@ function la_CY_translate( $plugin, $locale, $content, $outfile ) {
     $count++;
     $line = trim( $line );
     //echo $count . $line;
+		
     
     if ( "msgid_plural" == substr( $line. "              ", 0, 12 ) ) {
       //echo __LINE__ . " " ;
       la_CY_outfile( $outfile, "$line\n" );   
-      //$repl_plural = str_replace( "msgid_plural ", "", $line );
       $repl_plural = substr( $line, 14, -1 );
-      //$repl_plural = la_CY_translate_string( $repl_plural, $plugin, $locale );
-      //echo "^$repl_plural^";
       $plural = true;
       
     } elseif ( "msgid " == substr( $line. "      ", 0, 6 ) ) {
@@ -431,7 +436,7 @@ function la_CY_translate( $plugin, $locale, $content, $outfile ) {
       $plural = true;
       
     } elseif ( "msgstr " == substr( $line. "      ", 0, 7 ) ) {
-      $repl = la_CY_translate_string( $repl, $plugin, $locale );
+      $repl = la_CY_translate_string( $repl, $plugin, $locale, $msgctxt, $translators_note );
       $line = str_replace( '""', $repl, $line );
       //echo __LINE__ . " ";
       if ($first ) {
@@ -456,7 +461,6 @@ function la_CY_translate( $plugin, $locale, $content, $outfile ) {
 				// @TODO add Last Translator and Language team
 				la_CY_last_translator( $outfile ); 
       } else {  
-        //$line = la_CY_translate_string( $line, $plugin, $locale );
         if ( $plural ) {
           $repl_plural .= substr( $line, 1, -1 );
         } else {
@@ -465,11 +469,12 @@ function la_CY_translate( $plugin, $locale, $content, $outfile ) {
       }   
       
     } elseif ( $line == "" || ( "#." == substr( $line, 0, 2 ) &&  $last_blank++ == $count) ) {
+		
       if ( !$first ) {
         if ( $plural ) {
           //echo __LINE__ . " " ;
-					$repl = la_CY_translate_string( $repl, $plugin, $locale );
-					$repl_plural = la_CY_translate_string( $repl_plural, $plugin, $locale );
+					$repl = la_CY_translate_string( $repl, $plugin, $locale, $msgctxt, $translators_note );
+					$repl_plural = la_CY_translate_string( $repl_plural, $plugin, $locale, $msgctxt, $translators_note );
           la_CY_outfile( $outfile, "msgstr[0] $repl" );
           la_CY_outfile( $outfile, "msgstr[1] $repl_plural" );
           //echo $repl;
@@ -485,8 +490,17 @@ function la_CY_translate( $plugin, $locale, $content, $outfile ) {
         } 
       }
       $plural = false;
-      $first = false;   
-      
+      $first = false;  
+			$msgctxt = null; 
+			// Set translator's note - which  
+			// #. translators: 1: month name, 2: 4-digit year
+			$translators_note = null;
+			if ( "#." == substr( $line, 0, 2 ) ) {
+				$translators_note = $line;
+			} 
+    } elseif ( "msgctxt " == substr( $line, 0, 8 ) ) {
+			$msgctxt = str_replace( "msgctxt ", "", $line );
+			la_CY_outfile( $outfile, "$line\n" );
     } else {  
     //echo "$count($line)";
       la_CY_outfile( $outfile, "$line\n" ); 
@@ -541,13 +555,13 @@ function la_CY_load_variants( $locale ) {
  * 
  * 
  */
-function la_CY_variants( $text, $plugin, $locale ) {
+function la_CY_variants( $text, $plugin, $locale, $msgctxt ) {
 	$la_CY_text = $text;
 	$variants = la_CY_load_variants( $locale );
 	if ( $variants ) {
-		$original_OK = $variants->check_original_language( $text );
+		$original_OK = $variants->check_original_language( $text, $msgctxt );
 		if ( $original_OK ) { 
-			$la_CY_text = $variants->map( $text );
+			$la_CY_text = $variants->map( $text, $msgctxt );
 		}
 	}
 	return $la_CY_text;

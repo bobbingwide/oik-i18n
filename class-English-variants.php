@@ -28,6 +28,8 @@ class English_variants {
 	private $map = array();
 	private $reverse_map = array();
 	
+	private $context = null;
+	
 	/**
 	 * @var dependencies_cache the true instance
 	 */
@@ -55,6 +57,7 @@ class English_variants {
 		$this->target_locale( $locale );
 		$this->load_variants();
 		$this->create_map();
+		$this->update_map_with_context();
 	}
 	
 	/**
@@ -108,6 +111,31 @@ class English_variants {
 		}
 	}
 	
+	/**
+	 * Update map with context 
+	 * 
+	 */
+	function update_map_with_context() {
+		$file_path = __DIR__ . '/' . $this->source_locale . '-' . $this->target_locale . '.csv';
+		if ( file_exists( $file_path ) ) {
+			$file = file( $file_path, FILE_IGNORE_NEW_LINES );
+		} else {
+			echo "Missing file: $file_path" . PHP_EOL;
+			//$file = array( "check,cheque,bank" );
+			$file = array();
+		}
+		foreach ( $file as $line ) {
+			$values = str_getcsv( $line );
+			$source = $values[0];
+			$target = $values[1];
+			$context = $values[2];
+			unset( $this->map[ $source ] );
+			unset( $this->reverse_map[ $target ] );
+			$this->map[ $context . ':' . $source ] = $target;
+			$this->reverse_map[ $context . ':' . $target ] = $source;
+		}
+	}
+	
 	/** 
 	 * Checks that the CSV file has the format we expect
 	 * 
@@ -140,10 +168,13 @@ class English_variants {
 	 * Returns a mapped text
 	 * 
 	 * We need to be able to parse words in English language
-	 * stripping 
 	 *
+	 * @paran string $text
+	 * @param string|null $context
+	 * @return string mapped text
 	 */
-	function map( $text ) {
+	function map( $text, $context=null ) {
+		$this->context = $context;
 		//$words = explode( " ", $text );
 		$words = $this->get_tokens( $text );
 		$new_words = array_map( [ $this, "map_word" ], $words);
@@ -159,7 +190,14 @@ class English_variants {
 	 */
 	function map_word( $word ) {
 		$lcword = strtolower( $word );
-		$variant = bw_array_get( $this->map, $lcword, $lcword );
+		$variant = null;
+		if ( $this->context ) {
+			$key = $this->context . ':' . $lcword;
+			$variant = bw_array_get( $this->map, $key, null );
+		}
+		if ( null === $variant ) {
+			$variant = bw_array_get( $this->map, $lcword, $lcword );
+		}	
 		if ( $lcword <> $word ) {
 			$variant = $this->recapitalise( $variant, $word, $lcword );
 		}
@@ -194,10 +232,11 @@ class English_variants {
 	 * Checks the original language
 	 *
 	 * @param string $text
+	 * @param string|null $context
 	 * @return bool true if OK 
 	 */
-	function check_original_language( $text ) {
-		$mapped = $this->reverse_map( $text );
+	function check_original_language( $text, $context=null ) {
+		$mapped = $this->reverse_map( $text, $context );
 		if ( $mapped != $text ) {
 			echo "Original text already in target locale." . PHP_EOL;
 			echo $this->source_locale . ": " . $text . PHP_EOL;
@@ -209,8 +248,12 @@ class English_variants {
 	
 	/**
 	 * Returns a reverse mapped text
+	 * 
+	 * @param string $text
+	 * @param string|null $context
+	 * @return string reverse mapped text
 	 */
-	function reverse_map( $text ) {
+	function reverse_map( $text, $context=null ) {
 		$words = $this->get_tokens( $text );
 		$new_words = array_map( [ $this, "reverse_map_word" ], $words);
 		$mapped = implode( "", $new_words );
@@ -219,13 +262,23 @@ class English_variants {
 	
 	/**
 	 * Returns a reverse mapped word
+	 * 
+	 * @param string $word
+	 * @return string reverse mapped word
 	 */
 	function reverse_map_word( $word ) {
 		$lcword = strtolower( $word );
-		$variant = bw_array_get( $this->reverse_map, $lcword, $lcword );
+		$variant = null;
+		if ( $this->context ) {
+			$key = $this->context . ':' . $lcword;
+			$variant = bw_array_get( $this->reverse_map, $key, null );
+		}
+		if ( null === $variant ) {
+			$variant = bw_array_get( $this->reverse_map, $lcword, $lcword );
+		}	
 		if ( $lcword <> $word ) {
 			$variant = $this->recapitalise( $variant, $word, $lcword );
-		} 
+		}
 		return $variant;
 	}
 	

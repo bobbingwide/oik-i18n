@@ -113,6 +113,14 @@ class tests_English_variants extends BW_UnitTestCase {
 		$expected = "check colour";
 		$this->assertEquals( $expected, $actual );
 		
+		$actual = $variants->map( "colored checks", "bank" );
+		$expected = "coloured cheques";
+		$this->assertEquals( $expected, $actual );
+		
+		$actual = $variants->map( "colored checks" );
+		$expected = "coloured checks";
+		$this->assertEquals( $expected, $actual );
+		
 	}
 		
 	

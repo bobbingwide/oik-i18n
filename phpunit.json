@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="10" assertions="33" errors="0" failures="0" skipped="0" time="5.795030">
-    <testsuite name="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" tests="8" assertions="15" errors="0" failures="0" skipped="0" time="0.030015">
-      <testcase name="tests_constructor" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="12" assertions="1" time="0.020032"/>
-      <testcase name="test_map" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="17" assertions="1" time="0.001831"/>
-      <testcase name="test_map_word" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="24" assertions="1" time="0.001153"/>
-      <testcase name="test_map_mixed_case" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="31" assertions="1" time="0.001305"/>
-      <testcase name="test_check_original_language" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="38" assertions="1" time="0.001134"/>
-      <testcase name="test_check_original_language_wrong" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="44" assertions="2" time="0.001325"/>
-      <testcase name="test_get_tokens" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="62" assertions="1" time="0.001716"/>
-      <testcase name="test_map_with_context" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="86" assertions="7" time="0.001519"/>
+  <testsuite name="" tests="10" assertions="35" errors="0" failures="0" skipped="0" time="6.348097">
+    <testsuite name="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" tests="8" assertions="17" errors="0" failures="0" skipped="0" time="0.034430">
+      <testcase name="tests_constructor" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="12" assertions="1" time="0.021626"/>
+      <testcase name="test_map" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="17" assertions="1" time="0.002187"/>
+      <testcase name="test_map_word" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="24" assertions="1" time="0.001978"/>
+      <testcase name="test_map_mixed_case" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="31" assertions="1" time="0.001700"/>
+      <testcase name="test_check_original_language" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="38" assertions="1" time="0.001596"/>
+      <testcase name="test_check_original_language_wrong" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="44" assertions="2" time="0.001622"/>
+      <testcase name="test_get_tokens" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="62" assertions="1" time="0.001542"/>
+      <testcase name="test_map_with_context" class="tests_English_variants" classname="tests_English_variants" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-English-variants.php" line="86" assertions="9" time="0.002179"/>
     </testsuite>
-    <testsuite name="Tests_makepot" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-makepot.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="5.740672">
-      <testcase name="test_makepot" class="Tests_makepot" classname="Tests_makepot" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-makepot.php" line="44" assertions="2" time="5.740672"/>
+    <testsuite name="Tests_makepot" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-makepot.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="6.299917">
+      <testcase name="test_makepot" class="Tests_makepot" classname="Tests_makepot" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-makepot.php" line="44" assertions="2" time="6.299917"/>
     </testsuite>
-    <testsuite name="Tests_str_shiffle" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-str_shiffle.php" tests="1" assertions="16" errors="0" failures="0" skipped="0" time="0.024343">
-      <testcase name="test_str_shiffle" class="Tests_str_shiffle" classname="Tests_str_shiffle" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-str_shiffle.php" line="27" assertions="16" time="0.024343"/>
+    <testsuite name="Tests_str_shiffle" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-str_shiffle.php" tests="1" assertions="16" errors="0" failures="0" skipped="0" time="0.013750">
+      <testcase name="test_str_shiffle" class="Tests_str_shiffle" classname="Tests_str_shiffle" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-i18n\tests\test-str_shiffle.php" line="27" assertions="16" time="0.013750"/>
     </testsuite>
   </testsuite>
 </testsuites>

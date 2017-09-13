@@ -128,11 +128,17 @@ class English_variants {
 			$values = str_getcsv( $line );
 			$source = $values[0];
 			$target = $values[1];
-			$context = $values[2];
-			unset( $this->map[ $source ] );
-			unset( $this->reverse_map[ $target ] );
-			$this->map[ $context . ':' . $source ] = $target;
-			$this->reverse_map[ $context . ':' . $target ] = $source;
+			$context = bw_array_get( $values, 2, null );
+			if ( $context ) {
+				unset( $this->map[ $source ] );
+				unset( $this->reverse_map[ $target ] );
+				$this->map[ $context . ':' . $source ] = $target;
+				$this->reverse_map[ $context . ':' . $target ] = $source;
+			} else {
+				$this->map[ $source ] = $target;
+				$this->reverse_map[ $target ] = $source;
+			}
+				
 		}
 	}
 	

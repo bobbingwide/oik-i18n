@@ -291,7 +291,7 @@ function la_CY_translate_string( $text, $plugin, $locale, $msgctxt, $translators
 	echo "$locale:$msgctxt: $la_CY_text" . PHP_EOL;
 	
 	
-	if ( $la_CY_text !== $text || $translators_note ) {
+	if ( ( $la_CY_text !== $text && $locale !== 'en_GB' ) || $translators_note ) {
 		$la_CY_text = la_CY_request_translation( $text, $plugin, $locale, $msgctxt, $translators_note );
 	}
 	$la_CY_text = str_replace( '"', '\"', $la_CY_text );
@@ -541,11 +541,12 @@ function la_CY_outfile( $file, $line ) {
  */
 function la_CY_load_variants( $locale ) {
 	static $variants = null;
-	if ( substr( $locale, 0, 2 ) == "en" ) {
-	
-		oik_require( "class-English-variants.php", "oik-i18n" );
-		//oik_require_class( "English_variants" );
-		$variants = new English_variants( $locale );
+	if ( !$variants ) {
+		if ( substr( $locale, 0, 2 ) == "en" ) {
+			oik_require( "class-English-variants.php", "oik-i18n" );
+			//oik_require_class( "English_variants" );
+			$variants = new English_variants( $locale );
+		}
 	}
 	return $variants;
 }

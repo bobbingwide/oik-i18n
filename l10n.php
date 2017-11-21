@@ -64,7 +64,7 @@ function l10n_list_locales( $plugin ) {
  *
  */ 
 function l10n_run_l10n() {
-  oik_require( "bobbcomp.inc" );
+  //oik_require( "bobbcomp.inc" );
   
   echo getcwd();
   echo PHP_EOL;

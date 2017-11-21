@@ -167,7 +167,7 @@ function la_CY_copytoplugin( $plugin, $locale ) {
  *
  */
 function la_CY_load_locale( $locale ) {
-  oik_require( "bobbcomp.inc" );
+  //oik_require( "bobbcomp.inc" );
   wp_set_lang_dir();
   $files = "admin-$locale.mo,admin-network-$locale.mo,continents-cities-$locale.mo,$locale.mo";
   $files .= ",themes/twentyeleven-$locale.mo,themes/twentyten-$locale.mo,themes/twentythirteen-$locale.mo,themes/twentytwelve-$locale.mo,themes/twentyfourteen-$locale.mo";

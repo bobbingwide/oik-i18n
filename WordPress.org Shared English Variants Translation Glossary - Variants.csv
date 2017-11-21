@@ -63,7 +63,7 @@ gray,grey,grey,grey,grey,grey,adjective,
 honor,honour,honour,honour,honour,honour,verb,
 honored,honoured,honoured,honoured,honoured,honoured,verb,
 hood,bonnet,hood,bonnet,hood,bonnet,noun,"As in ""Under the hood..."""
-Howdy!,G'day!,Hi!,Hi!,Kia Ora,Howzit!,expression,
+Howdy,G'day,Hi,Hi,Kia Ora,Howzit,expression,
 huh?,huh?,eh?,huh?,eh?,huh?,expression,For the cheating messages.
 humanize,humanise,,humanise,humanise,humanise,verb,
 initialize,initialise,initialize,initialise,initialise,initialise,verb,

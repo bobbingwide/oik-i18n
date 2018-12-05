@@ -122,6 +122,14 @@ class tests_English_variants extends BW_UnitTestCase {
 		$this->assertEquals( $expected, $actual );
 		
 	}
+	
+	
+	function test_map_word_howdy() {
+		$variants = English_variants::instance();
+		$actual = $variants->map_word( "Howdy" );
+		$expected = "Hi";
+		$this->assertEquals( $expected, $actual );
+	}
 		
 	
 

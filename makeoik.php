@@ -233,13 +233,17 @@ class MakePOT {
 	function realpath_missing($path) {
 		return realpath(dirname($path)).DIRECTORY_SEPARATOR.basename($path);
 	}
+	
+	function placeholder_map( $x ) {
+		return "{".$x."}";
+	}
 
 	function xgettext($project, $dir, $output_file, $placeholders = array(), $excludes = array(), $includes = array()) {
 		$meta = array_merge( $this->meta['default'], $this->meta[$project] );
 		$placeholders = array_merge( $meta, $placeholders );
 		$meta['output'] = $this->realpath_missing( $output_file );
 		$placeholders['year'] = date( 'Y' );
-		$placeholder_keys = array_map( create_function( '$x', 'return "{".$x."}";' ), array_keys( $placeholders ) );
+		$placeholder_keys = array_map( array( $this, "placeholder_map" ), array_keys( $placeholders ) );
 		$placeholder_values = array_values( $placeholders );
 		foreach($meta as $key => $value) {
 			$meta[$key] = str_replace($placeholder_keys, $placeholder_values, $value);

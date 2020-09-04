@@ -159,6 +159,9 @@ function bb_BB( $plugin ) {
       $real_file = "$plugin.pot" ;
 			$outfile = "$plugin-bb_BB.po";
 	}
+
+	echo $real_file;
+
   
   if ( is_file($outfile) ) {
     unlink( $outfile ); 
@@ -383,13 +386,13 @@ function boing( $word ) {
     case 3:
       // Can't really do anything with this length word
       // Convert all vowels to uppercase
-      // Convert a to decimal 132 hex 84 - which is  Ñ  - a umlaut 
-      // Convert e to decimal 130 hex 82 - which is  Ç  - e acute
-      // Convert i to decimal 140 hex 8C - which is  å  - i caret
-      // Convert o to decimal 149 hex 95 - which is  ï  - o grave
-      // Convert u to decimal 129 hex 81 - which is  Å  - u umlaut
+      // Convert a to decimal 132 hex 84 - which is  ÔøΩ  - a umlaut 
+      // Convert e to decimal 130 hex 82 - which is  ÔøΩ  - e acute
+      // Convert i to decimal 140 hex 8C - which is  ÔøΩ  - i caret
+      // Convert o to decimal 149 hex 95 - which is  ÔøΩ  - o grave
+      // Convert u to decimal 129 hex 81 - which is  ÔøΩ  - u umlaut
       $wrod = str_replace( array( "a", "e", "i", "o", "u" ), array( "A", "E", "I", "O", "U" ), $word );
-      // $wrod = str_replace( array( "a", "e", "i", "o", "u" ), array( "Ñ", "Ç", "å", "ï", "Å" ), $word );
+      // $wrod = str_replace( array( "a", "e", "i", "o", "u" ), array( "ÔøΩ", "ÔøΩ", "ÔøΩ", "ÔøΩ", "ÔøΩ" ), $word );
       
     break;
 

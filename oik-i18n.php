@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: oik internationalization 
-Plugin URI: http://www.oik-plugins.com/oik-i18n
+Plugin URI: https://www.oik-plugins.com/oik-i18n
 Description: Internationalization (or is it localization) for oik and related plugins
-Version: 0.2
+Version: 0.3.0
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 Text Domain: oik-i18n
@@ -12,7 +12,7 @@ Author URI: http://www.bobbingwide.com
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-    Copyright 2013-2015 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2013-2020 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,

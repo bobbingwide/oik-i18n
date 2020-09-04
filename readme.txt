@@ -3,8 +3,8 @@ Contributors: bobbingwide
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: i18n, internationalization, localization, l10n, oik, bb_BB, bbboing
 Requires at least: 4.2
-Tested up to: 4.2.2
-Stable tag: 0.2
+Tested up to: 5.5.1
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Internationalization for the oik suite of plugins
 
 The base domain.pot file(s) are named to match the plugin. e.g. oik.pot, oik-i18n.pot
-
 
 Translators build Machine Object (.mo) files where the filenames are expected to be in the form:
 
@@ -51,13 +50,7 @@ This is not really necessary, as the logic is currently intended for use in a 'b
 1. Activate the oik-i18n plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
-= Where is the FAQ? =
-[oik FAQ](http://www.oik-plugins.com/oik/oik-faq)
-
-= Is there a support forum? =
-Yes - please use the standard WordPress forum - http://wordpress.org/tags/oik?forum_id=10
-
-= Who's written about i18n =
+= Who's written about i18n? =
 
 http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/
 
@@ -70,7 +63,7 @@ load_plugin_textdomain
 load_theme_textdomain
 
 = What is bb_BB? =
-We use bb_BB for a ficticious test language and country
+We use bb_BB for a fictitious test language and country
 
 bb = bbboing language - an automatic translation of the existing language with character movement and vowel replacement
 BB = Bbboingland - the country where bbboing is spoken
@@ -93,6 +86,7 @@ bb_BB.php -
 
 = What is makeoik.php? =
 makeoik.php is a PHP routine based on WordPress's makepot.php
+
 It extends the list of functions that accept Internationalized strings
 so that they can be found and included in the master .pot file for a plugin.
 This .pot file is then passed to the translators ( including the automated routines )
@@ -158,6 +152,9 @@ Yes - see above
 1. oik-i18n in action
 
 == Upgrade Notice ==
+= 0.3.0 = 
+Now supports plugins which deliver blocks built with wp-scripts
+
 = 0.2 =
 * Still not for general release.
 
@@ -165,6 +162,12 @@ Yes - see above
 * Not for general release. 
 
 == Changelog == 
+= 0.3.0 =
+* Changed: Added support for Internationalization and localization of block plugins,[github bobbingwide oik-i18n issues 6]
+* Tested: With WordPress 5.5.1
+* Tested: With PHP 7.4
+
+
 = 0.2 =
 * Updated l10n.php to create the bb_BB locale version as part of oik-zip.php 
 * Other changes will be discovered next time round
@@ -176,6 +179,6 @@ Yes - see above
 
 == Further reading ==
 If you want to read more about the oik plugins then please visit the
-[oik plugin](http://www.oik-plugins.com/oik) 
+[oik plugin](https://www.oik-plugins.com/oik) 
 **"the oik plugin - for often included key-information"**
 

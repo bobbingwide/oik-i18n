@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2017
+<?php // (C) Copyright Bobbing Wide 2013-2020
 
 /**
  * Syntax: oikwp l10n.php plugin langs
@@ -81,6 +81,7 @@ function l10n_run_l10n() {
   } else {
     $plugins = l10n_plugin_list();
     echo "Processing plugin list";
+	echo "Not yet supported. Please specify the plugin to process.";
     gobang();
   }
 	$lang = oik_batch_query_value_from_argv( 2, "en_GB" );
@@ -166,7 +167,7 @@ function do_plugin( $plugin, $lang="en_GB" ) {
   echo PHP_EOL;
 	//$res = do_makepot( $plugin );
 	
-  $res = do_makeoik( $plugin );
+  $res = maybe_do_makeoik( $plugin );
 	//gob();
   if ( $res ) {
     $res = do_bb_BB( $plugin ); 
@@ -176,6 +177,47 @@ function do_plugin( $plugin, $lang="en_GB" ) {
   } else {
     echo "do_makeoik failed";
   }  
+}
+
+
+/**
+ * Makeoik is required when we can't use makepot within npm.
+ *
+ * This is the case when the source files are in the same folder as the build files;
+ * as in the original versions of oik and oik-blocks.
+ *
+ * Until these plugins are converted to use wp-scripts then we won't have internationalised content in the editor.
+ * Newer plugins such as sb-children-block uses the modern method.
+ *
+ * node_modules | src | Process to use
+ * ------------ | ---- | ------------
+ * n            | n    | makeoik
+ * n            | y    | makeoik -
+ * y            | n    | makeoik - but JavaScipt blocks are not internationalised
+ * y            | y    | npm run makepot & npm run l10n & npm run makejson
+ *
+ * @param $plugin
+ * @return bool - always true?
+ *
+ */
+function maybe_do_makeoik( $plugin ) {
+	$node_modules = oik_path( 'node_modules', $plugin );
+	$src = oik_path( 'src', $plugin );
+	if ( file_exists( $node_modules ) && file_exists( $src ) ) {
+		echo "Not running makeoik - use npm run makepot";
+		echo "I assume you've already done that!";
+		echo PHP_EOL;
+		copytoworking( $plugin );
+	} else {
+		echo "Running makeoik";
+		echo PHP_EOL;
+		$res=do_makeoik( $plugin );
+		echo $res;
+		echo PHP_EOL;
+		copyfromworking( $plugin );
+	}
+	$res=true;
+	return $res;
 }
 
 /**
@@ -189,7 +231,10 @@ function do_plugin( $plugin, $lang="en_GB" ) {
 function do_makeoik( $plugin ) {
   oik_require( "makeoik.php", "oik-i18n" );
   $plugin_path = oik_path( null, $plugin );
+  echo "makeoik: " . $plugin_path;
+  echo PHP_EOL;
   $makepot = new MakePOT;
+
   $res = call_user_func( array( &$makepot, "wp_plugin" )
                        , $plugin_path
                        , null 
@@ -199,6 +244,8 @@ function do_makeoik( $plugin ) {
   if (false === $res) {
     fwrite(STDERR, "Couldn't generate POT file!\n");
   }
+  echo "result of makeoik: " . $res;
+  echo PHP_EOL;
   return( $res );
 }
 
@@ -287,9 +334,9 @@ function do_msgfmt( $plugin, $locale="bb_BB" ) {
 function do_copytoplugin( $plugin, $locale="bb_BB" ) {
   $source_dir = getcwd();
   $target_dir = dirname( dirname( $source_dir) );
-  $target_dir .= "/$plugin/languages/";
+  $target_dir .= "/$plugin/languages";
   oik_require( "admin/oik-relocate.inc" );
-  // Note: bw_mkdir expects a full file name
+  // Note: bw_mkdir expects a full file name but doesn't use the filename bit
   bw_mkdir( "$target_dir/$plugin.pot" );
 	
 	if ( $source_dir != $target_dir ) {
@@ -300,5 +347,45 @@ function do_copytoplugin( $plugin, $locale="bb_BB" ) {
 		copy( "$source_dir/$plugin-$locale.mo", "$target_dir/$plugin-$locale.mo" );
 		echo "Copied files from source: $source_dir" . PHP_EOL; 
 		echo "Copied files to target: $target_dir" . PHP_EOL;
+	} else {
+		echo "Not copied from source to target" . PHP_EOL;
+		echo "Source: $source_dir" . PHP_EOL;
+		echo "Target: $target_dir" . PHP_EOL;
 	}
-}   
+}
+
+/**
+ * Copies the plugin.pot file from $plugin/languages to oik-i18n/working
+ *
+ * Note: The current working directory is expected to be oik-i18n/working
+ *
+ * @param $plugin
+ */
+function copytoworking( $plugin ) {
+	$target_dir = getcwd();
+	$source_dir = dirname( dirname( $target_dir) );
+	$source_dir .= "/$plugin/languages";
+	$result = copy( "$source_dir/$plugin.pot", "$target_dir/$plugin.pot");
+	echo "Copied $plugin.pot to working?";
+	echo $result ? "OK" : "Failed";
+	echo PHP_EOL;
+}
+
+/**
+ * Copies the plugin.pot file from oik-i18n/working to $plugin/languages
+ *
+ * Note: The current working directory is expected to be oik-i18n/working
+ *
+ * @param $plugin
+ */
+function copyfromworking( $plugin ) {
+	$source_dir = getcwd();
+	$target_dir = dirname( dirname( $source_dir) );
+	$target_dir .= "/$plugin/languages";
+	echo "Source dir: " . $source_dir;
+	echo "Target dir: " . $target_dir;
+	$result = copy( "$source_dir/$plugin.pot", "$target_dir/$plugin.pot");
+	echo "Copied $plugin.pot from working? ";
+	echo $result ? "OK" : "Failed";
+	echo PHP_EOL;
+}

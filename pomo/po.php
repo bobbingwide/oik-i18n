@@ -48,6 +48,10 @@ class PO extends Gettext_Translations {
 	 */
 	function export_entries() {
 		//TODO sorting
+		//print_r( $this->entries);
+		echo "Exporting: ";
+		echo count( $this->entries );
+		echo PHP_EOL;
 		return implode("\n\n", array_map(array('PO', 'export_entry'), $this->entries));
 	}
 
@@ -75,11 +79,24 @@ class PO extends Gettext_Translations {
 	 * @return bool true on success, false on error
 	 */
 	function export_to_file($filename, $include_headers = true) {
+		echo "Working directory: ";
+		echo getcwd();
+		echo PHP_EOL;
+		echo "Exporting: " . $filename . PHP_EOL;
 		$fh = fopen($filename, 'w');
-		if (false === $fh) return false;
+		if (false === $fh) {
+			echo "Could not open file" . PHP_EOL;
+			return false;
+		}
 		$export = $this->export($include_headers);
+		// For when we want to see what's going to be written.
+		//echo $export;
 		$res = fwrite($fh, $export);
-		if (false === $res) return false;
+		if (false === $res) {
+			echo "Could not write file" . PHP_EOL;
+			echo $res;
+			return false;
+		}
 		return fclose($fh);
 	}
 
@@ -226,6 +243,7 @@ class PO extends Gettext_Translations {
 				$po[] = "msgstr[$i] ".PO::poify($translation);
 			}
 		}
+		echo count( $po );
 		return implode("\n", $po);
 	}
 

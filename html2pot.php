@@ -31,15 +31,15 @@
 $filename = 'test.html';
 
 $html = file_get_contents( $filename);
-print_r( $html );
+//print_r( $html );
 
 if ( 0 === strlen( $html) ) {
 	echo "Invalid file: " . $filename;
+	exit();
 
-	gob();
 }
-
 require_once 'class-stringer.php';
+require_once 'class-potter.php';
 
 /**
  * Use Gutenberg to parse the content into individual blocks.
@@ -48,15 +48,30 @@ require_once 'class-stringer.php';
 $parser = new WP_Block_Parser();
 $blocks = $parser->parse( $html );
 
-print_r( $blocks );
+//print_r( $blocks );
 
 $stringer = new Stringer();
 $count = 0;
+$stringer->set_source_filename( $filename );
 foreach ( $blocks as $block) {
+	$count++;
 	echo PHP_EOL;
 	echo "Block: " . $count;
 	echo PHP_EOL;
-	$stringer->get_strings( $block );
-	//print_r( $block );
-
+	print_r( $block );
+	if ( !empty( $block['innerHTML'] ) ) {
+		$strings = $stringer->get_strings( $block['innerHTML'] );
+		//print_r( $block );
+		//$strings =
+		//$potter->write_strings( $strings );
+	}
 }
+
+$strings = $stringer->get_all_strings();
+$potter = new Potter();
+$potter->set_pot_filename( 'fizzie.pot');
+$potter->set_project( 'fizzie');
+$output = $potter->write_header();
+$output .= $potter->write_strings( $strings );
+echo $output;
+

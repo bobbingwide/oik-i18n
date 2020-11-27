@@ -8,70 +8,36 @@
  * Syntax:
  * `
  * cd [path]/wp-content/plugins/oik-i18n
- * oikwp html2pot.php type filename.html locale
+ * oikwp html2pot.php theme locale
  *
  * where:
- * type is is template / part
- * filename.html is the file name
- * locale is the target locale: en_GB, bb_BB, fr_FR
+ * - theme - is the theme to process. default fizzie
+ * - locale is the target locale: en_GB, bb_BB, fr_FR
  *
- * Output will be written to a languages folder
+ * Output will be written to a /languages folder in the selected theme
  */
 
 /**
  * Stage 1. Find all the translatable strings in an .html file
- * Stage 2. Extract from all the theme's .html files to a .pot file
+ * Stage 2. Extract translatable strings from all of the theme's `.html` files to a `.pot` file.
  * Stage 3. Translate into local language
- * Stage 4. Reparse, apply the target language and save in the new locale.
+ * Stage 4. Reparse, apply the target language, and save in the new locale.
  *
- * This is the very beginning of Stage 1.
+ * This is the first prototype of Stages 1 and 2.
  *
  */
 
-$filename = 'test.html';
-
-$html = file_get_contents( $filename);
-//print_r( $html );
-
-if ( 0 === strlen( $html) ) {
-	echo "Invalid file: " . $filename;
-	exit();
-
+if ( PHP_SAPI !== "cli" ) {
+	die();
 }
+
 require_once 'class-stringer.php';
 require_once 'class-potter.php';
+require_once 'theme-files.php';
 
-/**
- * Use Gutenberg to parse the content into individual blocks.
- * I've got a block recreation routine in oik-clone.
- */
-$parser = new WP_Block_Parser();
-$blocks = $parser->parse( $html );
-
-//print_r( $blocks );
-
+$theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
+$files = list_all_templates_and_parts( $theme );
 $stringer = new Stringer();
-$count = 0;
-$stringer->set_source_filename( $filename );
-foreach ( $blocks as $block) {
-	$count++;
-	echo PHP_EOL;
-	echo "Block: " . $count;
-	echo PHP_EOL;
-	print_r( $block );
-	if ( !empty( $block['innerHTML'] ) ) {
-		$strings = $stringer->get_strings( $block['innerHTML'] );
-		//print_r( $block );
-		//$strings =
-		//$potter->write_strings( $strings );
-	}
-}
-
-$strings = $stringer->get_all_strings();
-$potter = new Potter();
-$potter->set_pot_filename( 'fizzie.pot');
-$potter->set_project( 'fizzie');
-$output = $potter->write_header();
-$output .= $potter->write_strings( $strings );
-echo $output;
+process_theme_files( $files, $stringer );
+write_pot_file( $theme, $stringer );
 

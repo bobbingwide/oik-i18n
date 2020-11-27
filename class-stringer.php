@@ -14,11 +14,30 @@
 
 class Stringer {
 
+	/**
+	 * @var array Tags from which the innertText string is not needed.
+	 */
 	private $notNeededTags = [];
 
+	/**
+	 * @var array Translateable strings and their context.
+	 */
 	public $strings = [];
 
+	/**
+	 * @var string Source filename where the string was first detected.
+	 */
 	public $source_filename = null;
+
+	/**
+	 * @var string block type where the string was first detected.
+	 */
+	public $blockName = null;
+
+	/**
+	 * Stringer constructor.
+	 * Ensures simple HTML DOM parser is loaded
+	 */
 
 	function __construct() {
 		if ( ! function_exists( 'str_get_html' ) ) {
@@ -33,12 +52,16 @@ class Stringer {
 
 	/**
 	 * Gets translatable strings from the inner HTML for a block.
-	 *
 	 */
-	function get_strings( $innerHTML ) {
+	function get_strings( $blockName, $innerHTML ) {
+		$this->set_blockName( $blockName );
 		$html = str_get_html( $innerHTML );
 		$this->recurse( $html->root );
 		return $this->strings;
+	}
+
+	function set_blockName( $blockName ) {
+		$this->blockName = $blockName;
 	}
 
 	/**
@@ -88,6 +111,7 @@ class Stringer {
 				$this->add_string( $text );
 			}
 		}
+		// @TODO - Extract strings from attributes
 		echo implode( ' ', $node->getAllAttributes() );
 
 		if ( count( $node->children ) ) {
@@ -95,23 +119,6 @@ class Stringer {
 				$this->recurse( $child );
 			}
 		}
-
-
-		//echo $node->innertext();
-
-		//print_r(  $node->_ );
-
-
-			//$node->dump( $node );
-			//echo $node->text();
-			//echo $node->__tostring();
-			//if( isset( $node->text )) {
-			//echo "IT:";
-			//echo $node->innertext();
-			//echo ":TI";
-			//echo $node->text();
-
-
 		$nest--;
 		echo PHP_EOL;
 	}
@@ -122,13 +129,14 @@ class Stringer {
 	 */
 	function add_string( $text ) {
 		if ( !isset( $this->strings[ $text ] ) ) {
-			$this->strings[$text] = $this->source_filename;
+			$this->strings[$text] = $this->source_filename . ' ' . $this->blockName;
 		}
 	}
 
 	/**
-	 * Dumps the strings to a .pot file
+	 * Returns all the strings.
 	 *
+	 * @return array All the translatable strings found.
 	 */
 	function get_all_strings() {
 		return $this->strings;

@@ -88,17 +88,25 @@ function process_blocks( $blocks, $stringer ) {
 	}
 }
 
+/**
+ * Extracts strings for translatable attributes.
+ *
+ * @TODO Implement recursion for nested attributes.
+ * @param $block
+ * @param $stringer
+ */
 function extract_strings_from_block_attributes( $block, $stringer ) {
 	//print_r( $block );
-	print_r( $block['attrs'] );
+	//print_r( $block['attrs'] );
 	$stringer->set_blockName( $block['blockName'] );
 	foreach ( $block['attrs'] as $key => $value ) {
-		if ( isAttrTranslatable( $key ) ) {
-			$stringer->add_string( null, $value );
+		if ( $stringer->isAttrTranslatable( $key ) ) {
+			$stringer->add_attribute_string( $key, $value );
 		}
 	}
 }
 
+/** See the class
 function isAttrTranslatable( $key ) {
 	$translatable = array_flip( [ 'label' ] );
 	$not_translatable = array_flip( ['class', 'className', 'slug', 'ID', 'ref'] );
@@ -108,6 +116,7 @@ function isAttrTranslatable( $key ) {
 	}
 	return $isTranslatable;
 }
+ */
 
 function write_pot_file( $theme, $stringer ) {
 	$strings = $stringer->get_all_strings();
@@ -125,12 +134,20 @@ function replace_pot_file( $theme, $contents ) {
 	$filename = get_theme_dir( $theme );
 	$filename .= '/languages/' ;
 	$filename .= $theme;
+	$filename .= '-FSE';  // Append a suffix so we know these are FSE strings
 	$filename .= '.pot';
 	echo "Writing: " ;
 	echo $filename;
 	echo PHP_EOL;
 	echo $contents;
 	echo PHP_EOL;
+	$written = file_put_contents(  $filename, $contents );
+	if ( $written !== strlen( $contents ) ) {
+		echo "File was badly written";
+		echo "Wrote:" . $written;
+		echo "Expected:" . strlen( $contents );
+	}
+
 
 }
 

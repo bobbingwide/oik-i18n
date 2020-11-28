@@ -230,7 +230,7 @@ class DOM_Stringer  {
 				//print_r( $attribute );
 				//$node->setAttribute( $attribute->name, "derf" );
 				if ( $this->isAttrTranslatable( $attribute->name )) {
-					$this->add_string( null, $attribute->value );
+					$this->add_attribute_string( $attribute->name, $attribute->value );
 				}
 			}
 		}
@@ -282,9 +282,16 @@ class DOM_Stringer  {
 
 	/**
 	 * Adds a translatable attr.
+	 *
+	 * Attributes are different from Text strings.
+	 * We don't need to check the node type
+	 * It'd be nice to record the attribute name
+	 *
 	 */
 	function add_attribute_string( $attr, $text ) {
-		
+		if ( ! isset( $this->strings[ $text ] ) ) {
+			$this->strings[ $text ]=$this->source_filename . ' ' . $this->blockName . ' ' . $this->get_nodeNameTree() . ' ' . $attr;
+		}
 	}
 
 	/**

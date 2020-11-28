@@ -1,14 +1,21 @@
-<?php // (C) Copyright Bobbing Wide 2013-2020
-
+<?php
 /**
- * Syntax: oikwp l10n.php plugin langs
+ * @package oik-i18n
+ * @copyright (C) Copyright Bobbing Wide 2013-2020
+ *
+ * Syntax: oikwp l10n.php component langs
+ *
  * from oik-i18n directory
  *
- * Invoke l10n directly to perform localization of the selected plugin for the given lang(s)
+ * where:
+ * - component is the plugin / theme name eg oik ( plugin ), fizzie ( theme )
+ * - langs are the target locale(s) eg eb_GB or bb_BB
+ *
+ * Invoke l10n directly to perform localization of the selected plugin/theme for the given lang(s)
  *
  * 
  * Note: If the plugin is hosted on wordpress.org and has been translated to a selected language
- * then we can download the .po and .mo files and rename them
+ * then we can download the .po and .mo files and rename them.
  * 
  * e.g. For oik-weight-zone-shipping
  * https://translate.wordpress.org/projects/wp-plugins/oik-weight-zone-shipping/dev/fr/default
@@ -47,10 +54,10 @@ function l10n_plugin_list() {
 /**
  * Return the list of locales to process
  * 
- * @param string $plugin the plugin to process
+ * @param string $component the component to process
  * @return array array of locales possibly including bb_BB and most likely fr_FR and en_GB
  */
-function l10n_list_locales( $plugin ) {
+function l10n_list_locales( $component ) {
 	gob();
 	return( "fr_FR" );
 }
@@ -59,7 +66,7 @@ function l10n_list_locales( $plugin ) {
  * main processing
  *
  * We perform the main processing in the working directory
- * and copy the generated files to the plugin's languages directory
+ * and copy the generated files to the component's languages directory
  * This allows us to operate on oik-i18n as well
  *
  */ 
@@ -75,24 +82,24 @@ function l10n_run_l10n() {
 
   //echo $argc;
   //print_r( $argv );
-	$plugins = oik_batch_query_value_from_argv( 1, null );
-  if ( $plugins ) {
-    $plugins = bw_as_array( $plugins );
+	$components = oik_batch_query_value_from_argv( 1, null );
+  if ( $components ) {
+    $components = bw_as_array( $components );
   } else {
-    $plugins = l10n_plugin_list();
-    echo "Processing plugin list";
-	echo "Not yet supported. Please specify the plugin to process.";
+    $components = l10n_component_list();
+    echo "Processing component list";
+	echo "Not yet supported. Please specify the component to process.";
     gobang();
   }
 	$lang = oik_batch_query_value_from_argv( 2, "en_GB" );
 	 
-	bw_trace2( $plugins, "plugins" ); 
-  foreach ( $plugins as $plugin ) {
+	bw_trace2( $components, "components" );
+  foreach ( $components as $component ) {
 		
 		if ( !$lang ) {
-			$lang = l10n_list_locales( $plugin );
+			$lang = l10n_list_locales( $component );
 		}	
-    do_plugin( $plugin, $lang );
+    do_component( $component, $lang );
   }
 }
 
@@ -127,7 +134,7 @@ function l10n_loaded() {
 l10n_loaded(); 
 
 /**
- * Build a plugin's language files
+ * Build a component's language files
  *
  * This is the logic of the original bat file
  * `
@@ -156,27 +163,63 @@ l10n_loaded();
  * - bb_BB - is the bbboing language version - used for testing
  * - we always build the bb_BB version
  *
- * @param string $plugin the plugin folder name
+ * @param string $component the component folder name
  * @param string $lang the language versions to create
  *
  
  */
 
-function do_plugin( $plugin, $lang="en_GB" ) {
-  echo "processing $plugin";
-  echo PHP_EOL;
-	//$res = do_makepot( $plugin );
-	
-  $res = maybe_do_makeoik( $plugin );
-	//gob();
-  if ( $res ) {
-    $res = do_bb_BB( $plugin ); 
-    $res = do_msgfmt( $plugin );
-    $res = do_copytoplugin( $plugin );
-		$res = do_otherlangs( $plugin, $lang );
-  } else {
-    echo "do_makeoik failed";
-  }  
+function do_component( $component, $lang="en_GB" ) {
+	echo "Processing: " . $component . PHP_EOL;
+
+	list( $component_type, $component_path ) = l10n_locate_component( $component );
+	echo "Component type: " . $component_type . PHP_EOL;
+	echo "Component path: " . $component_path . PHP_EOL;
+	echo PHP_EOL;
+	$res = true;
+	if ( "plugin" === $component_type ) {
+		$res=maybe_do_makeoik( $component, $component_path );
+		if ( $res ) {
+			echo "do_makeoik worked";
+		} else {
+			echo "do_makeoik failed";
+		}
+	} elseif ( "theme" === $component_type ) {
+		copytoworking( $component, $component_path );
+	} else {
+		echo "Invalid component. Path not found: " . $component;
+		$res = false;
+	}
+	if ( $res ) {
+		$res=do_bb_BB( $component, $component_type );
+
+		$res=do_msgfmt( $component );
+		$res=do_copytocomponent( $component, 'bb_BB', $component_path );
+		$res=do_otherlangs( $component, $lang, $component_path );
+	}
+}
+
+/**
+ * Locates the languages folder for the component.
+ *
+ * Assume it's a plugin first of all.
+ * Then try for theme.
+ *
+ * @param $component
+ *
+ * @return string
+ */
+function l10n_locate_component( $component ) {
+	$path = oik_path( 'languages', $component );
+	if ( file_exists( $path )) {
+		return [ 'plugin', $path ];
+	}
+	$theme_dir = get_stylesheet_directory();
+	$theme_dir = dirname( $theme_dir ) . '/' . $component . '/languages';
+	if ( file_exists( $theme_dir ) ) {
+		return ['theme', $theme_dir ];
+	}
+	return [null, null];
 }
 
 
@@ -186,8 +229,8 @@ function do_plugin( $plugin, $lang="en_GB" ) {
  * This is the case when the source files are in the same folder as the build files;
  * as in the original versions of oik and oik-blocks.
  *
- * Until these plugins are converted to use wp-scripts then we won't have internationalised content in the editor.
- * Newer plugins such as sb-children-block uses the modern method.
+ * Until these components are converted to use wp-scripts then we won't have internationalised content in the editor.
+ * Newer components such as sb-children-block uses the modern method.
  *
  * node_modules | src | Process to use
  * ------------ | ---- | ------------
@@ -196,18 +239,19 @@ function do_plugin( $plugin, $lang="en_GB" ) {
  * y            | n    | makeoik - but JavaScipt blocks are not internationalised
  * y            | y    | npm run makepot & npm run l10n & npm run makejson
  *
- * @param $plugin
+ * @param $component
+ * @param string $component_path -
  * @return bool - always true?
  *
  */
-function maybe_do_makeoik( $plugin ) {
+function maybe_do_makeoik( $plugin, $component_path ) {
 	$node_modules = oik_path( 'node_modules', $plugin );
 	$src = oik_path( 'src', $plugin );
 	if ( file_exists( $node_modules ) && file_exists( $src ) ) {
 		echo "Not running makeoik - use npm run makepot";
 		echo "I assume you've already done that!";
 		echo PHP_EOL;
-		copytoworking( $plugin );
+		copytoworking( $plugin, $component_path );
 	} else {
 		echo "Running makeoik";
 		echo PHP_EOL;
@@ -279,23 +323,24 @@ function do_makepot( $plugin ) {
  *  
  * php c:\apache\htdocs\wordpress\wp-content\plugins\play\bb_BB.php oik > oik-bb_BB.po
  */
-function do_bb_BB( $plugin ) {
+function do_bb_BB( $component, $component_type ) {
   oik_require( "bb_BB.php", "oik-i18n" );
   //php c:\apache\htdocs\wordpress\wp-content\plugins\play\bb_BB.php oik > oik-bb_BB.po
-  bb_BB( $plugin );
+  bb_BB( $component, $component_type );
   return( true ); 
 }
 
 /**
- * Translate the plugin into other languages
+ * Translate the component into other languages
  *
- * @param string $plugin the plugin folder
+ * @param string $component the component folder
  * @param string $lang the required language(s)
+ * @param string $component_path
  * @return bool result of the translations
  */ 
-function do_otherlangs( $plugin, $lang ) {
+function do_otherlangs( $component, $lang, $component_path ) {
 	oik_require( "la_CY.php", "oik-i18n" );
-	la_CY( $plugin, $lang );
+	la_CY( $component, $lang, $component_path );
 	return( true ); 
 } 
 
@@ -304,12 +349,12 @@ function do_otherlangs( $plugin, $lang ) {
  * 
  * Invoke the msgfmt program to convert the locale's .po file to the .mo file
  * 
- * @param string $plugin - the plugin slug e.g. oik-privacy-policy
+ * @param string $component - the component slug e.g. oik-privacy-policy
  * @param string $locale - the target locale
  * 
  */
-function do_msgfmt( $plugin, $locale="bb_BB" ) {
-  $cmd = "msgfmt -c -v --statistics -o $plugin-$locale.mo $plugin-$locale.po";  
+function do_msgfmt( $component, $locale="bb_BB" ) {
+  $cmd = "msgfmt -c -v --statistics -o $component-$locale.mo $component-$locale.po";
   echo $cmd . PHP_EOL;
   $text = system( $cmd, $res );
   echo "$res $text" . PHP_EOL;
@@ -317,7 +362,7 @@ function do_msgfmt( $plugin, $locale="bb_BB" ) {
 } 
 
 /**
- * Copy the locale files to the language directory of the translated plugin
+ * Copy the locale files to the language directory of the translated component
  * 
  * The files should have been generated in oik-i18n\working
  * We need to copy them to $plugin\languages
@@ -331,10 +376,9 @@ function do_msgfmt( $plugin, $locale="bb_BB" ) {
  * @param string $plugin - the slug of the plugin
  * @param string $locale - the target locale
  */
-function do_copytoplugin( $plugin, $locale="bb_BB" ) {
+function do_copytocomponent( $plugin, $locale="bb_BB", $component_path ) {
   $source_dir = getcwd();
-  $target_dir = dirname( dirname( $source_dir) );
-  $target_dir .= "/$plugin/languages";
+  $target_dir = $component_path;
   oik_require( "admin/oik-relocate.inc" );
   // Note: bw_mkdir expects a full file name but doesn't use the filename bit
   bw_mkdir( "$target_dir/$plugin.pot" );
@@ -355,18 +399,19 @@ function do_copytoplugin( $plugin, $locale="bb_BB" ) {
 }
 
 /**
- * Copies the plugin.pot file from $plugin/languages to oik-i18n/working
+ * Copies the component.pot file from $component/languages to oik-i18n/working
  *
  * Note: The current working directory is expected to be oik-i18n/working
  *
- * @param $plugin
+ * @param $component
+ * @param string $component_path - the languages folder for the component ( plugin or theme )
  */
-function copytoworking( $plugin ) {
+function copytoworking( $component, $component_path ) {
 	$target_dir = getcwd();
-	$source_dir = dirname( dirname( $target_dir) );
-	$source_dir .= "/$plugin/languages";
-	$result = copy( "$source_dir/$plugin.pot", "$target_dir/$plugin.pot");
-	echo "Copied $plugin.pot to working?";
+
+	$source_dir = $component_path;
+	$result = copy( "$source_dir/$component.pot", "$target_dir/$component.pot");
+	echo "Copied $component.pot to working?";
 	echo $result ? "OK" : "Failed";
 	echo PHP_EOL;
 }

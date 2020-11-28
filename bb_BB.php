@@ -1,10 +1,10 @@
-<?php // (C) Copyright Bobbing Wide 2013-2017
+<?php // (C) Copyright Bobbing Wide 2013-2020
 //namespace oiki18n\bb_BB;
 
 /** 
  * Create a bbboing language .po file for a given .pot file
  * 
- * Purpose: Localize a plugin's .pot file into the "bbboing language" ( bb ), country code ( BB )
+ * Purpose: Localize a component's .pot file into the "bbboing language" ( bb ), country code ( BB )
  * This can be used to test two things:
  * 1. Whether or not the code is fully Internationalized - missed strings will not be "bbboinged"
  * 2. Whether or not the code is properly Internationalized - detects "poorly" i18n'ed can be detected.
@@ -143,32 +143,45 @@ function bb_BB_outfile( $file, $line ) {
  * msgfmt  
  * 
  */
-function bb_BB( $plugin ) {
+function bb_BB( $plugin, $component_type ) {
 	switch ( $plugin ) {
 		case "admin-":
 		case "admin-network-":
 		case "":
-			$real_file = $plugin . "en_GB.po";
-			$outfile = $plugin . "bb_BB.po";
+			$real_file=$plugin . "en_GB.po";
+			$outfile  =$plugin . "bb_BB.po";
 			chdir( WP_LANG_DIR );
 			echo WP_LANG_DIR . PHP_EOL;
 			//gob();
 			break;
-			
+
 		default:
-      $real_file = "$plugin.pot" ;
-			$outfile = "$plugin-bb_BB.po";
+			$real_file="$plugin.pot";
+			$outfile  ="$plugin-bb_BB.po";
 	}
 
-	echo $real_file;
+	echo "Real file:" . $real_file . PHP_EOL;
 
-  
-  if ( is_file($outfile) ) {
-    unlink( $outfile ); 
-  }
-  echo __FUNCTION__ . ": Processing $real_file" . PHP_EOL;
-  echo "Creating: $outfile " . PHP_EOL;
-  $content = file( $real_file );
+
+	if ( is_file( $outfile ) ) {
+		unlink( $outfile );
+	}
+
+	echo __FUNCTION__ . ": Processing $real_file" . PHP_EOL;
+	echo "Creating: $outfile " . PHP_EOL;
+	$content=file( $real_file );
+	bb_convert_content( $content, $outfile );
+}
+
+
+/**
+ * Converts the .pot file to a -bb_BB.po file.
+ *
+ * @param $content
+ * @param $outfile
+ */
+
+function bb_convert_content( $content, $outfile ) {
   //echo $content;
   $count = 0;
   $repl = null;

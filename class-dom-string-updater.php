@@ -7,8 +7,14 @@
 
 class DOM_string_updater extends DOM_Stringer {
 
+	private $locale;
+
 	function __construct() {
 		parent::__construct();
+	}
+
+	function set_locale( $locale ) {
+		$this->locale = $locale;
 	}
 
 	function saveHTML() {
@@ -24,6 +30,11 @@ class DOM_string_updater extends DOM_Stringer {
 	function translate() {
 		$this->extract_strings( $this->dom_doc );
 
+	}
+
+	function translate_string( $string ) {
+		$translated = __( $string, $this->locale );
+		return $translated;
 	}
 
 	/**
@@ -58,9 +69,19 @@ class DOM_string_updater extends DOM_Stringer {
 		echo PHP_EOL;
 		print_r( $node );
 		if ( XML_TEXT_NODE === $node->nodeType ) {
-			$node->nodeValue="Hlelo Wrold";
+			$node->nodeValue= $this->translate_string( $node->nodeValue );
 		}
 
+	}
+
+	/**
+	 * Updates the attribute string value for the selected locale.
+	 *
+	 * This is for the nodes.
+	 * When dealing with blocks we have a different method.
+	 */
+	function add_attribute_string( $attr, $text ) {
+		gob();
 	}
 
 	/**
@@ -102,12 +123,19 @@ class DOM_string_updater extends DOM_Stringer {
 			//print_r( $node );
 			//print_r( $node->attributes);
 			echo $node->attributes->length;
-			$attribute = $node->attributes->item(0);
-			echo $attribute->name;
-			echo $attribute->value;
-			// $attribute->value = "derf";
-			//print_r( $attribute );
-			$node->setAttribute ( $attribute->name , "derf" );
+			echo PHP_EOL;
+			for ( $item=0; $item < $node->attributes->length; $item ++ ) {
+				$attribute=$node->attributes->item( $item );
+				echo 'A#:' . $item;
+				echo 'AN:' . $attribute->name;
+				echo 'AV:' . $attribute->value;
+				echo PHP_EOL;
+				if ( $this->isAttrTranslatable( $attribute->name ) ) {
+					$translated=$this->translate_string( $attribute_value );
+					$node->setAttribute( $attribute->name, $translated );
+					//$this->add_attribute_string( $attribute->name, $attribute->value );
+				}
+			}
 		}
 	}
 

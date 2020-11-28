@@ -22,6 +22,7 @@
  * Stage 2. Extract translatable strings from all of the theme's `.html` files to a `.pot` file.
  * Stage 3. Translate into local language
  * Stage 4. Reparse, apply the target language, and save in the new locale.
+ * Stage 5. WordPress loads the theme's files from the languages/la_CY folder.
  *
  * This is the first prototype of Stages 1 and 2.
  *
@@ -33,12 +34,15 @@ if ( PHP_SAPI !== "cli" ) {
 
 require_once 'class-dom-stringer.php';
 require_once 'class-potter.php';
-require_once 'theme-files.php';
+require_once 'class-theme-files.php';
 
 
 $theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
-$files = list_all_templates_and_parts( $theme );
+$theme_files = new Theme_Files();
+
 $stringer = new DOM_Stringer();
-process_theme_files( $files, $stringer );
-write_pot_file( $theme, $stringer );
+$stringer->set_theme( $theme );
+$files = $theme_files->list_all_templates_and_parts( $theme );
+$theme_files->process_theme_files( $files, $stringer );
+$theme_files->write_pot_file( $theme, $stringer );
 

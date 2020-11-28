@@ -55,18 +55,26 @@ class DOM_Stringer  {
 	public $nodeName = [];
 
 	/**
-	 *
+	 * DOM_Stringer constructor.
 	 */
-
 	function __construct() {
 		$this->dom_doc = new DOMDocument();
 		$this->setUpNotNeeded();
 	}
 
+	/**
+	 * Sets the source filename for reporting in the .pot file
+	 * @param $filename
+	 */
 	function set_source_filename( $filename ) {
 		$this->source_filename = $filename;
 	}
 
+	/**
+	 * Sets the block name ( eg core/template-part ).
+	 *
+	 * @param $blockName
+	 */
 	function set_blockName( $blockName ) {
 		$this->blockName = $blockName;
 	}
@@ -79,10 +87,18 @@ class DOM_Stringer  {
 		$this->nodeName[] = $nodeName;
 	}
 
+	/**
+	 * Pops a node off the tree.
+	 */
 	function pop_nodeName() {
 		array_pop( $this->nodeName );
 	}
 
+	/**
+	 * Returns a string representation of the node tree.
+	 *
+	 * @return string|string[]
+	 */
 	function get_nodeNameTree() {
 		$tree = implode( '>',  $this->nodeName );
 		$tree = str_replace( '#document>', '', $tree );
@@ -161,6 +177,14 @@ class DOM_Stringer  {
 		echo PHP_EOL;
 	}
 
+	/**
+	 * Extracts strings from the nodes.
+	 *
+	 * Recursive processing to extract / update strings.	 *
+	 * Update is performed by the extending class DOM_String_Updater.
+	 *
+	 * @param DOMNode $node
+	 */
 	function extract_strings( DOMNode $node) {
 		static $nested;
 		$nested++;

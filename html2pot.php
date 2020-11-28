@@ -31,13 +31,14 @@ if ( PHP_SAPI !== "cli" ) {
 	die();
 }
 
-require_once 'class-stringer.php';
+require_once 'class-dom-stringer.php';
 require_once 'class-potter.php';
 require_once 'theme-files.php';
 
+
 $theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
 $files = list_all_templates_and_parts( $theme );
-$stringer = new Stringer();
+$stringer = new DOM_Stringer();
 process_theme_files( $files, $stringer );
 write_pot_file( $theme, $stringer );
 

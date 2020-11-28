@@ -18,10 +18,13 @@ function list_all_templates_and_parts( $theme ) {
 	return $files;
 }
 
-
+/**
+ * Processes all the theme files.
+ *
+ * @param $files
+ * @param $stringer
+ */
 function process_theme_files( $files, $stringer ) {
-
-
 	echo "Processing:" . count( $files);
 	echo PHP_EOL;
 	$count = 0;
@@ -91,7 +94,7 @@ function extract_strings_from_block_attributes( $block, $stringer ) {
 	$stringer->set_blockName( $block['blockName'] );
 	foreach ( $block['attrs'] as $key => $value ) {
 		if ( isAttrTranslatable( $key ) ) {
-			$stringer->add_string( $value );
+			$stringer->add_string( null, $value );
 		}
 	}
 }

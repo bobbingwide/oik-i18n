@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class Potter
+ * @package oik-i18n
+ * @copyright (C) Bobbing Wide 2020
+ */
+
 class Potter {
 	public $pot_filename;
 	public $source_filename;
@@ -29,7 +35,6 @@ class Potter {
 	function write_fileline( $filename ) {
 		$output = '#: ' . $filename;
 		$output .= PHP_EOL;
-
 		return $output;
 	}
 
@@ -67,7 +72,6 @@ class Potter {
 		$output = implode( PHP_EOL, $output);
 		$output .= PHP_EOL;
 		return $output;
-		
 	}
 }
 

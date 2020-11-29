@@ -41,7 +41,7 @@ $theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
 $theme_files = new Theme_Files();
 
 $stringer = new DOM_Stringer();
-$stringer->set_theme( $theme );
+//$stringer->set_theme( $theme );
 $files = $theme_files->list_all_templates_and_parts( $theme );
 $theme_files->process_theme_files( $files, $stringer );
 $theme_files->write_pot_file( $theme, $stringer );

@@ -211,15 +211,15 @@ class Theme_Files {
 		$output=$potter->write_header();
 		$output.=$potter->write_strings( $strings );
 		//echo $output;
-		replace_pot_file( $theme, $output );
+		$this->replace_pot_file( $theme, $output );
 
 	}
 
 	function replace_pot_file( $theme, $contents ) {
-		$filename=get_theme_dir( $theme );
+		$filename= $this->get_theme_dir( $theme );
 		$filename.='/languages/';
 		$filename.=$theme;
-		$filename.='-FSE';  // Append a suffix so we know these are FSE strings
+		//$filename.='-FSE';  // Append a suffix so we know these are FSE strings
 		$filename.='.pot';
 		echo "Writing: ";
 		echo $filename;

@@ -175,6 +175,7 @@ class DOM_Stringer  {
 		$this->loadHTML( $html );
 		$this->extract_strings( $this->dom_doc );
 		echo PHP_EOL;
+		return $this->dom_doc->saveHTML();
 	}
 
 	/**

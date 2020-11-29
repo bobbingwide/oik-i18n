@@ -33,6 +33,9 @@ class DOM_string_updater extends DOM_Stringer {
 	}
 
 	function translate_string( $string ) {
+		echo "Locale: ";
+		echo $this->locale;
+		echo PHP_EOL;
 		$translated = __( $string, $this->locale );
 		return $translated;
 	}
@@ -67,10 +70,16 @@ class DOM_string_updater extends DOM_Stringer {
 	function add_string( $node, $value ) {
 		echo "Translating string:" . $value;
 		echo PHP_EOL;
-		print_r( $node );
+		//	print_r( $node );
 		if ( XML_TEXT_NODE === $node->nodeType ) {
-			$node->nodeValue= $this->translate_string( $node->nodeValue );
+			$translated = $this->translate_string( $node->nodeValue );
+			echo $translated;
+			echo PHP_EOL;
+			$node->nodeValue= $translated;
+		} else {
+			echo "NO we're not";
 		}
+		echo PHP_EOL;
 
 	}
 

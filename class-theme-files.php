@@ -31,6 +31,8 @@ class Theme_Files {
 	 */
 	private $theme;
 
+	protected $blocks = null;
+
 	function __construct() {
 
 	}
@@ -67,7 +69,7 @@ class Theme_Files {
 
 	function list_all_templates_and_parts( $theme ) {
 		$this->theme = $theme;
-		$theme_dir     =get_theme_dir( $theme );
+		$theme_dir     = $this->get_theme_dir( $theme );
 		$template_files=glob( $theme_dir . '/block-templates/*.html' );
 		$template_parts=glob( $theme_dir . '/block-template-parts/*.html' );
 		//print_r( $template_files );
@@ -97,6 +99,12 @@ class Theme_Files {
 		}
 	}
 
+	function get_blocks( $filename ) {
+		$html    =file_get_contents( $filename );
+		$parser  =new WP_Block_Parser();
+		$this->blocks  =$parser->parse( $html );
+	}
+
 	/**
 	 * Process a single .html file to extract the translatable strings.
 	 *
@@ -106,29 +114,30 @@ class Theme_Files {
 	 * @param $filename
 	 */
 	function process_file( $filename, $stringer ) {
-		$html    =file_get_contents( $filename );
-		$parser  =new WP_Block_Parser();
-		$blocks  =$parser->parse( $html );
+		$this->get_blocks( $filename );
 		$count   =0;
 		$basename=basename( $filename );
 		echo $basename;
 		echo PHP_EOL;
 
 		$stringer->set_source_filename( $basename );
-		$this->process_blocks( $blocks, $stringer );
+		$this->process_blocks( $this->blocks, $stringer );
+		print_r( $this->blocks);
+
+
 
 	}
 
 	/**
 	 * Recursively process inner blocks.
 	 *
-	 * Assume this doesn't go recursive since we're not loading other files.
+	 * Assume this doesn't go infinitely recursive since we're not loading other files.
 	 *
 	 * @param $block
 	 */
-	function process_blocks( $blocks, $stringer ) {
+	function process_blocks( &$blocks, $stringer ) {
 		static $count=0;
-		foreach ( $blocks as $block ) {
+		foreach ( $blocks as $key =>  $block ) {
 			//process_block( $block, $stringer );
 			$count ++;
 			echo PHP_EOL;
@@ -136,14 +145,27 @@ class Theme_Files {
 			echo $block['blockName'];
 			echo PHP_EOL;
 
-			extract_strings_from_block_attributes( $block, $stringer );
+			$this->extract_strings_from_block_attributes( $block, $stringer );
 
-			if ( ! empty( $block['innerHTML'] ) ) {
-				$strings=$stringer->get_strings( $block['blockName'], $block['innerHTML'] );
-			}
 			if ( ! empty( $block['innerBlocks'] ) ) {
 				$this->process_blocks( $block['innerBlocks'], $stringer );
+			} else {
+
+				if ( ! empty( $block['innerHTML'] ) ) {
+					$innerHTML=$stringer->get_strings( $block['blockName'], $block['innerHTML'] );
+					echo $innerHTML;
+					if ( count( $block['innerContent'] ) > 1 ) {
+						print_r( $block );
+
+						//print_r( $block['innerContent']);
+						gob();
+					}
+					$blocks[ $key ]['innerContent'][0]=$innerHTML;
+				}
 			}
+			//if ( ! empty( $block['innerBlocks'] ) ) {
+			//	$this->process_blocks( $block['innerBlocks'], $stringer );
+			//}
 		}
 	}
 

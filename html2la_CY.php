@@ -38,7 +38,8 @@ $theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
 $locale = oik_batch_query_value_from_argv( 2, 'bb_BB' );
 
 $theme_files = new Theme_Files_Updater();
-$theme_files->load_text_domain( $theme, $locale );
+$theme_files->set_locale( $locale );
+$theme_files->load_text_domain( $theme );
 
 $translated = __( '404.html', $locale );
 echo $translated;

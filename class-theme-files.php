@@ -29,19 +29,23 @@ class Theme_Files {
 	/**
 	 * @var string $theme
 	 */
-	private $theme;
+	protected $theme;
 
 	protected $blocks = null;
 
-	function __construct() {
+	protected $locale = null;
 
+	function __construct() {
+	}
+
+	function set_locale( $locale) {
+		$this->locale = $locale;
 	}
 
 	function get_theme_dir( $theme ) {
 		$dir      =get_stylesheet_directory();
 		$theme_dir=dirname( $dir ) . '/' . $theme;
-		echo $theme_dir;
-
+		echo "Theme dir: " .  $theme_dir . PHP_EOL;
 		return $theme_dir;
 	}
 
@@ -49,17 +53,16 @@ class Theme_Files {
 	 * Loads the text domain for the FSE theme's HTML files.
 	 *
 	 * @param $theme
-	 * @param string $locale
 	 */
-	function load_text_domain( $theme, $locale='bb_BB' ) {
+	function load_text_domain( $theme ) {
 		$path = $this->get_theme_dir( $theme );
 		$path .= '/languages/';
 		$path .= $theme;
 		$path .= '-';
-		$path .= $locale;
+		$path .= $this->locale;
 		$path .= '.mo';  // For the time being I don't need the -FSE suffix.
 		//$path = oik_path( "languages/$plugin-$locale.mo", $plugin );
-		$result = load_textdomain( $locale, $path );
+		$result = load_textdomain( $this->locale, $path );
 		echo "Result:" . $result;
 		if ( false === $result ) {
 			echo "Failed to load: " . $path;

@@ -24,7 +24,7 @@
  * Stage 4. Reparse, apply the target language, and save in the new locale.
  * Stage 5. WordPress loads the theme's files from the languages/la_CY folder.
  *
- * This is the first prototype of Stages 1 and 2.
+ * This is the prototype of Stages 1 and 2.
  *
  */
 

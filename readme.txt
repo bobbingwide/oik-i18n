@@ -9,7 +9,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-Internationalization for the oik suite of plugins
+Internationalization for the oik suite of plugins.
 
 The base domain.pot file(s) are named to match the plugin. e.g. oik.pot, oik-i18n.pot
 
@@ -78,10 +78,16 @@ It's invoked by the oik-zip plugin as part of the l10n processing.
 
 = What do the .php files do? =
 
-oik-i18n.php - plugin file
-l10n.php -
-la_CY.php -
-bb_BB.php -
+- oik-i18n.php - plugin file
+- l10n.php - controls localization to bb_BB and en_GB
+- la_CY.php - automatically converts .pot to en_GB
+- bb_BB.php - automatically converts .pot to bb_BB
+
+
+For Full Site Editing templates and template parts.
+
+- html2pot - extracts translatable strings to .pot
+- html2la_CY.php - applies translations to template files
 
 
 = What is makeoik.php? =
@@ -152,6 +158,9 @@ Yes - see above
 1. oik-i18n in action
 
 == Upgrade Notice ==
+= 0.4.0 =
+Contains new logic for internationalizing Full Site Editing templates and template parts. See README-FSD.MD
+
 = 0.3.0 = 
 Now supports plugins which deliver blocks built with wp-scripts
 

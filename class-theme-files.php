@@ -148,10 +148,12 @@ class Theme_Files {
 			echo $block['blockName'];
 			echo PHP_EOL;
 
-			$this->extract_strings_from_block_attributes( $block, $stringer );
+			$this->extract_strings_from_block_attributes( $blocks[$key], $stringer );
+
+			//print_r( $block );
 
 			if ( ! empty( $block['innerBlocks'] ) ) {
-				$this->process_blocks( $block['innerBlocks'], $stringer );
+				$this->process_blocks( $blocks[$key]['innerBlocks'], $stringer );
 			} else {
 
 				if ( ! empty( $block['innerHTML'] ) ) {
@@ -180,7 +182,7 @@ class Theme_Files {
 	 * @param $block
 	 * @param $stringer
 	 */
-	function extract_strings_from_block_attributes( $block, $stringer ) {
+	function extract_strings_from_block_attributes( &$block, $stringer ) {
 		//print_r( $block );
 		//print_r( $block['attrs'] );
 		$stringer->set_blockName( $block['blockName'] );

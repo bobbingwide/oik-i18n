@@ -60,6 +60,8 @@ class DOM_Stringer  {
 	function __construct() {
 		$this->dom_doc = new DOMDocument();
 		$this->setUpNotNeeded();
+		$this->setTranslatableAttrs();
+		$this->setNotTranslatableAttrs();
 	}
 
 	/**
@@ -289,7 +291,7 @@ class DOM_Stringer  {
 	 * @TODO Extract the names of translatable attributes from each block's attributes.
 	 *
 	 */
-	function getTranslatableAttrs() {
+	function setTranslatableAttrs() {
 		$this->translatable = array_flip( [ 'label', 'alt', 'title' ] );
 	}
 
@@ -300,7 +302,7 @@ class DOM_Stringer  {
 	 * Is there any harm in having lots of terms that are not actually translatable
 	 * in the .pot file?
 	 */
-	function getNotTranslatableAttrs() {
+	function setNotTranslatableAttrs() {
 		$this->not_translatable = array_flip( ['class', 'className', 'slug', 'ID', 'ref', 'href', 'style',
 			'aria-hidden', 'translate', 'theme'] );
 	}

@@ -21,7 +21,7 @@ class Theme_Files_Updater extends Theme_Files {
 	 * @param $block
 	 * @param $stringer
 	 */
-	function extract_strings_from_block_attributes( $block, $stringer ) {
+	function extract_strings_from_block_attributes( &$block, $stringer ) {
 		//print_r( $block );
 		//print_r( $block['attrs'] );
 		$stringer->set_blockName( $block['blockName'] );
@@ -78,7 +78,7 @@ class Theme_Files_Updater extends Theme_Files {
 		//if ( !file_exists( $filepath )) {
 		//	echo "Creating locale directory: " . $filepath . PHP_EOL;
 		wp_mkdir_p( $filepath );
-		
+
 		$filepath .= '/';
 		$filepath .= basename( $filename );
 		echo "Locale file: ";

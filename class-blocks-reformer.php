@@ -35,8 +35,7 @@ class Blocks_Reformer {
 	 *
 	 * @return string
 	 */
-	function reform_block( $block=null ) {
-		print_r( $block );
+	function reform_block( &$block=null ) {
 		$block_content = '';
 		$index         = 0;
 		$block_content .= $this->reform_html_comment( $block );

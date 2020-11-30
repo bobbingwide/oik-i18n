@@ -38,7 +38,17 @@ class Potter {
 		return $output;
 	}
 
+	/**
+	 * Writes the string.
+	 *
+	 * Double quotes have to be escaped but not single.
+	 * What about new lines in the middle of the content?
+	 *
+	 * @param $string
+	 * @return string
+	 */
 	function write_string( $string ) {
+		$string = str_replace( '"', '\"', $string );
 		$output = 'msgid "' . $string . '"';
 		$output .= PHP_EOL;
 		$output .= 'msgstr ""';

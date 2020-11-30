@@ -41,9 +41,18 @@ $theme_files = new Theme_Files_Updater();
 $theme_files->set_locale( $locale );
 $theme_files->load_text_domain( $theme );
 
+/**
+ * This is just some test code.
+ */
 $translated = __( '404.html', $locale );
+echo "Translated: ". $translated;
+echo PHP_EOL;
+$translated = __( 'Color', $locale );
 echo $translated;
 echo PHP_EOL;
+
+$translated = __( 'core/html', $locale );
+echo $translated;
 
 
 $stringer = new DOM_string_updater();

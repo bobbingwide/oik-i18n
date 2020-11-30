@@ -21,28 +21,33 @@
  * @param string $plugin
  *  
  */ 
-function la_CY( $plugin ) {
+function la_CY( $plugin, $lang=null, $component_path ) {
 	static $c = 0;
-	echo "Updating $plugin .po files for selected languages" . PHP_EOL;
-	
-	$locales = la_CY_get_locales( $plugin );
-	$content = la_CY_load_pot( $plugin );
-	la_CY_cd_working();
-	//print_r ( $locales );
-	//gob();
-	//var_dump( debug_backtrace() );
-	//bw_backtrace();
-	if ( $c ) {
-		//gob();
+	echo "Updating .po for: " . $plugin . PHP_EOL;
+	echo "Language: ".  $lang . PHP_EOL;
+	echo "Component path:" . $component_path . PHP_EOL;
+
+	$current_locale = get_locale();
+	echo "Current locale: " . $current_locale . PHP_EOL;
+	if ( 'en_US' !== $current_locale ) {
+		switch_to_locale( 'en_US');
 	}
-	$c++;
+	$current_locale = get_locale();
+	echo "Current locale: " . $current_locale . PHP_EOL;
+
+	
+	//$locales = la_CY_get_locales( $plugin );
+	$locales = [ $lang ];
+	$content = la_CY_load_pot( $plugin, $component_path );
+	la_CY_cd_working();
+
 	
 	foreach ( $locales as $new_locale ) {
 		global $locale;
 		echo "$plugin $locale $new_locale" . PHP_EOL;
 		$locale = $new_locale;
 		la_CY_load_locale( $locale );
-		la_CY_load_plugin_locale( $plugin, $locale );
+		la_CY_load_plugin_locale( $plugin, $locale, $component_path );
 		$outfile = la_CY_prepare_po( $plugin, $locale );
 		
 		la_CY_translate( $plugin, $locale, $content, $outfile );
@@ -57,7 +62,7 @@ function la_CY( $plugin ) {
 		
 		
 		la_CY_msgfmt( $plugin, $locale );
-		la_CY_copytoplugin( $plugin, $locale );
+		la_CY_copytoplugin( $plugin, $locale, $component_path );
 		
 	
 	}
@@ -76,33 +81,35 @@ function la_CY_cd_working() {
 /**
  * Load the en_US .pot file
  *
- * We load the .pot file from the working directory
- * having assumed that we've just built it ourselves.
- * 
- * But this isn't where it's built by makepot is it?
- *
+ * We load the .pot file from the component's source directory
  */
-function la_CY_load_pot( $plugin ) {
-	$real_file = oik_path( "languages/$plugin.pot", $plugin );
-  //$real_file = "$plugin.pot" ;
-  echo __FUNCTION__ . ": Processing $real_file" . PHP_EOL;
-  $content = file( $real_file );
-	return( $content );
+function la_CY_load_pot( $component, $component_path ) {
+	$real_file = $component_path .'/' . $component . '.pot';
+	echo __FUNCTION__ . ": Processing: $real_file" . PHP_EOL;
+	$content = file( $real_file );
+    return $content;
 }
 
 /**
- * Load the plugin's current language file
+ * Load the component's current language file
  *
- * We assume that the textdomain is the same as the plugin
- * AND that the languages files are stored in the plugin's languages folder
+ * We assume that the textdomain is the same as the component
+ * AND that the languages files are stored in the component's languages folder
  * 
  * Note: We have to unload any previous language version first
  * 
  */
-function la_CY_load_plugin_locale( $plugin, $locale ) {
-	echo "Loading the translation file for the plugin" . PHP_EOL;
-	unload_textdomain( $plugin );
-	$result = load_plugin_textdomain( $plugin, false, "$plugin/languages" );
+function la_CY_load_plugin_locale( $component, $locale, $component_path ) {
+	echo "Loading the translation file for the component:" . PHP_EOL;
+	unload_textdomain( $component );
+	$path = $component_path;
+	$path .= '/languages/';
+	$path .= $component;
+	$path .= '-';
+	$path .= $locale;
+	$path .= '.mo';
+
+	$result = load_textdomain( $component, $path );
 	print_r( $result );
 }
 
@@ -114,8 +121,8 @@ function la_CY_trace_l10n() {
 /**
  * Get the Last translator and language team
  * `
- * "Last-Translator: Rémy Perona <remperona@gmail.com>\n"
- * "Language-Team: Rémy Perona <remperona@gmail.com>\n"
+ * "Last-Translator: Rï¿½my Perona <remperona@gmail.com>\n"
+ * "Language-Team: Rï¿½my Perona <remperona@gmail.com>\n"
  * `
  * 
  * @TODO Develop logic using get_plugin_data() or whatever the API is
@@ -138,15 +145,16 @@ function la_CY_msgfmt( $plugin, $locale ) {
 		do_msgfmt( $plugin, $locale );
 	}	else {
 		echo "You'll need to run msgfmt manually for $plugin $locale";
+		gob();
 	}
 }
 
 /**
  * Copy the working files to the plugin
  */
-function la_CY_copytoplugin( $plugin, $locale ) {
-	if ( function_exists( "do_copytoplugin" ) ) {
-		do_copytoplugin( $plugin, $locale );
+function la_CY_copytoplugin( $plugin, $locale, $component_path ) {
+	if ( function_exists( "do_copytocomponent" ) ) {
+		do_copytocomponent( $plugin, $locale, $component_path );
 	} else { 
 		echo "You'll need to copy files manually for $plugin $locale";
 	}

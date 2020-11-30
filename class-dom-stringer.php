@@ -198,7 +198,10 @@ class DOM_Stringer  {
 		echo 'T:' . $node->nodeType;
 		echo 'V:' . $node->nodeValue;
 		$this->extract_strings_from_attributes( $node );
-		$value = trim( $node->nodeValue);
+		// Trim the nodeValue. It may have leading or trailing blanks but we don't
+		// want to include these in the string to be translated.
+		// Are there languages where we shouldn't maintain leading or trailing blanks?
+		$value = trim( $node->nodeValue );
 		if ( !empty( $value ) ) {
 			echo PHP_EOL;
 			echo str_repeat( '   ', $nested );
@@ -324,7 +327,7 @@ class DOM_Stringer  {
 	/**
 	 * Add a translatable string.
 	 *
-	 * Only only extract the string if it's part of a text node
+	 * Only extract the string if it's part of a text node
 	 * or the node is null - for Gutenberg blocks.
 	 *
 	 * @param null|DOMNode $node

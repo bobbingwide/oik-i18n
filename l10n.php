@@ -206,8 +206,7 @@ function do_component( $component, $lang="en_GB" ) {
  * Then try for theme.
  *
  * @param $component
- *
- * @return string
+ * @return array [ $component_type, $component_path ]
  */
 function l10n_locate_component( $component ) {
 	$path = oik_path( 'languages', $component );
@@ -221,7 +220,6 @@ function l10n_locate_component( $component ) {
 	}
 	return [null, null];
 }
-
 
 /**
  * Makeoik is required when we can't use makepot within npm.

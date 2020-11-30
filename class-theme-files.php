@@ -63,7 +63,8 @@ class Theme_Files {
 		$path .= '.mo';  // For the time being I don't need the -FSE suffix.
 		//$path = oik_path( "languages/$plugin-$locale.mo", $plugin );
 		$result = load_textdomain( $this->locale, $path );
-		echo "Result:" . $result;
+		echo "Path: " . $path . PHP_EOL;
+		echo "Result:" . $result . PHP_EOL;
 		if ( false === $result ) {
 			echo "Failed to load: " . $path;
 			gob();
@@ -125,7 +126,7 @@ class Theme_Files {
 
 		$stringer->set_source_filename( $basename );
 		$this->process_blocks( $this->blocks, $stringer );
-		print_r( $this->blocks);
+		//print_r( $this->blocks);
 
 
 

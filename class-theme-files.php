@@ -218,9 +218,20 @@ class Theme_Files {
 
 	}
 
+	/**
+	 * Writes the .pot file
+	 *
+	 * Creates the languages folder if not already present.
+	 *
+	 * @param $theme
+	 * @param $contents
+	 */
+
 	function replace_pot_file( $theme, $contents ) {
 		$filename= $this->get_theme_dir( $theme );
-		$filename.='/languages/';
+		$filename.='/languages';
+		wp_mkdir_p( $filename );
+		$filename .= '/';
 		$filename.=$theme;
 		//$filename.='-FSE';  // Append a suffix so we know these are FSE strings
 		$filename.='.pot';

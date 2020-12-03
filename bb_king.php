@@ -1,4 +1,7 @@
-<?php // (C) Copyright Bobbing Wide 2016
+<?php
+/**
+ * @package oik-i18n
+ * @copyright (C) Copyright Bobbing Wide 2016
 
 /** 
  * Syntax: oikwp bb_king.php
@@ -22,9 +25,9 @@
  */ 
 function bb_king_loaded() {
 	oik_require( "bb_BB.php", "oik-i18n" );
-	bb_BB( "admin-" );
-	bb_BB( "admin-network-" );
-	bb_BB( "" );
+	bb_BB( "admin-", 'plugin' );
+	bb_BB( "admin-network-", 'plugin' );
+	bb_BB( "", 'plugin' );
 	do_msgfmt( "admin-" );
 	do_msgfmt( "admin-network-" );
 	do_msgfmt( "" );

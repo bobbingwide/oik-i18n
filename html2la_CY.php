@@ -33,10 +33,12 @@ require_once 'class-dom-string-updater.php';
 require_once 'class-theme-files.php';
 require_once 'class-theme-files-updater.php';
 require_once 'class-blocks-reformer.php';
+require_once 'class-narrator.php';
 
 $theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
 $locale = oik_batch_query_value_from_argv( 2, 'bb_BB' );
 
+$narrator = Narrator::instance();
 $theme_files = new Theme_Files_Updater();
 $theme_files->set_locale( $locale );
 $theme_files->load_text_domain( $theme );
@@ -45,14 +47,11 @@ $theme_files->load_text_domain( $theme );
  * This is just some test code.
  */
 $translated = __( '404.html', $locale );
-echo "Translated: ". $translated;
-echo PHP_EOL;
+$narrator->narrate( "Translated: 404.html ", $translated );
 $translated = __( 'Color', $locale );
-echo $translated;
-echo PHP_EOL;
-
+$narrator->narrate( 'Color translated', $translated );
 $translated = __( 'core/html', $locale );
-echo $translated;
+$narrator->narrate( 'core/html translated', $translated );
 
 
 $stringer = new DOM_string_updater();

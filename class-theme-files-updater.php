@@ -46,12 +46,11 @@ class Theme_Files_Updater extends Theme_Files {
      *  Reconstitutes the file from the blocks and html.
      */
 	function save_file( $filename, $stringer) {
-		echo "Saving file:" . $filename;
-		echo PHP_EOL;
+		$this->narrator->narrate( "Saving file:", $filename );
 		$blocks_reformer = new Blocks_Reformer();
 		$output = $blocks_reformer->reform_blocks( $this->blocks, $stringer );
-		echo $output;
-		echo PHP_EOL;
+		//echo $output;
+		//echo PHP_EOL;
 		$this->write_locale_file( $filename, $output );
 	}
 
@@ -69,21 +68,15 @@ class Theme_Files_Updater extends Theme_Files {
 	}
 
 	function get_locale_filepath( $filename ) {
-		echo $filename . PHP_EOL;
+	    $this->narrator->narrate( 'Filename', $filename );
 		$filepath = $this->get_locale_dir();
-
 		$filepath .= '/';
 		$filepath .= basename( dirname( $filename ) );
-
-		//if ( !file_exists( $filepath )) {
-		//	echo "Creating locale directory: " . $filepath . PHP_EOL;
 		wp_mkdir_p( $filepath );
-
 		$filepath .= '/';
 		$filepath .= basename( $filename );
-		echo "Locale file: ";
-		echo $filepath;
-		echo PHP_EOL;
+		$this->narrator->narrate( 'Locale file', $filepath );
+
 		return $filepath;
 	}
 

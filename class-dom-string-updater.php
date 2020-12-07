@@ -18,12 +18,9 @@ class DOM_string_updater extends DOM_Stringer {
 	}
 
 	function saveHTML() {
-		echo 'Writing HTML';
-		echo PHP_EOL;
-		//print_r( $this );
+	    $this->narrator->narrate( 'Writing HTML', '');
 		$html = $this->dom_doc->saveHTML();
 		$html = trim( $html);
-		//$html = $this->unwrap( $html );
 		return $html;
 	}
 
@@ -42,21 +39,15 @@ class DOM_string_updater extends DOM_Stringer {
 	 * @return mixed|string|void
 	 */
 	function translate_string( $string ) {
-		echo "Locale: ";
-		echo $this->locale;
-		echo PHP_EOL;
-		echo "String: '";
-		echo $string;
-		echo "'";
-		echo PHP_EOL;
-		$trimmed = $this->trim( $string );
-		echo "Trimmed: " . $trimmed . PHP_EOL;
+	    $this->narrator->narrate( 'Locale', $this->locale );
+        $this->narrator->narrate( 'String', $this->string );
+       	$trimmed = $this->trim( $string );
+        $this->narrator->narrate( 'Trimmed', $trimmed );
 		$translated = __( $trimmed, $this->locale );
 		if ( strlen( $trimmed ) < strlen( $string  ) ) {
 			$translated = $this->detrim( $translated );
 		}
-		echo "Translated: '" . $translated . "'";
-		echo PHP_EOL;
+		$this->narrator->narrate( 'Translated', $translated );
 		return $translated;
 	}
 
@@ -83,10 +74,12 @@ class DOM_string_updater extends DOM_Stringer {
 			if ( $rlen ) {
 				$this->rightness=substr( $string, - $rlen );
 			}
+			/*
 			echo "lpos:" . $lpos;
 			echo "rlen:" . $rlen;
 			echo "Trimmed left: '" . $this->leftness . "'";
 			echo "Trimmed right: '" . $this->rightness . "'";
+			*/
 		}
 		return $trimmed;
 
@@ -134,24 +127,16 @@ class DOM_string_updater extends DOM_Stringer {
 	 *               | 8 | Not necessary
 	 */
 	function add_string( $node, $value ) {
-		echo "Translating string:" . $value;
-		echo PHP_EOL;
-		//print_r( $node );
+	    $this->narrator->narrate( 'Translating', $value );
 		if ( XML_TEXT_NODE === $node->nodeType ) {
 			$translated = $this->translate_string( $node->nodeValue );
-			echo $translated;
-			echo PHP_EOL;
+			$this->narrator->narrate( 'Translated', $translated );
 			$node->nodeValue= $translated;
 			//$node->textContent = $translated;
 		} else {
-
-			echo "NO we're not!";
-			echo "NV: " . $node->nodeValue;
-			echo "NT: " . $node->nodeType;
-			echo PHP_EOL;
+		    $this->narrator->narrate( 'Not translating', $node->nodeValue );
+		    $this->narrator->narrate( 'NT', $node->nodeType );
 		}
-		echo PHP_EOL;
-
 	}
 
 	/**
@@ -197,27 +182,22 @@ class DOM_string_updater extends DOM_Stringer {
 	)
 	 */
 	function extract_strings_from_attributes( $node ) {
-		echo "Translating attributes";
-		echo PHP_EOL;
-		if ( $node->hasAttributes() ) {
-			//print_r( $node );
-			//print_r( $node->attributes);
-			echo $node->attributes->length;
-			echo PHP_EOL;
-			for ( $item=0; $item < $node->attributes->length; $item ++ ) {
-				$attribute=$node->attributes->item( $item );
-				echo 'A#:' . $item;
-				echo 'AN:' . $attribute->name;
-				echo 'AV:' . $attribute->value;
-				echo PHP_EOL;
-				if ( $this->isAttrTranslatable( $attribute->name ) ) {
-					$translated=$this->translate_string( $attribute_value );
-					$node->setAttribute( $attribute->name, $translated );
-					//$this->add_attribute_string( $attribute->name, $attribute->value );
-				}
-			}
-		}
-	}
+        if ( $node->hasAttributes() ) {
+            $this->narrator->narrate( 'Translating attributes', $node->attributes->length );
+            for ( $item = 0; $item < $node->attributes->length; $item++ ) {
+                $attribute=$node->attributes->item( $item );
+                $this->narrator->narrate( 'A#', $item );
+                $this->narrator->narrate( 'AN', $attribute->name );
+                $this->narrator->narrate( 'AV', $attribute->value );
+                if ( $this->isAttrTranslatable( $attribute->name )) {
+                    $translated=$this->translate_string( $attribute_value );
+                    $node->setAttribute( $attribute->name, $translated );
+                    $this->add_attribute_string( $attribute->name, $attribute->value );
+                }
+            }
+        }
+
+    }
 
 	/**
 	 * Unwraps the html and body from tags from the saved HTML

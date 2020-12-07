@@ -35,7 +35,10 @@ class Theme_Files {
 
 	protected $locale = null;
 
+	protected $narrator = null;
+
 	function __construct() {
+	    $this->narrator = Narrator::instance();
 	}
 
 	function set_locale( $locale) {
@@ -45,7 +48,7 @@ class Theme_Files {
 	function get_theme_dir( $theme ) {
 		$dir      =get_stylesheet_directory();
 		$theme_dir=dirname( $dir ) . '/' . $theme;
-		echo "Theme dir: " .  $theme_dir . PHP_EOL;
+		$this->narrator->narrate( "Theme dir", $theme_dir );
 		return $theme_dir;
 	}
 
@@ -63,8 +66,8 @@ class Theme_Files {
 		$path .= '.mo';  // For the time being I don't need the -FSE suffix.
 		//$path = oik_path( "languages/$plugin-$locale.mo", $plugin );
 		$result = load_textdomain( $this->locale, $path );
-		echo "Path: " . $path . PHP_EOL;
-		echo "Result:" . $result . PHP_EOL;
+		$this->narrator->narrate( "Path", $path );
+		$this->narrator->narrate( 'Result', $result );
 		if ( false === $result ) {
 			echo "Failed to load: " . $path;
 			gob();
@@ -90,15 +93,11 @@ class Theme_Files {
 	 * @param $stringer
 	 */
 	function process_theme_files( $files, $stringer ) {
-		echo "Processing:" . count( $files );
-		echo PHP_EOL;
+	    $this->narrator->narrate( "Processing", count( $files ) );
 		$count=0;
 		foreach ( $files as $filename ) {
 			$count ++;
-			echo $count;
-			echo ' ';
-			echo $filename;
-			echo PHP_EOL;
+			$this->narrator->narrate( $count, $filename );
 			$this->process_file( $filename, $stringer );
 		}
 	}
@@ -121,15 +120,9 @@ class Theme_Files {
 		$this->get_blocks( $filename );
 		$count   =0;
 		$basename=basename( $filename );
-		echo $basename;
-		echo PHP_EOL;
-
+		$this->narrator->narrate( "Basename", $basename );
 		$stringer->set_source_filename( $basename );
 		$this->process_blocks( $this->blocks, $stringer );
-		//print_r( $this->blocks);
-
-
-
 	}
 
 	/**
@@ -143,12 +136,8 @@ class Theme_Files {
 		static $count=0;
 		foreach ( $blocks as $key =>  $block ) {
 			//process_block( $block, $stringer );
-			$count ++;
-			echo PHP_EOL;
-			echo "Block: " . $count;
-			echo $block['blockName'];
-			echo PHP_EOL;
-
+			$count++;
+			$this->narrator->narrate( $count, $block['blockName'] );
 			$this->extract_strings_from_block_attributes( $blocks[$key], $stringer );
 
 			//print_r( $block );
@@ -159,7 +148,7 @@ class Theme_Files {
 
 				if ( ! empty( $block['innerHTML'] ) ) {
 					$innerHTML=$stringer->get_strings( $block['blockName'], $block['innerHTML'] );
-					echo $innerHTML;
+					$this->narrator->narrate( 'innerHTML', $innerHTML );
 					if ( count( $block['innerContent'] ) > 1 ) {
 						print_r( $block );
 
@@ -235,11 +224,9 @@ class Theme_Files {
 		$filename.=$theme;
 		//$filename.='-FSE';  // Append a suffix so we know these are FSE strings
 		$filename.='.pot';
-		echo "Writing: ";
-		echo $filename;
-		echo PHP_EOL;
-		echo $contents;
-		echo PHP_EOL;
+		$this->narrator->narrate( "Writing", $filename );
+		//	echo $contents;
+		//echo PHP_EOL;
 		$written=file_put_contents( $filename, $contents );
 		if ( $written !== strlen( $contents ) ) {
 			echo "File was badly written";

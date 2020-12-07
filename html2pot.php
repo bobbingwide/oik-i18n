@@ -35,9 +35,12 @@ if ( PHP_SAPI !== "cli" ) {
 require_once 'class-dom-stringer.php';
 require_once 'class-potter.php';
 require_once 'class-theme-files.php';
+require_once 'class-narrator.php';
 
 
 $theme = oik_batch_query_value_from_argv( 1, 'fizzie' );
+$narrator = Narrator::instance();
+
 $theme_files = new Theme_Files();
 
 $stringer = new DOM_Stringer();

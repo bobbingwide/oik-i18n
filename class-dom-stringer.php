@@ -1,14 +1,5 @@
 <?php
-/*
-$contents = file_get_contents( 'test.html');
 
-//$html = '<html><body>';
-$html = $contents;
-//$html .= '</body></html>';
-
-$stringer = new DOM_Stringer();
-$stringer->get_strings( $html );
-*/
 
 
 /**
@@ -33,7 +24,7 @@ class DOM_Stringer  {
 	private $notNeededTags = [];
 
 	/**
-	 * @var array Translateable strings and their context.
+	 * @var array Translatable strings and their context.
 	 */
 	public $strings = [];
 
@@ -54,6 +45,14 @@ class DOM_Stringer  {
 	 */
 	public $nodeName = [];
 
+
+    /**
+     * Nested level
+     * @var integer;
+     *
+     */
+    private $nested = 0;
+
 	/**
 	 * DOM_Stringer constructor.
 	 */
@@ -62,6 +61,7 @@ class DOM_Stringer  {
 		$this->setUpNotNeeded();
 		$this->setTranslatableAttrs();
 		$this->setNotTranslatableAttrs();
+		$this->narrator = Narrator::instance();
 	}
 
 	/**
@@ -131,6 +131,7 @@ class DOM_Stringer  {
 	}
 
 
+
 	/**
 	 * Loads the HTML.
 	 *
@@ -145,12 +146,12 @@ class DOM_Stringer  {
 		$this->dom_doc->loadHTML( $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
 		libxml_use_internal_errors( false );
 		//print_r( $this->dom_doc );
-		echo $this->dom_doc->textContent;
-		echo PHP_EOL;
+        $this->narrator->narrate( "Text", $this->dom_doc->textContent );
 	}
 
 	/**
-	 * Wraps the HTML in a standard srtucture
+	 * Wraps the HTML in a standard structure.
+     *
 	 * which we strip off again after save
 	 * <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 	<html><body><p>Hello World</p></body></html>
@@ -176,7 +177,6 @@ class DOM_Stringer  {
 		$this->set_blockName( $blockName );
 		$this->loadHTML( $html );
 		$this->extract_strings( $this->dom_doc );
-		echo PHP_EOL;
 		return $this->dom_doc->saveHTML();
 	}
 
@@ -189,76 +189,58 @@ class DOM_Stringer  {
 	 * @param DOMNode $node
 	 */
 	function extract_strings( DOMNode $node) {
-		static $nested;
-		$nested++;
-		echo PHP_EOL;
-		echo str_repeat( '   ', $nested );
+		$this->narrator->nest();
 		$this->set_nodeName( $node->nodeName );
-		echo 'N:' . $node->nodeName . ': ';
-		echo 'T:' . $node->nodeType;
-		echo 'V:' . $node->nodeValue;
+		$this->narrator->narrate( "nodeName", $node->nodeName );
+		$this->narrator->narrate( 'nodeType', $node->nodeType );
+		$this->narrator->narrate( 'nodeValue', $node->nodeValue );
+
 		$this->extract_strings_from_attributes( $node );
 		// Trim the nodeValue. It may have leading or trailing blanks but we don't
 		// want to include these in the string to be translated.
 		// Are there languages where we shouldn't maintain leading or trailing blanks?
 		$value = trim( $node->nodeValue );
 		if ( !empty( $value ) ) {
-			echo PHP_EOL;
-			echo str_repeat( '   ', $nested );
-			echo 'N:' . $node->nodeName . ': ';
-			echo 'V:' . $node->nodeValue;
+			$this->narrator->narrate( 'String', $value );
 			$this->add_string( $node, $value );
-			echo 'T:' . $node->nodeType;
+			//echo 'T:' . $node->nodeType;
 			if ( !empty( $node->wholeText ) ) {
-				echo 'W:' . $node->wholeText;
+				$this->narrator->narrate( 'wholeText' , $node->wholeText );
 			}
-			echo 'C:' . $node->textContent;
+			$this->narrator->narrate( 'textContent', $node->textContent );
+
 		} else {
-			echo PHP_EOL;
-			echo str_repeat( '   ', $nested );
-			echo 'N:' . $node->nodeName . ': ';
-			echo 'T:' . $node->nodeType;
+		    $this->narrator->narrate( 'No string', '' );
+			//echo PHP_EOL;
+			//echo str_repeat( '   ', $nested );
+			//echo 'N:' . $node->nodeName . ': ';
+			//echo 'T:' . $node->nodeType;
 
 		}
 		if ( $node->haschildNodes() ) {
 
-			foreach ( $node->childNodes as $node ) {
-
-				echo PHP_EOL;
-				echo str_repeat( '   ', $nested );
-				echo 'PN:' . $node->nodeName . ': ';
-				echo 'PT:' . $node->nodeType;
-				$this->extract_strings( $node );
+			foreach ( $node->childNodes as $child_node ) {
+                $this->narrator->narrate( 'child name', $child_node->nodeName);
+                $this->narrator->narrate( 'child type', $child_node->nodeType );
+				$this->extract_strings( $child_node );
 
 			}
 		}
 
 		$this->pop_nodeName();
-
-
-		$nested--;
+		$this->narrator->denest();
 	}
 
 	function extract_strings_from_attributes( $node ) {
-		//echo $node->getAttributes();
-		echo 'A: getting attributes';
-		echo PHP_EOL;
-		//print_r( $node);
 
 		if ( $node->hasAttributes() ) {
-			//print_r( $node );
-			//print_r( $node->attributes);
-			echo $node->attributes->length;
-			echo PHP_EOL;
+            $this->narrator->narrate( 'Attributes', $node->attributes->length );
+
 			for ( $item = 0; $item < $node->attributes->length; $item++ ) {
 				$attribute=$node->attributes->item( $item );
-				echo 'A#:' . $item;
-				echo 'AN:' . $attribute->name;
-				echo 'AV:' . $attribute->value;
-				echo PHP_EOL;
-				// $attribute->value = "derf";
-				//print_r( $attribute );
-				//$node->setAttribute( $attribute->name, "derf" );
+				$this->narrator->narrate( 'A#', $item );
+				$this->narrator->narrate( 'AN', $attribute->name );
+				$this->narrator->narrate( 'AV', $attribute->value );
 				if ( $this->isAttrTranslatable( $attribute->name )) {
 					$this->add_attribute_string( $attribute->name, $attribute->value );
 				}

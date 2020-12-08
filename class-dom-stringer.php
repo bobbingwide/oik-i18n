@@ -19,11 +19,12 @@ class DOM_Stringer  {
 	protected $dom_doc = null;
 
 	/**
-	 * @var array Tags from which the innertText string is not needed.
-	 */
-	private $notNeededTags = [];
+     * @var array Tags allowed in rich text
+     */
+    private $acceptableTags = [];
 
-	/**
+
+    /**
 	 * @var array Translatable strings and their context.
 	 */
 	public $strings = [];
@@ -58,7 +59,7 @@ class DOM_Stringer  {
 	 */
 	function __construct() {
 		$this->dom_doc = new DOMDocument();
-		$this->setUpNotNeeded();
+		$this->setAcceptableTags();
 		$this->setTranslatableAttrs();
 		$this->setNotTranslatableAttrs();
 		$this->narrator = Narrator::instance();
@@ -108,15 +109,19 @@ class DOM_Stringer  {
 	}
 
 	/**
-	 * Lists the HTML tags where we don't need to extract text.
+	 * Lists the HTML tags that are acceptable in rich text.
 	 *
-	 * The HTML parser can duplicate text from inner tags
-	 * such as ul, ol and others yet to be discovered.
-	 *
+     * Rich text tags include: p, li, hn, dt, dd, th, td, figcaption, cite.
+     * Acceptable tags are those that we'll extract as part of the rich text
+     * and which the translator will have to decide whether or not to use.
+     *
+     * #text is the DOM document name for a text node.
+     *
+     * @return array of tags keyed by the tag.
 	 */
-	function setUpNotNeeded() {
-		$notNeededTags = [ 'ul', 'ol'];
-		$this->notNeededTags  = array_flip( $notNeededTags );
+	function setAcceptableTags() {
+		$acceptableTags = [ 'br', 'b', 'em', 'i', 'a', 'img', 'span', 'code', 'kbd', '#text' ];
+		$this->acceptableTags = array_flip( $acceptableTags );
 	}
 
 	/**
@@ -218,12 +223,15 @@ class DOM_Stringer  {
 
 		}
 		if ( $node->haschildNodes() ) {
-
-			foreach ( $node->childNodes as $child_node ) {
-                $this->narrator->narrate( 'child name', $child_node->nodeName);
-                $this->narrator->narrate( 'child type', $child_node->nodeType );
-				$this->extract_strings( $child_node );
-
+            $rich_text = $this->isRichText( $node );
+            if ( $rich_text ) {
+                $this->extractRichText( $node );
+            } else {
+			    foreach ( $node->childNodes as $child_node ) {
+                    $this->narrator->narrate('child name', $child_node->nodeName);
+                    $this->narrator->narrate('child type', $child_node->nodeType);
+                    $this->extract_strings( $child_node );
+                }
 			}
 		}
 
@@ -331,6 +339,83 @@ class DOM_Stringer  {
 	function get_all_strings() {
 		return $this->strings;
 	}
+
+    /**
+     * Determines if this node contains rich text.
+     *
+     * Rich text can be translated in one lump. The translator gets the context
+     * to the inner tags, such as `<b>` and `<em>`. There may be more complex markup including
+     * links. Here the translator will have to translate the attributes as well.
+     * Let's hope the translator's tool is up to the job.
+     *
+     * @param DOMnode $node
+     * @return bool
+     */
+	function isRichText( DOMnode $node ) {
+	    $rich_text = true;
+	    foreach ( $node->childNodes as $childNode ) {
+	        $acceptable = $this->isAcceptableInRichText( $childNode );
+            $rich_text &= $acceptable;
+        }
+	    $this->narrator->narrate( $node->nodeName, $rich_text);
+	    return $rich_text;
+    }
+
+    /**
+     * Returns true if the tag is acceptable in rich text.
+     *
+     * @param $childNode
+     * @return bool
+     */
+    function isAcceptableInRichText( $childNode ) {
+        $this->narrator->narrate( 'Tag?', $childNode->nodeName );
+	    return isset( $this->acceptableTags[ $childNode->nodeName]);
+    }
+
+    /**
+     * Extracts rich text as a single string.
+     *
+     * @param DOMnode $node
+     * @return
+     */
+    function extractRichText( $node ) {
+        $rtdoc = new DOMDocument();
+        $new_node = $rtdoc->importNode( $node, true );
+        $this->removeAttributes( $new_node );
+        $rtdoc->appendChild( $new_node );
+        $html = $rtdoc->saveHTML( $rtdoc->firstChild );
+        $html = $this->trimOuterTag( $html, $node );
+        $this->add_string( null, $html );
+    }
+
+    /**
+     * Trims the outer tag of the HTML.
+     *
+     * @param string $html The saved HTML for the rich text node.
+     * @param DOMnode $node The rich text node.
+     * @return string
+     */
+    function trimOuterTag( $html, $node ) {
+        $startTag = '<'. $node->nodeName . '>';
+        $tagLen = strlen( $startTag );
+        $start = strpos( $html, $startTag );
+        if ( 0 === $start ) {
+            $html = substr( $html, $tagLen, - ( $tagLen+1 ) );
+        }
+        return $html;
+    }
+
+    /**
+     * Removes the attributes from the outer tag.
+     *
+     * @param $node
+     */
+    function removeAttributes( $node ) {
+        while ($node->hasAttributes()) {
+            $attribute = $node->attributes->item(0);
+            $node->removeAttributeNode( $attribute );
+        }
+    }
 }
 
 /*

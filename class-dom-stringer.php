@@ -348,18 +348,28 @@ class DOM_Stringer  {
      * links. Here the translator will have to translate the attributes as well.
      * Let's hope the translator's tool is up to the job.
      *
+     * If there's only one childNode and it's a #text node then it's not rich text.
+     *
      * @param DOMnode $node
      * @return bool
      */
 	function isRichText( DOMnode $node ) {
 	    $rich_text = true;
+	    $count = 0;
 	    foreach ( $node->childNodes as $childNode ) {
-	        $acceptable = $this->isAcceptableInRichText( $childNode );
-            $rich_text &= $acceptable;
+	        if ( '#text' !== $childNode->nodeName ) {
+                $acceptable = $this->isAcceptableInRichText($childNode);
+                $count++;
+                $rich_text &= $acceptable;
+            }
+        }
+	    if ( 0 === $count ) {
+	        $rich_text = false;
         }
 	    $this->narrator->narrate( $node->nodeName, $rich_text);
 	    return $rich_text;
     }
+
 
     /**
      * Returns true if the tag is acceptable in rich text.
@@ -390,6 +400,7 @@ class DOM_Stringer  {
         $rtdoc->appendChild( $new_node );
         $html = $rtdoc->saveHTML( $rtdoc->firstChild );
         $html = $this->trimOuterTag( $html, $node );
+        $html = str_replace( "\n", "", $html );
         return $html;
     }
 
@@ -401,6 +412,7 @@ class DOM_Stringer  {
      */
 
     function add_rich_text_string( $node, $html ) {
+        //$html = str_replace( "\n", "", $html );
         $this->add_string( null, $html );
     }
 

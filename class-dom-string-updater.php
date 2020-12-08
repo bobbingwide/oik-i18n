@@ -40,7 +40,7 @@ class DOM_string_updater extends DOM_Stringer {
 	 */
 	function translate_string( $string ) {
 	    $this->narrator->narrate( 'Locale', $this->locale );
-        $this->narrator->narrate( 'String', $this->string );
+        $this->narrator->narrate( 'String', $string );
        	$trimmed = $this->trim( $string );
         $this->narrator->narrate( 'Trimmed', $trimmed );
 		$translated = __( $trimmed, $this->locale );

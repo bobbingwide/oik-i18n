@@ -155,30 +155,9 @@ class DOM_Stringer  {
 	}
 
 	/**
-	 * Wraps the HTML in a standard structure.
-     *
-	 * which we strip off again after save
-	 * <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-	<html><body><p>Hello World</p></body></html>
-	 * @param $html
-	 *
-	 * @return string
-	 *
-	 */
-
-	function wrap_html( $html ) {
-		$wrapped = '<!DOCTYPE html>';
-		$wrapped .= '<html><body>';
-		$wrapped .= $html;
-		$wrapped .= '</body></html>';
-		return $wrapped;
-	}
-
-	/**
 	 * Gets translatable strings from the inner HTML for a block.
     */
 	function get_strings( $blockName, $html ) {
-		//$wrapped = $this->wrap_html( $html );
 		$this->set_blockName( $blockName );
 		$this->loadHTML( $html );
 		$this->extract_strings( $this->dom_doc );
@@ -412,7 +391,6 @@ class DOM_Stringer  {
      */
 
     function add_rich_text_string( $node, $html ) {
-        //$html = str_replace( "\n", "", $html );
         $this->add_string( null, $html );
     }
 

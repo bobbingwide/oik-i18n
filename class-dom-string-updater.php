@@ -25,6 +25,7 @@ class DOM_string_updater extends DOM_Stringer {
 	}
 
 	function translate() {
+	    gob();
 		$this->extract_strings( $this->dom_doc );
 
 	}
@@ -215,6 +216,105 @@ class DOM_string_updater extends DOM_Stringer {
 		//$unwrapped = substr( $unwrapped, 0 , - strlen( '</body></html>' ) );
 		return $unwrapped;
 	}
+
+    /**
+     * Translates the rich text string.
+     *
+     * - Translates the string using the normal lookup
+     * - Loads the HTML as a new DOM document
+     * - Replaces the current node with the new node including attributes and children
+     *
+     * @param DOMnode $node
+     * @param string $html
+     */
+	function add_rich_text_string( $node, $html ) {
+	    $translated = $this->translate_string( $html );
+	    $this->narrator->narrate( 'Rich text', $translated );
+        $this->replace_node( $node, $translated );
+    }
+
+    /**
+     * Converts the translated HTML into a DOMnode.
+     *
+     * @param DOMnode $node The original node.
+     * @param string $html The translated rich text HTML.
+     * @return DOMNode
+     */
+    function getHTMLasNode( $node, $html ) {
+	    $html = $this->wrap_html( $node, $html );
+	    $this->narrator->narrate( "HTML?", $html );
+
+	    $domdoc = new DOMdocument();
+        libxml_use_internal_errors( true );
+        $domdoc->loadHTML( $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+        libxml_use_internal_errors( false );
+        //print_r( $domdoc );
+        return $domdoc->firstChild;
+    }
+
+    /**
+     * Wraps the translated HTML in the node's tag.
+     *
+     * @param DOMnode $node The rich text node being translated.
+     * @param string $html The translation of the rich text.
+     * @return string
+     */
+    function wrap_html( $node, $html )   {
+	    $wrapped = $this->tag( $node->nodeName);
+	    $wrapped .= $html;
+	    $wrapped .= $this->tag( $node->nodeName, true);
+	    return $wrapped;
+    }
+
+    /**
+     * Returns a start or end tag.
+     *
+     * @param string $tagname Tag name without chevrons eg p
+     * @param bool $end_tag True if you want the end tag.
+     * @return string
+     */
+    function tag( $tagname, $end_tag = false ) {
+	    $tag = '<';
+	    $tag .= $end_tag ? '/' : '';
+	    $tag .= $tagname;
+	    $tag .= '>';
+	    return $tag;
+    }
+
+    /**
+     * Replaces the original node with the translated version.
+     *
+     * @param DOMnode $node The node being replaced
+     * @param string $html Translated rich text HTML.
+     */
+    function replace_node( $node, $html ) {
+	    $this->narrator->narrate( "Node", $node->nodeName);
+        //print_r( $node );
+	    $replacement_node = $this->getHTMLasNode( $node, $html );
+	    $this->copy_attributes( $node, $replacement_node );
+	    $this->narrator->narrate( "Replacement", $replacement_node->nodeName );
+	    //print_r($replacement_node );
+	    $new_node = $this->dom_doc->importNode( $replacement_node, true );
+	    $this->narrator->narrate( "New node", $new_node->nodeName );
+	    //print_r( $new_node );
+        $node->parentNode->replaceChild( $new_node, $node );
+    }
+
+    /**
+     * Copies attributes from the source node to the target node.
+     *
+     *
+     * @param $source_node
+     * @param $target_node
+     */
+    function copy_attributes( $source_node, $target_node ) {
+        if ( $source_node->hasAttributes() ) {
+            for ( $item = 0; $item < $source_node->attributes->length; $item++ ) {
+                $attribute = $source_node->attributes->item($item);
+                $target_node->setAttribute($attribute->name, $attribute->value);
+            }
+        }
+    }
 }
 
 /*

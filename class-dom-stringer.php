@@ -379,12 +379,28 @@ class DOM_Stringer  {
      * @return
      */
     function extractRichText( $node ) {
+        $html = $this->getRichTextHTML( $node );
+        $this->add_rich_text_string( $node, $html );
+    }
+
+    function getRichTextHTML( $node ) {
         $rtdoc = new DOMDocument();
         $new_node = $rtdoc->importNode( $node, true );
         $this->removeAttributes( $new_node );
         $rtdoc->appendChild( $new_node );
         $html = $rtdoc->saveHTML( $rtdoc->firstChild );
         $html = $this->trimOuterTag( $html, $node );
+        return $html;
+    }
+
+    /**
+     * Adds rich text string for translation.
+     *
+     * @param DOMnode $node The node to be translated
+     * @param string $html The rich text HTML
+     */
+
+    function add_rich_text_string( $node, $html ) {
         $this->add_string( null, $html );
     }
 

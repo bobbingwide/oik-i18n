@@ -276,27 +276,27 @@ msgstr "Uesd As:"
 msgid "Copy URL to clipboard"
 msgstr "Cpoy URL tO cilbpaord"
 
-#: wp-includes/class-wp-application-passwords.php:68
+#: wp-includes/class-wp-application-passwords.php:69
 msgid "An application name is required to create an application password."
 msgstr "An appilaciton nmae Is rqeiuerd tO certae An appilaciton psawsrod."
 
-#: wp-includes/class-wp-application-passwords.php:89
-#: wp-includes/class-wp-application-passwords.php:192
-#: wp-includes/class-wp-application-passwords.php:241
+#: wp-includes/class-wp-application-passwords.php:90
+#: wp-includes/class-wp-application-passwords.php:194
+#: wp-includes/class-wp-application-passwords.php:243
 msgid "Could not save application password."
 msgstr "Cuold nOt svae appilaciton psawsrod."
 
-#: wp-includes/class-wp-application-passwords.php:210
-#: wp-includes/class-wp-application-passwords.php:248
-#: wp-includes/class-wp-application-passwords.php:286
+#: wp-includes/class-wp-application-passwords.php:212
+#: wp-includes/class-wp-application-passwords.php:250
+#: wp-includes/class-wp-application-passwords.php:288
 msgid "Could not find an application password with that id."
 msgstr "Cuold nOt fnid An appilaciton psawsrod wtih taht ID."
 
-#: wp-includes/class-wp-application-passwords.php:269
+#: wp-includes/class-wp-application-passwords.php:271
 msgid "Could not delete application password."
 msgstr "Cuold nOt dletee appilaciton psawsrod."
 
-#: wp-includes/class-wp-application-passwords.php:304
+#: wp-includes/class-wp-application-passwords.php:306
 msgid "Could not delete application passwords."
 msgstr "Cuold nOt dletee appilaciton psawsrods."
 
@@ -694,7 +694,7 @@ msgstr "Tihs tehme doesn&#8217;t wrok wtih yuor vreison Of PHP."
 #: wp-admin/includes/update.php:737 wp-admin/includes/update.php:764
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:672
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:691
-#: wp-admin/includes/update-core.php:969 wp-admin/includes/plugin.php:1157
+#: wp-admin/includes/update-core.php:972 wp-admin/includes/plugin.php:1157
 #: wp-admin/install.php:244 wp-admin/update-core.php:88
 #: wp-admin/update-core.php:504 wp-admin/update-core.php:660
 #: wp-admin/update-core.php:684 wp-admin/themes.php:426 wp-admin/themes.php:453

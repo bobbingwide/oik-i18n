@@ -189,17 +189,17 @@ function bb_convert_content( $content, $outfile ) {
   $first = true;
   $last_blank = 0;
 	$in_msgstr = false;
+	$translate = true;
   foreach ( $content as $line ) {
     $count++;
     $line = trim( $line );
     //echo $count . $line;
-    
     if ( "msgid_plural" == substr( $line. "              ", 0, 12 ) ) {
       //echo __LINE__ . " " ;
       bb_BB_outfile( $outfile, "$line\n" );   
       //$repl_plural = str_replace( "msgid_plural ", "", $line );
       $repl_plural = substr( $line, 13 );
-      $repl_plural = do_bbboing( $repl_plural );
+      $repl_plural = maybe_do_bbboing( $repl_plural, $translate );
       //echo "^$repl_plural^";
       $plural = true;
       
@@ -208,7 +208,7 @@ function bb_convert_content( $content, $outfile ) {
       //echo "$line\n";
       bb_BB_outfile( $outfile, "$line\n" );   
       $repl = str_replace( "msgid ", "", $line );
-      $repl = do_bbboing( $repl );
+      $repl = maybe_do_bbboing( $repl, $translate );
       $plural = false;
       
     } elseif ( "msgstr[0]" == substr( $line. "      ", 0, 9 ) ) { 
@@ -236,7 +236,7 @@ function bb_convert_content( $content, $outfile ) {
         bb_BB_outfile( $outfile, "$line\n" );   
       } else { 
         //echo "$line\n"; 
-				$line = maybe_bbboing( $line, $repl );
+		$line = maybe_bbboing( $line, $repl, $translate );
         bb_BB_outfile( $outfile, "$line\n" );   
 			$in_msgstr = true;
       }  
@@ -254,8 +254,8 @@ function bb_convert_content( $content, $outfile ) {
 					bb_BB_outfile( $outfile, "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n" );   
 					bb_BB_outfile( $outfile, "\"Language: bb_BB\\n\"\n" );
 				}
-			} else {  
-				$line = do_bbboing( $line );
+			} else {
+			    $line = maybe_do_bbboing($line, $translate );
 				if ( $plural ) {
 					$repl_plural .= $line;
 				} else {
@@ -267,37 +267,77 @@ function bb_convert_content( $content, $outfile ) {
 			}   
       
     } elseif ( $line == "" || ( "#." == substr( $line, 0, 2 ) &&  $last_blank++ == $count) ) {
-      if ( !$first ) {
-        if ( $plural ) {
-          //echo __LINE__ . " " ;
-          bb_BB_outfile( $outfile, "msgstr[0] $repl" );
-          bb_BB_outfile( $outfile, "msgstr[1] $repl_plural" );
-          //echo $repl;
-          
-          if ( $line !== "" ) {
-            bb_BB_outfile( $outfile, "\n" );
-          } else {
-            $last_blank = $count; 
-          }   
-          bb_BB_outfile( $outfile, "$line\n" );
-        } else {
-          //echo $repl;
-					bb_BB_outfile( $outfile, "\n" );
-        } 
-      }
-      $plural = false;
-      $first = false; 
-			$in_msgstr = false;  
-      
-    } else {  
-    //echo "$count($line)";
-      bb_BB_outfile( $outfile, "$line\n" ); 
+        if (!$first) {
+            if ($plural) {
+                //echo __LINE__ . " " ;
+                bb_BB_outfile($outfile, "msgstr[0] $repl");
+                bb_BB_outfile($outfile, "msgstr[1] $repl_plural");
+                //echo $repl;
+
+                if ($line !== "") {
+                    bb_BB_outfile($outfile, "\n");
+                } else {
+                    $last_blank = $count;
+                }
+                bb_BB_outfile($outfile, "$line\n");
+            } else {
+                //echo $repl;
+                bb_BB_outfile($outfile, "\n");
+            }
+        }
+        $plural = false;
+        $first = false;
+        $in_msgstr = false;
+        $translate = true;
+
+    } elseif ( "msgctxt" == substr( $line . "       ", 0, 7) ) {
+        $translate = consider_msgctxt( $line );
+        bb_BB_outfile( $outfile, "$line\n" );
+    } else {
+      bb_BB_outfile( $outfile, "$line\n" );
     } 
     
   }
 
   //echo "end";
-}  
+}
+
+/**
+ * Returns translate based on the "msgctxt".
+ *
+ *
+ * @param $line
+ */
+function consider_msgctxt( $line ) {
+    $translate = true;
+    $searches = [ 'Google Font', 'not translate'];
+    foreach ( $searches as $search ) {
+        if ( $translate ) {
+            $pos = strpos( $line, $search );
+            $translate = $pos === false;
+        }
+
+    }
+    if ( !$translate ) {
+        echo "Not translating:" . $line . PHP_EOL;
+    }
+    return $translate;
+
+}
+
+/**
+ * Maybe translates the text.
+ *
+ * @param $text
+ * @param bool $translate
+ * @return string
+ */
+function maybe_do_bbboing( $text, $translate=true ) {
+    if ( $translate ) {
+        $text = do_bbboing( $text );
+    }
+    return $text;
+}
   
 
 /**
@@ -563,7 +603,7 @@ function bboing2( $word ) {
  * @param string $repl 
  * @return string 
  */
-function maybe_bbboing( $line, $repl ) {
+function maybe_bbboing( $line, $repl, $translate=true ) {
 	if ( 9 == strlen( $line ) ) {
 		$translate_subsequent = true;
 		if ( $repl ) {
@@ -572,10 +612,15 @@ function maybe_bbboing( $line, $repl ) {
 		}
 	} else {
 		// we need to translate this
+
 		$bbboing_this = substr( $line, 7 );
 		echo $bbboing_this;
 		$line = "msgstr ";
-		$line .= bbboing( $bbboing_this );
+		if ( $translate ) {
+            $line .= bbboing($bbboing_this);
+        } else {
+		    $line .= $bbboing_this;
+        }
 		
 	}
 	return $line;

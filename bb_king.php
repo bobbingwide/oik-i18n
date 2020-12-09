@@ -1,7 +1,7 @@
 <?php
 /**
  * @package oik-i18n
- * @copyright (C) Copyright Bobbing Wide 2016
+ * @copyright (C) Copyright Bobbing Wide 2016-2020
 
 /** 
  * Syntax: oikwp bb_king.php
@@ -13,6 +13,8 @@
  * - Update WordPress to the latest level
  * - Update the translations for the UK English language version
  * - Run bb_king.php
+ *
+ * The new language files are created in the site's wp-content/languages folder.
  *
  * Note: bb_BB.php needs to work off .po files as well as .pot files, which means
  * - bb_BB has to handle msgstr values which have already been set.

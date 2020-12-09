@@ -120,7 +120,7 @@ class DOM_Stringer  {
      * @return array of tags keyed by the tag.
 	 */
 	function setAcceptableTags() {
-		$acceptableTags = [ 'br', 'b', 'em', 'i', 'a', 'img', 'span', 'code', 'kbd', '#text' ];
+		$acceptableTags = [ 'br', 'b', 'em', 'i', 'a', 'img', 'span', 'code', 'kbd', 'strong' ];
 		$this->acceptableTags = array_flip( $acceptableTags );
 	}
 
@@ -206,10 +206,12 @@ class DOM_Stringer  {
             if ( $rich_text ) {
                 $this->extractRichText( $node );
             } else {
-			    foreach ( $node->childNodes as $child_node ) {
+                for ( $currentNode = 0; $currentNode < $node->childNodes->length; $currentNode++ ) {
+                    $this->narrator->narrate( 'Current', $currentNode );
+                    $child_node = $node->childNodes[$currentNode];
                     $this->narrator->narrate('child name', $child_node->nodeName);
                     $this->narrator->narrate('child type', $child_node->nodeType);
-                    $this->extract_strings( $child_node );
+                    $this->extract_strings( $node->childNodes[$currentNode] );
                 }
 			}
 		}
@@ -372,6 +374,12 @@ class DOM_Stringer  {
         $this->add_rich_text_string( $node, $html );
     }
 
+    /**
+     * Gets the rich text HTML for a node and its children.
+     *
+     * @param DOMnode $node The node containing rich text
+     * @return string
+     */
     function getRichTextHTML( $node ) {
         $rtdoc = new DOMDocument();
         $new_node = $rtdoc->importNode( $node, true );
@@ -379,7 +387,9 @@ class DOM_Stringer  {
         $rtdoc->appendChild( $new_node );
         $html = $rtdoc->saveHTML( $rtdoc->firstChild );
         $html = $this->trimOuterTag( $html, $node );
-        $html = str_replace( "\n", "", $html );
+        $html = str_replace( "\n", '', $html );
+        $html = str_replace( "\r", '', $html );
+        $html = trim( $html );
         return $html;
     }
 

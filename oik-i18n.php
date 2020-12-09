@@ -39,8 +39,6 @@ function oiki18n_oik_loaded() {
   //add_action( "shutdown", "oiki18n_merged_filters" );
   // add_action( "shutdown", "oiki18n_global_l10n" );
   add_action( "shutdown", "oiki18n_report_global_gettexts" );
-  // oik_require( "includes/oik-filters.inc" );
-  //bw_replace_filter( "gettext" );
 }
 
 /**

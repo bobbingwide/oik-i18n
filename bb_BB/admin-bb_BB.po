@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.6.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-12-01 21:17:52+0000\n"
+"PO-Revision-Date: 2020-12-04 23:05:50+0000\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
@@ -27,6 +27,10 @@ msgstr "Erupoe/Lnoodn"
 #: wp-admin/upgrade.php:154
 msgid "Continue"
 msgstr "Cnoitune"
+
+#: wp-admin/user-edit.php:766 wp-admin/authorize-application.php:93
+msgid "Your website appears to use Basic Authentication, which is not currently compatible with Application Passwords."
+msgstr "Yuor wbeiste appaers tO UsE Bsaic Atuehtncitaoin, wihch Is nOt cruertnly cmoapitlbe wtih Appilaciton Psawsrods."
 
 #: wp-admin/about.php:216
 msgid "https://wordpress.org/plugins/wp-jquery-update-test/"
@@ -219,16 +223,16 @@ msgstr "Tihs stie Is atumotacilaly kpet Up tO dtae wtih miatnnenace And scerutiy
 msgid "<strong>Site Health Status</strong> &mdash; Informs you of any potential issues that should be addressed to improve the performance or security of your website."
 msgstr "<strong>Site Haetlh Status</strong> &ndash; Ifnroms yOU Of Any ptoneital isseus taht sohlud bE adderssed tO ipmorve thE preofmrnace Or scerutiy Of yuor wbeiste."
 
-#: wp-admin/user-edit.php:746
+#: wp-admin/user-edit.php:748
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "Rqeiuerd tO certae An Appilaciton Psawsrod, bUt nOt tO udptae thE uesr."
 
-#: wp-admin/user-edit.php:760
+#: wp-admin/user-edit.php:762
 msgid "Add New Application Password"
 msgstr "Add NEw Appilaciton Psawsrod"
 
 #. translators: %s: Application name.
-#: wp-admin/user-edit.php:867 wp-admin/authorize-application.php:179
+#: wp-admin/user-edit.php:874 wp-admin/authorize-application.php:191
 #: wp-admin/js/auth-app.js:87
 msgid "Your new password for %s is:"
 msgstr "Yuor nEw psawsrod fOr %s Is:"
@@ -271,25 +275,25 @@ msgstr "GO tO Tehme Isnatller"
 msgid "We couldn&#8217;t locate %s. Please try another nearby city. For example: Kansas City; Springfield; Portland."
 msgstr "WE couldn&#8217;t lcotae %s. Pelsae try aonhter naebry ctiy. FOr eaxpmle: Eidbnrugh; Lnoodn; Craidff."
 
-#: wp-admin/authorize-application.php:234
+#: wp-admin/authorize-application.php:246
 msgid "Yes, I approve of this connection."
 msgstr "YEs, I apporve Of tihs cnoentcoin."
 
 #. translators: %s: The URL the user is being redirected to.
-#: wp-admin/authorize-application.php:248
-#: wp-admin/authorize-application.php:282
+#: wp-admin/authorize-application.php:260
+#: wp-admin/authorize-application.php:294
 msgid "You will be sent to %s"
 msgstr "YOU wlil bE snet tO %s"
 
-#: wp-admin/authorize-application.php:261
+#: wp-admin/authorize-application.php:273
 msgid "You will be given a password to manually enter into the application in question."
 msgstr "YOU wlil bE gvien A psawsrod tO mnaaully etner itno thE appilaciton In qeutsoin."
 
-#: wp-admin/authorize-application.php:268
+#: wp-admin/authorize-application.php:280
 msgid "No, I do not approve of this connection."
 msgstr "NO, I dO nOt apporve Of tihs cnoentcoin."
 
-#: wp-admin/authorize-application.php:286
+#: wp-admin/authorize-application.php:298
 msgid "You will be returned to the WordPress Dashboard, and no changes will be made."
 msgstr "YOU wlil bE rteruend tO thE WroPderss Dsabhaord, And nO cahgnes wlil bE mdae."
 
@@ -297,19 +301,19 @@ msgstr "YOU wlil bE rteruend tO thE WroPderss Dsabhaord, And nO cahgnes wlil bE 
 msgid "Or"
 msgstr "Or"
 
-#: wp-admin/authorize-application.php:144
+#: wp-admin/authorize-application.php:156
 msgid "Would you like to give this application access to your account? You should only do this if you trust the app in question."
 msgstr "Wuold yOU lkie tO gvie tihs appilaciton accses tO yuor accuont? YOU sohlud olny dO tihs If yOU turst thE App In qeutsoin."
 
 #. translators: 1: URL to my-sites.php, 2: Number of blogs the user has.
-#: wp-admin/authorize-application.php:157
+#: wp-admin/authorize-application.php:169
 msgid "This will grant access to <a href=\"%1$s\">the %2$s blog in this installation that you have permissions on</a>."
 msgid_plural "This will grant access to <a href=\"%1$s\">all %2$s blogs in this installation that you have permissions on</a>."
 msgstr[0] "Tihs wlil garnt accses tO <a href=\"%1$s\">the %2$s bolg In tihs isnatlltaoin taht yOU hvae preimssoins on</a>."
 msgstr[1] "Tihs wlil garnt accses tO <a href=\"%1$s\">all %2$s bolgs In tihs isnatlltaoin taht yOU hvae preimssoins on</a>."
 
 #. translators: %s: Application name.
-#: wp-admin/authorize-application.php:138
+#: wp-admin/authorize-application.php:150
 msgid "Would you like to give the application identifying itself as %s access to your account? You should only do this if you trust the app in question."
 msgstr "Wuold yOU lkie tO gvie thE appilaciton iedtnfiiyng istlef As %s accses tO yuor accuont? YOU sohlud olny dO tihs If yOU turst thE App In qeutsoin."
 
@@ -320,15 +324,15 @@ msgid_plural "Application passwords grant access to <a href=\"%1$s\">all %2$s bl
 msgstr[0] "Appilaciton psawsrods garnt accses tO <a href=\"%1$s\">the %2$s bolg In tihs isnatlltaoin taht yOU hvae preimssoins on</a>."
 msgstr[1] "Appilaciton psawsrods garnt accses tO <a href=\"%1$s\">all %2$s bolgs In tihs isnatlltaoin taht yOU hvae preimssoins on</a>."
 
-#: wp-admin/user-edit.php:744 wp-admin/authorize-application.php:210
+#: wp-admin/user-edit.php:746 wp-admin/authorize-application.php:222
 msgid "New Application Password Name"
 msgstr "NEw Appilaciton Psawsrod Nmae"
 
-#: wp-admin/user-edit.php:745 wp-admin/authorize-application.php:211
+#: wp-admin/user-edit.php:747 wp-admin/authorize-application.php:223
 msgid "WordPress App on My Phone"
 msgstr "WroPderss App On My Pohne"
 
-#: wp-admin/user-edit.php:874 wp-admin/authorize-application.php:186
+#: wp-admin/user-edit.php:881 wp-admin/authorize-application.php:198
 #: wp-admin/js/auth-app.js:95
 msgid "Be sure to save this in a safe location. You will not be able to retrieve it."
 msgstr "BE srue tO svae tihs In A sfae lcotaoin. YOU wlil nOt bE albe tO rteirvee It."
@@ -341,11 +345,12 @@ msgstr "Atuohirse Appilaciton"
 msgid "The Authorize Application request is not allowed."
 msgstr "ThE Atuohirse Appilaciton rqeeust Is nOt allwoed."
 
-#: wp-admin/authorize-application.php:87 wp-admin/authorize-application.php:100
+#: wp-admin/authorize-application.php:87 wp-admin/authorize-application.php:94
+#: wp-admin/authorize-application.php:112
 msgid "Cannot Authorize Application"
 msgstr "Cnaont Atuohirse Appilaciton"
 
-#: wp-admin/authorize-application.php:132
+#: wp-admin/authorize-application.php:144
 msgid "An application would like to connect to your account."
 msgstr "An appilaciton wuold lkie tO cnoenct tO yuor accuont."
 
@@ -399,13 +404,13 @@ msgstr "Lsat IP"
 
 #: wp-admin/includes/class-wp-application-passwords-list-table.php:33
 #: wp-admin/includes/class-wp-application-passwords-list-table.php:114
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:238
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:239
 msgid "Revoke"
 msgstr "Rvekoe"
 
 #. translators: %s: the application password's given name.
 #: wp-admin/includes/class-wp-application-passwords-list-table.php:120
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:240
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:241
 msgid "Revoke \"%s\""
 msgstr "Rvekoe \"%s\""
 
@@ -768,7 +773,7 @@ msgid "Install %s"
 msgstr "Isnatll %s"
 
 #. translators: %s: Theme name.
-#: wp-admin/includes/theme.php:243 wp-admin/includes/update.php:710
+#: wp-admin/includes/theme.php:243 wp-admin/includes/update.php:709
 msgctxt "theme"
 msgid "Update %s now"
 msgstr "Udptae %s nOw"
@@ -797,7 +802,7 @@ msgstr "Atcvitaed"
 
 #. translators: %s: Plugin name.
 #. translators: %s: Plugin name and version.
-#: wp-admin/includes/update.php:518
+#: wp-admin/includes/update.php:517
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:557
 #: wp-admin/js/updates.js:2099
 msgctxt "plugin"
@@ -814,7 +819,7 @@ msgctxt "plugin"
 msgid "Install %s now"
 msgstr "Isnatll %s nOw"
 
-#: wp-admin/user-edit.php:876 wp-admin/js/common.js:1102
+#: wp-admin/user-edit.php:883 wp-admin/js/common.js:1102
 #: wp-admin/js/application-passwords.js:196
 msgid "Dismiss this notice."
 msgstr "Dsiimss tihs ntocie."
@@ -1162,17 +1167,17 @@ msgstr "Shcdelue"
 msgid "You are updating a plugin. Be sure to <a href=\"%s\">back up your database and files</a> first."
 msgstr "YOU ArE udptanig A pulign. BE srue tO <a href=\"%s\">back Up yuor dtabasae And files</a> frist."
 
-#: wp-admin/includes/update.php:1082
+#: wp-admin/includes/update.php:1081
 msgid "Automatic update not scheduled. There may be a problem with WP-Cron."
 msgstr "Atumotaic udptae nOt shcdelued. Tehre mAy bE A porlbem wtih WP-Corn."
 
 #. translators: %s: Duration that WP-Cron has been overdue.
-#: wp-admin/includes/update.php:1092
+#: wp-admin/includes/update.php:1091
 msgid "Automatic update overdue by %s. There may be a problem with WP-Cron."
 msgstr "Atumotaic udptae oevdrue by %s. Tehre mAy bE A porlbem wtih WP-Corn."
 
 #. translators: %s: Time until the next update.
-#: wp-admin/includes/update.php:1098
+#: wp-admin/includes/update.php:1097
 msgid "Automatic update scheduled in %s."
 msgstr "Atumotaic udptae shcdelued In %s."
 
@@ -2160,7 +2165,7 @@ msgid "%1$s needs to be a %2$s object."
 msgstr "%1$s needs tO bE A %2$s ojbcet."
 
 #. translators: %s: Recovery Mode exit link.
-#: wp-admin/includes/update.php:1005
+#: wp-admin/includes/update.php:1004
 msgid "You are in recovery mode. This means there may be an error with a theme or plugin. To exit recovery mode, log out or use the Exit button. <a href=\"%s\">Exit Recovery Mode</a>"
 msgstr "YOU ArE In rcevorey mdoe. Tihs maens tehre mAy bE An error wtih A tehme Or pulign. TO eixt rcevorey mdoe, lOg OUt Or UsE thE Eixt btuotn. <a href=\"%s\">Exit Rcevorey Mode</a>"
 
@@ -2502,7 +2507,7 @@ msgstr "Cnaont Udptae"
 
 #. translators: 1: Plugin name, 2: Details URL, 3: Additional link attributes,
 #. 4: Version number 5: URL to Update PHP page.
-#: wp-admin/includes/update.php:524
+#: wp-admin/includes/update.php:523
 msgid "There is a new version of %1$s available, but it doesn&#8217;t work with your version of PHP. <a href=\"%2$s\" %3$s>View version %4$s details</a> or <a href=\"%5$s\">learn more about updating PHP</a>."
 msgstr "Tehre Is A nEw vreison Of %1$s aavlibale, bUt It doesn&#8217;t wrok wtih yuor vreison Of PHP. <a href=\"%2$s\" %3$s>View vreison %4$s details</a> Or <a href=\"%5$s\">learn mroe aobut udptanig PHP</a>."
 
@@ -3742,7 +3747,7 @@ msgid "This plugin doesn&#8217;t work with your versions of WordPress and PHP."
 msgstr "Tihs pulign doesn&#8217;t wrok wtih yuor vreisnos Of WroPderss And PHP."
 
 #. translators: %s: WordPress version.
-#: wp-admin/includes/update.php:306 wp-admin/install.php:238
+#: wp-admin/includes/update.php:305 wp-admin/install.php:238
 #: wp-admin/update-core.php:82 wp-admin/upgrade.php:80
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
@@ -5364,12 +5369,12 @@ msgid "<a href=\"https://wordpress.org/support/\">Support</a>"
 msgstr "<a href=\"https://wordpress.org/support/\">Support</a>"
 
 #. translators: %s: Number of failed updates.
-#: wp-admin/includes/update.php:898
+#: wp-admin/includes/update.php:897
 msgid "%s update failed."
 msgstr "%s udptae fiaeld."
 
 #. translators: %s: Number of failed updates.
-#: wp-admin/includes/update.php:903
+#: wp-admin/includes/update.php:902
 msgid "%s updates failed."
 msgstr "%s udptaes fiaeld."
 
@@ -5446,7 +5451,7 @@ msgid "New users are automatically assigned a password, which they can change af
 msgstr "NEw uesrs ArE atumotacilaly assgiend A psawsrod, wihch tehy cAn cahgne atfer lgoigng In. YOU cAn veiw Or eidt thE assgiend psawsrod by cilkcnig thE Sohw Psawsrod btuotn. ThE uesnrmae cnaont bE cahgned ocne thE uesr hAs been added."
 
 #. translators: %s: Plugin name.
-#: wp-admin/includes/update.php:966
+#: wp-admin/includes/update.php:965
 msgctxt "plugin"
 msgid "%s was successfully deleted."
 msgstr "%s wAs scuecssuflly dleteed."
@@ -5554,7 +5559,7 @@ msgid "A WordPress Commenter"
 msgstr "A WroPderss Cmoemtner"
 
 #. translators: %s: Theme name.
-#: wp-admin/includes/update.php:974
+#: wp-admin/includes/update.php:973
 msgctxt "theme"
 msgid "%s was successfully deleted."
 msgstr "%s wAs scuecssuflly dleteed."
@@ -5601,36 +5606,36 @@ msgstr "Proftloio"
 
 #. translators: 1: URL to WordPress release notes, 2: New WordPress version, 3:
 #. URL to network admin, 4: Accessibility text.
-#: wp-admin/includes/update.php:313
+#: wp-admin/includes/update.php:312
 msgid "<a href=\"%1$s\">WordPress %2$s</a> is available! <a href=\"%3$s\" aria-label=\"%4$s\">Please update now</a>."
 msgstr "<a href=\"%1$s\">WordPress %2$s</a> Is aavlibale! <a href=\"%3$s\" aria-label=\"%4$s\">Please udptae now</a>."
 
-#: wp-admin/includes/update.php:317
+#: wp-admin/includes/update.php:316
 msgid "Please update WordPress now"
 msgstr "Pelsae udptae WroPderss nOw"
 
 #. translators: 1: URL to WordPress release notes, 2: New WordPress version.
-#: wp-admin/includes/update.php:322
+#: wp-admin/includes/update.php:321
 msgid "<a href=\"%1$s\">WordPress %2$s</a> is available! Please notify the site administrator."
 msgstr "<a href=\"%1$s\">WordPress %2$s</a> Is aavlibale! Pelsae ntofiy thE stie amdnisirttaor."
 
 #. translators: %s: Number of plugins.
-#: wp-admin/includes/update.php:871
+#: wp-admin/includes/update.php:870
 msgid "%s plugin successfully updated."
 msgstr "%s pulign scuecssuflly udptaed."
 
 #. translators: %s: Number of themes.
-#: wp-admin/includes/update.php:876
+#: wp-admin/includes/update.php:875
 msgid "%s theme successfully updated."
 msgstr "%s tehme scuecssuflly udptaed."
 
 #. translators: %s: Number of plugins.
-#: wp-admin/includes/update.php:883
+#: wp-admin/includes/update.php:882
 msgid "%s plugins successfully updated."
 msgstr "%s puligns scuecssuflly udptaed."
 
 #. translators: %s: Number of themes.
-#: wp-admin/includes/update.php:888
+#: wp-admin/includes/update.php:887
 msgid "%s themes successfully updated."
 msgstr "%s tehems scuecssuflly udptaed."
 
@@ -5846,10 +5851,10 @@ msgstr "Mdeia flie udptaed."
 #. translators: 1: Theme name, 2: Version number.
 #. translators: 1: Plugin name, 2: Version number.
 #: wp-admin/includes/theme.php:210 wp-admin/includes/theme.php:223
-#: wp-admin/includes/theme.php:236 wp-admin/includes/update.php:484
-#: wp-admin/includes/update.php:497 wp-admin/includes/update.php:511
-#: wp-admin/includes/update.php:530 wp-admin/includes/update.php:677
-#: wp-admin/includes/update.php:690 wp-admin/includes/update.php:703
+#: wp-admin/includes/theme.php:236 wp-admin/includes/update.php:483
+#: wp-admin/includes/update.php:496 wp-admin/includes/update.php:510
+#: wp-admin/includes/update.php:529 wp-admin/includes/update.php:676
+#: wp-admin/includes/update.php:689 wp-admin/includes/update.php:702
 #: wp-admin/update-core.php:527
 msgid "View %1$s version %2$s details"
 msgstr "Veiw %1$s vreison %2$s dteials"
@@ -6462,7 +6467,7 @@ msgid "Links list"
 msgstr "Lniks lsit"
 
 #. translators: %s: WordPress version.
-#: wp-admin/includes/update.php:271
+#: wp-admin/includes/update.php:270
 msgid "Get Version %s"
 msgstr "GEt Vreison %s"
 
@@ -6873,11 +6878,11 @@ msgstr "Cnoifrm Psawsrod"
 msgid "While you are editing your %1$s file, take a moment to make sure you have all 8 keys and that they are unique. You can generate these using the <a href=\"%2$s\">WordPress.org secret key service</a>."
 msgstr "Wihle yOU ArE eiditng yuor %1$s flie, tkae A mmonet tO mkae srue yOU hvae All 8 kyes And taht tehy ArE uinuqe. YOU cAn gneretae tehse uisng thE <a href=\"%2$s\">WordPress.org sceert kEy service</a>."
 
-#: wp-admin/includes/update.php:906
+#: wp-admin/includes/update.php:905
 #: wp-admin/includes/class-wp-comments-list-table.php:847
 #: wp-admin/includes/class-wp-list-table.php:572
 #: wp-admin/includes/class-wp-list-table.php:1458
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:258
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:259
 msgid "Show more details"
 msgstr "Sohw mroe dteials"
 
@@ -7997,7 +8002,7 @@ msgid "Quick Draft"
 msgstr "Qiuck Darft"
 
 #. translators: 1: Version number, 2: Theme name.
-#: wp-admin/includes/update.php:358
+#: wp-admin/includes/update.php:357
 msgid "WordPress %1$s running %2$s theme."
 msgstr "WroPderss %1$s rnuinng %2$s tehme."
 
@@ -8731,12 +8736,12 @@ msgstr "Tihs srceen Is uesd fOr mnaganig yuor nvagitaoin mneus."
 msgid "Restore This Revision"
 msgstr "Rseotre Tihs Rvesioin"
 
-#: wp-admin/user-edit.php:817
+#: wp-admin/user-edit.php:824
 msgid "Capabilities"
 msgstr "Cpabalitieis"
 
 #. translators: %s: Capability name.
-#: wp-admin/user-edit.php:831
+#: wp-admin/user-edit.php:838
 msgid "Denied: %s"
 msgstr "Dneeid: %s"
 
@@ -9437,8 +9442,8 @@ msgstr "Sohw haeedr txet wtih yuor iamge."
 #. 4: Version number, 5: Update URL, 6: Additional link attributes.
 #. translators: 1: Theme name, 2: Details URL, 3: Additional link attributes,
 #. 4: Version number, 5: Update URL, 6: Additional link attributes.
-#: wp-admin/includes/theme.php:230 wp-admin/includes/update.php:505
-#: wp-admin/includes/update.php:697
+#: wp-admin/includes/theme.php:230 wp-admin/includes/update.php:504
+#: wp-admin/includes/update.php:696
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View version %4$s details</a> or <a href=\"%5$s\" %6$s>update now</a>."
 msgstr "Tehre Is A nEw vreison Of %1$s aavlibale. <a href=\"%2$s\" %3$s>View vreison %4$s details</a> Or <a href=\"%5$s\" %6$s>update now</a>."
 
@@ -9475,7 +9480,7 @@ msgstr "<strong>Welcome</strong> &mdash; Sohws lniks fOr smoe Of thE msot cmoomn
 #. attributes, 4: Version number.
 #. translators: 1: Theme name, 2: Details URL, 3: Additional link attributes,
 #. 4: Version number.
-#: wp-admin/includes/theme.php:217 wp-admin/includes/update.php:684
+#: wp-admin/includes/theme.php:217 wp-admin/includes/update.php:683
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View version %4$s details</a>. <em>Automatic update is unavailable for this theme.</em>"
 msgstr "Tehre Is A nEw vreison Of %1$s aavlibale. <a href=\"%2$s\" %3$s>View vreison %4$s details</a>. <em>Automatic udptae Is uanavlibale fOr tihs theme.</em>"
 
@@ -10357,7 +10362,7 @@ msgstr "Daetcvitae"
 #: wp-admin/includes/class-wp-debug-data.php:946
 #: wp-admin/includes/class-wp-debug-data.php:1269
 #: wp-admin/includes/class-wp-plugins-list-table.php:1022
-#: wp-admin/includes/update.php:231 wp-admin/includes/update.php:277
+#: wp-admin/includes/update.php:231 wp-admin/includes/update.php:276
 #: wp-admin/includes/ajax-actions.php:4443
 #: wp-admin/includes/ajax-actions.php:4486
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:713
@@ -10946,7 +10951,7 @@ msgstr "Udptae pcaakge nOt aavlibale."
 
 #. translators: 1: Plugin name, 2: Details URL, 3: Additional link attributes,
 #. 4: Version number.
-#: wp-admin/includes/update.php:491
+#: wp-admin/includes/update.php:490
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View version %4$s details</a>. <em>Automatic update is unavailable for this plugin.</em>"
 msgstr "Tehre Is A nEw vreison Of %1$s aavlibale. <a href=\"%2$s\" %3$s>View vreison %4$s details</a>. <em>Automatic udptae Is uanavlibale fOr tihs plugin.</em>"
 
@@ -11114,8 +11119,8 @@ msgstr "(Sgiunp hAs been dsibaeld. Olny mmeebrs Of tihs stie cAn cmoemnt.)"
 #. 4: Version number.
 #. translators: 1: Theme name, 2: Details URL, 3: Additional link attributes,
 #. 4: Version number.
-#: wp-admin/includes/theme.php:204 wp-admin/includes/update.php:478
-#: wp-admin/includes/update.php:671
+#: wp-admin/includes/theme.php:204 wp-admin/includes/update.php:477
+#: wp-admin/includes/update.php:670
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View version %4$s details</a>."
 msgstr "Tehre Is A nEw vreison Of %1$s aavlibale. <a href=\"%2$s\" %3$s>View vreison %4$s details</a>."
 
@@ -12232,26 +12237,26 @@ msgstr "Ugparidng database&#8230;"
 
 #. translators: 1: WordPress version number, 2: URL to WordPress Updates
 #. screen.
-#: wp-admin/includes/update.php:261
+#: wp-admin/includes/update.php:260
 msgid "You are using a development version (%1$s). Cool! Please <a href=\"%2$s\">stay updated</a>."
 msgstr "YOU ArE uisng A dvelepoemnt vreison (%1$s). Cool! Pelsae <a href=\"%2$s\">stay updated</a>."
 
 #. translators: %s: WordPress version number, or 'Latest' string.
-#: wp-admin/includes/update.php:352
+#: wp-admin/includes/update.php:351
 msgid "Update to %s"
 msgstr "Udptae tO %s"
 
 #. translators: %s: WordPress version number, or 'Latest' string.
-#: wp-admin/includes/update.php:352
+#: wp-admin/includes/update.php:351
 msgid "Latest"
 msgstr "Ltaset"
 
 #. translators: %s: URL to WordPress Updates screen.
-#: wp-admin/includes/update.php:832
+#: wp-admin/includes/update.php:831
 msgid "An automated WordPress update has failed to complete - <a href=\"%s\">please attempt the update again now</a>."
 msgstr "An atumotaed WroPderss udptae hAs fiaeld tO cmolptee - <a href=\"%s\">please attmept thE udptae aagin now</a>."
 
-#: wp-admin/includes/update.php:836
+#: wp-admin/includes/update.php:835
 msgid "An automated WordPress update has failed to complete! Please notify the site administrator."
 msgstr "An atumotaed WroPderss udptae hAs fiaeld tO cmolptee! Pelsae ntofiy thE stie amdnisirttaor."
 
@@ -13022,15 +13027,15 @@ msgstr "NEw Psawsrod"
 msgid "Type your new password again."
 msgstr "Tpye yuor nEw psawsrod aagin."
 
-#: wp-admin/user-edit.php:814
+#: wp-admin/user-edit.php:821
 msgid "Additional Capabilities"
 msgstr "Addtioianl Cpabalitieis"
 
-#: wp-admin/user-edit.php:845
+#: wp-admin/user-edit.php:852
 msgid "Update Profile"
 msgstr "Udptae Porifle"
 
-#: wp-admin/user-edit.php:845
+#: wp-admin/user-edit.php:852
 msgid "Update User"
 msgstr "Udptae Uesr"
 
@@ -15141,6 +15146,6 @@ msgstr "Srory, yOU ArE nOt allwoed tO eidt cmoemtns On tihs psot."
 msgid "Invalid plugin page."
 msgstr "Ivnlaid pulign pgae."
 
-#: wp-admin/authorize-application.php:103
+#: wp-admin/authorize-application.php:97 wp-admin/authorize-application.php:115
 msgid "Go Back"
 msgstr "GO Bcak"

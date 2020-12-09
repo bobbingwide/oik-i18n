@@ -15,7 +15,7 @@ msgstr ""
 #: wp-includes/script-loader.php:1473
 msgctxt "Google Font Name and Variants"
 msgid "Noto Serif:400,400i,700,700i"
-msgstr "Ntoo Sreif:400,400I,700,700I"
+msgstr "Noto Serif:400,400i,700,700i"
 
 #: wp-includes/comment-template.php:915
 msgctxt "Comment number declension: on or off"
@@ -35,7 +35,7 @@ msgstr "Off"
 #: wp-includes/js/dist/editor.js:11968
 msgctxt "Word count type. Do not translate!"
 msgid "words"
-msgstr "wrods"
+msgstr "words"
 
 #: wp-login.php:122 wp-includes/admin-bar.php:165
 #: wp-includes/widgets/class-wp-widget-meta.php:90 wp-admin/upgrade.php:68
@@ -147,15 +147,15 @@ msgctxt "email \"From\" field"
 msgid "Site Admin"
 msgstr "Stie Amdin"
 
-#: wp-includes/user.php:4067
+#: wp-includes/user.php:4071
 msgid "This user privacy request is missing the confirmation key."
 msgstr "Tihs uesr piravcy rqeeust Is msiisng thE cnoifmrtaoin kEy."
 
-#: wp-includes/user.php:4086
+#: wp-includes/user.php:4090
 msgid "This user privacy request confirmation key is invalid."
 msgstr "Tihs uesr piravcy rqeeust cnoifmrtaoin kEy Is ivnlaid."
 
-#: wp-includes/user.php:4090
+#: wp-includes/user.php:4094
 msgid "This user privacy request confirmation key has expired."
 msgstr "Tihs uesr piravcy rqeeust cnoifmrtaoin kEy hAs epxried."
 
@@ -228,17 +228,17 @@ msgstr "Rueaslbe Bolck shcdelued."
 msgid "Reusable Block updated."
 msgstr "Rueaslbe Bolck udptaed."
 
-#: wp-includes/user.php:433
+#: wp-includes/user.php:437
 msgid "The provided password is an invalid application password."
 msgstr "ThE porivedd psawsrod Is An ivnlaid appilaciton psawsrod."
 
-#: wp-includes/user.php:3871 wp-includes/user.php:4059
+#: wp-includes/user.php:3875 wp-includes/user.php:4063
 #: wp-admin/includes/privacy-tools.php:23
 #: wp-admin/includes/privacy-tools.php:52
 msgid "Invalid user privacy request."
 msgstr "Ivnlaid uesr piravcy rqeeust."
 
-#: wp-includes/user.php:4063
+#: wp-includes/user.php:4067
 msgid "This user privacy request has expired."
 msgstr "Tihs uesr piravcy rqeeust hAs epxried."
 
@@ -276,27 +276,27 @@ msgstr "Uesd As:"
 msgid "Copy URL to clipboard"
 msgstr "Cpoy URL tO cilbpaord"
 
-#: wp-includes/class-wp-application-passwords.php:46
+#: wp-includes/class-wp-application-passwords.php:68
 msgid "An application name is required to create an application password."
 msgstr "An appilaciton nmae Is rqeiuerd tO certae An appilaciton psawsrod."
 
-#: wp-includes/class-wp-application-passwords.php:67
-#: wp-includes/class-wp-application-passwords.php:166
-#: wp-includes/class-wp-application-passwords.php:215
+#: wp-includes/class-wp-application-passwords.php:89
+#: wp-includes/class-wp-application-passwords.php:192
+#: wp-includes/class-wp-application-passwords.php:241
 msgid "Could not save application password."
 msgstr "Cuold nOt svae appilaciton psawsrod."
 
-#: wp-includes/class-wp-application-passwords.php:184
-#: wp-includes/class-wp-application-passwords.php:222
-#: wp-includes/class-wp-application-passwords.php:260
+#: wp-includes/class-wp-application-passwords.php:210
+#: wp-includes/class-wp-application-passwords.php:248
+#: wp-includes/class-wp-application-passwords.php:286
 msgid "Could not find an application password with that id."
 msgstr "Cuold nOt fnid An appilaciton psawsrod wtih taht ID."
 
-#: wp-includes/class-wp-application-passwords.php:243
+#: wp-includes/class-wp-application-passwords.php:269
 msgid "Could not delete application password."
 msgstr "Cuold nOt dletee appilaciton psawsrod."
 
-#: wp-includes/class-wp-application-passwords.php:278
+#: wp-includes/class-wp-application-passwords.php:304
 msgid "Could not delete application passwords."
 msgstr "Cuold nOt dletee appilaciton psawsrods."
 
@@ -414,12 +414,12 @@ msgid "The unique identifier for the application password."
 msgstr "ThE uinuqe iedtnfieir fOr thE appilaciton psawsrod."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php:506
-#: wp-includes/user.php:356 wp-admin/authorize-application.php:95
+#: wp-includes/user.php:360 wp-admin/authorize-application.php:107
 msgid "Application passwords are not available."
 msgstr "Appilaciton psawsrods ArE nOt aavlibale."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php:550
-#: wp-includes/user.php:361 wp-admin/authorize-application.php:93
+#: wp-includes/user.php:365 wp-admin/authorize-application.php:105
 msgid "Application passwords are not available for your account. Please contact the site administrator for assistance."
 msgstr "Appilaciton psawsrods ArE nOt aavlibale fOr yuor accuont. Pelsae cnoatct thE stie amdnisirttaor fOr asssiatcne."
 
@@ -484,21 +484,21 @@ msgstr "Pneicl dariwng Of DOn Qiuoxte"
 
 #. translators: %s: Theme name.
 #: wp-includes/customize/class-wp-customize-theme-control.php:116
-#: wp-admin/includes/theme.php:848 wp-admin/includes/update.php:718
+#: wp-admin/includes/theme.php:848 wp-admin/includes/update.php:717
 #: wp-admin/themes.php:406 wp-admin/themes.php:745 wp-admin/themes.php:1008
 msgid "There is a new version of %s available, but it doesn&#8217;t work with your versions of WordPress and PHP."
 msgstr "Tehre Is A nEw vreison Of %s aavlibale, bUt It doesn&#8217;t wrok wtih yuor vreisnos Of WroPderss And PHP."
 
 #. translators: %s: Theme name.
 #: wp-includes/customize/class-wp-customize-theme-control.php:146
-#: wp-admin/includes/theme.php:878 wp-admin/includes/update.php:746
+#: wp-admin/includes/theme.php:878 wp-admin/includes/update.php:745
 #: wp-admin/themes.php:434 wp-admin/themes.php:775 wp-admin/themes.php:1038
 msgid "There is a new version of %s available, but it doesn&#8217;t work with your version of WordPress."
 msgstr "Tehre Is A nEw vreison Of %s aavlibale, bUt It doesn&#8217;t wrok wtih yuor vreison Of WroPderss."
 
 #. translators: %s: Theme name.
 #: wp-includes/customize/class-wp-customize-theme-control.php:161
-#: wp-admin/includes/theme.php:893 wp-admin/includes/update.php:759
+#: wp-admin/includes/theme.php:893 wp-admin/includes/update.php:758
 #: wp-admin/themes.php:447 wp-admin/themes.php:790 wp-admin/themes.php:1053
 msgid "There is a new version of %s available, but it doesn&#8217;t work with your version of PHP."
 msgstr "Tehre Is A nEw vreison Of %s aavlibale, bUt It doesn&#8217;t wrok wtih yuor vreison Of PHP."
@@ -641,7 +641,7 @@ msgstr "Tihs tehme doesn&#8217;t wrok wtih yuor vreisnos Of WroPderss And PHP."
 #: wp-includes/customize/class-wp-customize-theme-control.php:122
 #: wp-includes/customize/class-wp-customize-theme-control.php:187
 #: wp-admin/includes/theme.php:854 wp-admin/includes/theme.php:931
-#: wp-admin/includes/update.php:724
+#: wp-admin/includes/update.php:723
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:658
 #: wp-admin/update-core.php:641 wp-admin/themes.php:412 wp-admin/themes.php:472
 #: wp-admin/themes.php:751 wp-admin/themes.php:815 wp-admin/themes.php:947
@@ -657,7 +657,7 @@ msgstr "<a href=\"%1$s\">Please udptae WordPress</a>, And tehn <a href=\"%2$s\">
 #: wp-includes/customize/class-wp-customize-theme-control.php:213
 #: wp-admin/includes/theme.php:862 wp-admin/includes/theme.php:884
 #: wp-admin/includes/theme.php:939 wp-admin/includes/theme.php:957
-#: wp-admin/includes/update.php:732 wp-admin/includes/update.php:752
+#: wp-admin/includes/update.php:731 wp-admin/includes/update.php:751
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:666
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:682
 #: wp-admin/update-core.php:654 wp-admin/update-core.php:675
@@ -691,7 +691,7 @@ msgstr "Tihs tehme doesn&#8217;t wrok wtih yuor vreison Of PHP."
 #: wp-includes/customize/class-wp-customize-theme-control.php:224
 #: wp-admin/includes/theme.php:868 wp-admin/includes/theme.php:899
 #: wp-admin/includes/theme.php:945 wp-admin/includes/theme.php:968
-#: wp-admin/includes/update.php:738 wp-admin/includes/update.php:765
+#: wp-admin/includes/update.php:737 wp-admin/includes/update.php:764
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:672
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:691
 #: wp-admin/includes/update-core.php:969 wp-admin/includes/plugin.php:1157
@@ -1726,56 +1726,56 @@ msgstr "Perivuos And nxet mnohts"
 msgid "When registering an \"array\" setting to show in the REST API, you must specify the schema for each array item in \"show_in_rest.schema.items\"."
 msgstr "Wehn rgesietirng An \"array\" steitng tO sohw In thE RSET API, yOU msut sepicfy thE shcmea fOr ecah array ietm In \"sohw_In_rset.shcmea.ietms\"."
 
-#: wp-includes/user.php:3336
+#: wp-includes/user.php:3340
 msgid "Session Tokens"
 msgstr "Sseison Tkones"
 
-#: wp-includes/user.php:3315
+#: wp-includes/user.php:3319
 msgid "Last Login"
 msgstr "Lsat Lgoin"
 
-#: wp-includes/user.php:3314
+#: wp-includes/user.php:3318
 msgid "User Agent"
 msgstr "Uesr Aegnt"
 
-#: wp-includes/user.php:3312
+#: wp-includes/user.php:3316
 msgid "Expiration"
 msgstr "Epxritaoin"
 
-#: wp-includes/user.php:3302
+#: wp-includes/user.php:3306
 msgid "User&#8217;s location data used for the Community Events in the WordPress Events and News dashboard widget."
 msgstr "User&#8217;s lcotaoin dtaa uesd fOr thE Cmouminty Eevtns In thE WroPderss Eevtns And Nwes dsabhaord wdiegt."
 
-#: wp-includes/user.php:3337
+#: wp-includes/user.php:3341
 msgid "User&#8217;s Session Tokens data."
 msgstr "User&#8217;s Sseison Tkones dtaa."
 
-#: wp-includes/user.php:3301
+#: wp-includes/user.php:3305
 msgid "Community Events Location"
 msgstr "Cmouminty Eevtns Lcotaoin"
 
-#: wp-includes/user.php:3285 wp-includes/user.php:3313
+#: wp-includes/user.php:3289 wp-includes/user.php:3317
 msgid "IP"
 msgstr "IP"
 
-#: wp-includes/user.php:3284
+#: wp-includes/user.php:3288
 msgid "Longitude"
 msgstr "Lnoigutde"
 
-#: wp-includes/user.php:3283
+#: wp-includes/user.php:3287
 msgid "Latitude"
 msgstr "Ltatidue"
 
-#: wp-includes/user.php:3282
+#: wp-includes/user.php:3286
 msgid "Country"
 msgstr "Cuotnry"
 
-#: wp-includes/user.php:3281
+#: wp-includes/user.php:3285
 msgid "City"
 msgstr "Ctiy"
 
 #. translators: %s: wp_privacy_additional_user_profile_data
-#: wp-includes/user.php:3257
+#: wp-includes/user.php:3261
 msgid "Filter %s returned items with reserved names."
 msgstr "Flietr %s rteruend ietms wtih rsereevd nmaes."
 
@@ -1927,11 +1927,11 @@ msgstr "Acrihevs"
 msgid "List of the missing image sizes of the attachment."
 msgstr "Lsit Of thE msiisng iamge szies Of thE attcamhnet."
 
-#: wp-includes/user.php:231 wp-includes/user.php:345
+#: wp-includes/user.php:231 wp-includes/user.php:349
 msgid "Unknown email address. Check again or try your username."
 msgstr "Uknonwn eamil adderss. Cehck aagin Or try yuor uesnrmae."
 
-#: wp-includes/user.php:152 wp-includes/user.php:350
+#: wp-includes/user.php:152 wp-includes/user.php:354
 msgid "Unknown username. Check again or try your email address."
 msgstr "Uknonwn uesnrmae. Cehck aagin Or try yuor eamil adderss."
 
@@ -2075,15 +2075,15 @@ msgstr "Tehre hAs been A ciritacl error On tihs wbeiste."
 msgid "The image cannot be rotated because the embedded meta data cannot be updated."
 msgstr "ThE iamge cnaont bE rtotaed bceuase thE ebmdeedd mtea dtaa cnaont bE udptaed."
 
-#: wp-includes/user.php:3272
+#: wp-includes/user.php:3276
 msgid "User&#8217;s profile data."
 msgstr "User&#8217;s porifle dtaa."
 
-#: wp-includes/user.php:2009
+#: wp-includes/user.php:2013
 msgid "Not enough data to create this user."
 msgstr "NOt eonguh dtaa tO certae tihs uesr."
 
-#: wp-includes/user.php:1880
+#: wp-includes/user.php:1884
 msgid "Sorry, marking a user as spam is only supported on Multisite."
 msgstr "Srory, mraikng A uesr As sapm Is olny spuoptred On Mluitiste."
 
@@ -2479,12 +2479,12 @@ msgid "[%s] Admin Email Changed"
 msgstr "[%s] Amdin Eamil Cahgned"
 
 #. translators: New email address notification email subject. %s: Site title.
-#: wp-includes/user.php:3093
+#: wp-includes/user.php:3097
 msgid "[%s] Email Change Request"
 msgstr "[%s] Eamil Cahgne Rqeeust"
 
 #. translators: Email change notification email subject. %s: Site title.
-#: wp-includes/user.php:2291
+#: wp-includes/user.php:2295
 msgid "[%s] Email Changed"
 msgstr "[%s] Eamil Cahgned"
 
@@ -2591,7 +2591,7 @@ msgstr "Slecet stie iocn"
 msgid "The email could not be sent. Possible reason: your host may have disabled the %s function."
 msgstr "ThE eamil cuold nOt bE snet. Psoislbe raeosn: yuor hsot mAy hvae dsibaeld thE %s fnutcoin."
 
-#: wp-includes/user.php:3803
+#: wp-includes/user.php:3807
 msgid "An incomplete user privacy request for this email address already exists."
 msgstr "An icnmolptee uesr piravcy rqeeust fOr tihs eamil adderss arlaedy eixtss."
 
@@ -2853,7 +2853,7 @@ msgctxt "localized PHP upgrade information page"
 msgid "https://wordpress.org/support/update-php/"
 msgstr "https://wordpress.org/support/update-php/"
 
-#: wp-login.php:365 wp-login.php:407 wp-includes/user.php:2481
+#: wp-login.php:365 wp-login.php:407 wp-includes/user.php:2485
 msgid "<strong>Error</strong>: There is no account with that username or email address."
 msgstr "<strong>Error</strong>: tehre Is nO accuont wtih taht uesnrmae Or eamil adderss."
 
@@ -2938,7 +2938,7 @@ msgstr "Rpealce iamge"
 msgid "Allow comments"
 msgstr "Allow cmoemtns"
 
-#: wp-includes/js/dist/components.js:40051
+#: wp-includes/js/dist/components.js:40052
 #: wp-admin/includes/edit-tag-messages.php:14
 msgid "Item added."
 msgstr "Ietm added."
@@ -2958,7 +2958,7 @@ msgstr "Cruernt"
 #: wp-includes/class-wp-customize-manager.php:4342
 #: wp-includes/class-wp-customize-manager.php:5664
 #: wp-includes/class-wp-customize-manager.php:5685
-#: wp-includes/js/dist/components.js:37129 wp-includes/js/dist/editor.js:8321
+#: wp-includes/js/dist/components.js:37130 wp-includes/js/dist/editor.js:8321
 #: wp-includes/js/dist/edit-post.js:2015 wp-admin/includes/theme.php:827
 #: wp-admin/includes/class-wp-privacy-policy-content.php:360
 #: wp-admin/includes/meta-boxes.php:80 wp-admin/includes/media.php:3223
@@ -3176,7 +3176,7 @@ msgstr "NO acrihevs tO sohw."
 msgid "The offset number requested is larger than or equal to the number of available revisions."
 msgstr "ThE offest nmuebr rqeeutsed Is lraegr tahn Or euqal tO thE nmuebr Of aavlibale rvesioins."
 
-#: wp-includes/user.php:4004
+#: wp-includes/user.php:4008
 msgid "Unable to send personal data export confirmation email."
 msgstr "Uanlbe tO sned preosanl dtaa epxrot cnoifmrtaoin eamil."
 
@@ -3215,21 +3215,21 @@ msgstr "YOU hvae uesd yuor sapce qouta. Pelsae dletee flies bferoe ulpaoidng."
 
 #. translators: Privacy data request confirmed notification email subject. 1:
 #. Site title, 2: Name of the confirmed action.
-#: wp-includes/user.php:3489
+#: wp-includes/user.php:3493
 msgid "[%1$s] Action Confirmed: %2$s"
 msgstr "[%1$s] Atcoin Cnoifmred: %2$s"
 
-#: wp-includes/user.php:3742
+#: wp-includes/user.php:3746
 msgid "Thanks for confirming your erasure request."
 msgstr "Tahkns fOr cnoifmrnig yuor earusre rqeeust."
 
-#: wp-includes/user.php:3739
+#: wp-includes/user.php:3743
 msgid "Thanks for confirming your export request."
 msgstr "Tahkns fOr cnoifmrnig yuor epxrot rqeeust."
 
 #. translators: Do not translate SITENAME, SITEURL, PRIVACY_POLICY_URL; those
 #. are placeholders.
-#: wp-includes/user.php:3638
+#: wp-includes/user.php:3642
 msgid ""
 "Howdy,\n"
 "\n"
@@ -3267,16 +3267,16 @@ msgstr ""
 "All At ###STINEMAE###\n"
 "###STIUERL###"
 
-#: wp-includes/user.php:3740
+#: wp-includes/user.php:3744
 msgid "The site administrator has been notified. You will receive a link to download your export via email when they fulfill your request."
 msgstr "ThE stie amdnisirttaor hAs been ntofieid. YOU wlil rceieve A lnik tO dwolnaod yuor epxrot vIA eamil wehn tehy fluifll yuor rqeeust."
 
-#: wp-includes/user.php:3743
+#: wp-includes/user.php:3747
 msgid "The site administrator has been notified. You will receive an email confirmation when they erase your data."
 msgstr "ThE stie amdnisirttaor hAs been ntofieid. YOU wlil rceieve An eamil cnoifmrtaoin wehn tehy earse yuor dtaa."
 
 #. translators: Do not translate SITENAME, SITEURL; those are placeholders.
-#: wp-includes/user.php:3625
+#: wp-includes/user.php:3629
 msgid ""
 "Howdy,\n"
 "\n"
@@ -3310,13 +3310,13 @@ msgstr ""
 
 #. translators: Erasure request fulfilled notification email subject. %s: Site
 #. title.
-#: wp-includes/user.php:3598
+#: wp-includes/user.php:3602
 msgid "[%s] Erasure Request Fulfilled"
 msgstr "[%s] Earusre Rqeeust Fluiflled"
 
 #. translators: Do not translate SITENAME, USER_EMAIL, DESCRIPTION, MANAGE_URL,
 #. SITEURL; those are placeholders.
-#: wp-includes/user.php:3435
+#: wp-includes/user.php:3439
 msgid ""
 "Howdy,\n"
 "\n"
@@ -3365,11 +3365,11 @@ msgstr ""
 
 #. translators: Confirm privacy data request notification email subject. 1:
 #. Site title, 2: Name of the action.
-#: wp-includes/user.php:3951
+#: wp-includes/user.php:3955
 msgid "[%1$s] Confirm Action: %2$s"
 msgstr "[%1$s] Cnoifrm Atcoin: %2$s"
 
-#: wp-includes/user.php:3837 wp-admin/erase-personal-data.php:54
+#: wp-includes/user.php:3841 wp-admin/erase-personal-data.php:54
 #: wp-admin/menu.php:284
 msgid "Erase Personal Data"
 msgstr "Earse Preosanl Dtaa"
@@ -3378,51 +3378,51 @@ msgstr "Earse Preosanl Dtaa"
 msgid "Save my name, email, and website in this browser for the next time I comment."
 msgstr "Svae my nmae, eamil, And wbeiste In tihs borswer fOr thE nxet tmie I cmoemnt."
 
-#: wp-includes/user.php:3189
+#: wp-includes/user.php:3193
 msgid "User Description"
 msgstr "Uesr Dsercpiiton"
 
-#: wp-includes/user.php:3185
+#: wp-includes/user.php:3189
 msgid "User Display Name"
 msgstr "Uesr Dsilpay Nmae"
 
-#: wp-includes/user.php:3187
+#: wp-includes/user.php:3191
 msgid "User First Name"
 msgstr "Uesr Frist Nmae"
 
-#: wp-includes/user.php:3179
+#: wp-includes/user.php:3183
 msgid "User ID"
 msgstr "Uesr ID"
 
-#: wp-includes/user.php:3188
+#: wp-includes/user.php:3192
 msgid "User Last Name"
 msgstr "Uesr Lsat Nmae"
 
-#: wp-includes/user.php:3180
+#: wp-includes/user.php:3184
 msgid "User Login Name"
 msgstr "Uesr Lgoin Nmae"
 
-#: wp-includes/user.php:3181
+#: wp-includes/user.php:3185
 msgid "User Nice Name"
 msgstr "Uesr Ncie Nmae"
 
-#: wp-includes/user.php:3186
+#: wp-includes/user.php:3190
 msgid "User Nickname"
 msgstr "Uesr Ncinkmae"
 
-#: wp-includes/user.php:3184
+#: wp-includes/user.php:3188
 msgid "User Registration Date"
 msgstr "Uesr Rgesirttaoin Dtae"
 
-#: wp-includes/user.php:3183
+#: wp-includes/user.php:3187
 msgid "User URL"
 msgstr "Uesr URL"
 
-#: wp-includes/user.php:3145
+#: wp-includes/user.php:3149
 msgid "WordPress User"
 msgstr "WroPderss Uesr"
 
-#: wp-includes/user.php:3182
+#: wp-includes/user.php:3186
 msgid "User Email"
 msgstr "Uesr Eamil"
 
@@ -3436,16 +3436,16 @@ msgid "Comment %d contains personal data but could not be anonymized."
 msgstr "Cmoemnt %d cnoatnis preosanl dtaa bUt cuold nOt bE aonynimesd."
 
 #. translators: %s: Action name.
-#: wp-includes/user.php:3841
+#: wp-includes/user.php:3845
 msgid "Confirm the \"%s\" action"
 msgstr "Cnoifrm thE \"%s\" atcoin"
 
-#: wp-includes/user.php:3834 wp-admin/export-personal-data.php:54
+#: wp-includes/user.php:3838 wp-admin/export-personal-data.php:54
 #: wp-admin/menu.php:283
 msgid "Export Personal Data"
 msgstr "Epxrot Preosanl Dtaa"
 
-#: wp-includes/user.php:3735
+#: wp-includes/user.php:3739
 msgid "The site administrator has been notified and will fulfill your request as soon as possible."
 msgstr "ThE stie amdnisirttaor hAs been ntofieid And wlil fluifl yuor rqeeust As soon As psoislbe."
 
@@ -3471,17 +3471,17 @@ msgstr "Uesr Rqeeutss"
 msgid "[deleted]"
 msgstr "[deleted]"
 
-#: wp-includes/user.php:3782
+#: wp-includes/user.php:3786
 msgid "Invalid action name."
 msgstr "Ivnlaid atcoin nmae."
 
-#: wp-includes/user.php:3734
+#: wp-includes/user.php:3738
 msgid "Action has been confirmed."
 msgstr "Atcoin hAs been cnoifmred."
 
 #. translators: Do not translate DESCRIPTION, CONFIRM_URL, SITENAME, SITEURL:
 #. those are placeholders.
-#: wp-includes/user.php:3900
+#: wp-includes/user.php:3904
 msgid ""
 "Howdy,\n"
 "\n"
@@ -3883,7 +3883,7 @@ msgstr "UsE thE Csuotm HMTL wdiegt tO Add abrtiarry HMTL cdoe tO yuor wdiegt aer
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
-#: wp-includes/user.php:3045
+#: wp-includes/user.php:3049
 msgid ""
 "Howdy ###USERNAME###,\n"
 "\n"
@@ -3934,11 +3934,11 @@ msgstr ""
 "###STIUERL###"
 
 #. translators: %s: New email address.
-#: wp-includes/user.php:3115
+#: wp-includes/user.php:3119
 msgid "Your email address has not been updated yet. Please check your inbox at %s for a confirmation email."
 msgstr "Yuor eamil adderss hAs nOt been udptaed yEt. Pelsae cehck yuor ibnox At %s fOr A cnoifmrtaoin eamil."
 
-#: wp-includes/user.php:3025
+#: wp-includes/user.php:3029
 msgid "<strong>Error</strong>: The email address is already used."
 msgstr "<strong>Error</strong>: thE eamil adderss Is arlaedy uesd."
 
@@ -4516,22 +4516,22 @@ msgid "Hour"
 msgstr "Huor"
 
 #: wp-includes/customize/class-wp-customize-date-time-control.php:160
-#: wp-includes/js/dist/components.js:35392
+#: wp-includes/js/dist/components.js:35393
 msgid "Time"
 msgstr "Tmie"
 
 #: wp-includes/customize/class-wp-customize-date-time-control.php:146
-#: wp-includes/js/dist/components.js:35323 wp-admin/includes/template.php:826
+#: wp-includes/js/dist/components.js:35324 wp-admin/includes/template.php:826
 msgid "Day"
 msgstr "DAy"
 
 #: wp-includes/customize/class-wp-customize-date-time-control.php:130
-#: wp-includes/js/dist/components.js:35338 wp-admin/includes/template.php:816
+#: wp-includes/js/dist/components.js:35339 wp-admin/includes/template.php:816
 msgid "Month"
 msgstr "Mnoth"
 
 #: wp-includes/customize/class-wp-customize-date-time-control.php:127
-#: wp-includes/js/dist/components.js:35376
+#: wp-includes/js/dist/components.js:35377
 #: wp-admin/includes/ajax-actions.php:2183
 #: wp-admin/includes/class-wp-posts-list-table.php:659
 #: wp-admin/includes/class-wp-posts-list-table.php:1565
@@ -5488,7 +5488,7 @@ msgid "Invalid date."
 msgstr "Ivnlaid dtae."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:717
-#: wp-includes/rest-api.php:2257 wp-includes/user.php:3778
+#: wp-includes/rest-api.php:2257 wp-includes/user.php:3782
 #: wp-admin/network/site-new.php:96
 msgid "Invalid email address."
 msgstr "Ivnlaid eamil adderss."
@@ -7293,7 +7293,7 @@ msgid "Password changed for user: %s"
 msgstr "Psawsrod cahgned fOr uesr: %s"
 
 #. translators: Password change notification email subject. %s: Site title.
-#: wp-includes/pluggable.php:1924 wp-includes/user.php:2233
+#: wp-includes/pluggable.php:1924 wp-includes/user.php:2237
 msgid "[%s] Password Changed"
 msgstr "[%s] Psawsrod Cahgned"
 
@@ -7431,7 +7431,7 @@ msgid "The next group of formatting shortcuts are applied as you type or when yo
 msgstr "ThE nxet gorup Of froamttnig sohtructs ArE appiled As yOU tpye Or wehn yOU isnret tehm aornud palin txet In thE smae pragaarph. Perss Ecspae Or thE Udno btuotn tO udno."
 
 #. translators: 1: User's display name, 2: User login.
-#: wp-includes/user.php:1388
+#: wp-includes/user.php:1392
 msgctxt "user dropdown"
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
@@ -7520,7 +7520,7 @@ msgid "Choose logo"
 msgstr "Cohsoe lgoo"
 
 #: wp-includes/media-template.php:199 wp-includes/media-template.php:347
-#: wp-includes/functions.php:6622 wp-includes/js/dist/components.js:41231
+#: wp-includes/functions.php:6622 wp-includes/js/dist/components.js:41232
 msgid "Close dialog"
 msgstr "Colse daioluge"
 
@@ -7629,7 +7629,7 @@ msgstr "Etner tbaelt perivew mdoe"
 msgid "Shift-click to edit this element."
 msgstr "Sihft-cilck tO eidt tihs eelemnt."
 
-#: wp-includes/user.php:2721 wp-admin/includes/user.php:196
+#: wp-includes/user.php:2725 wp-admin/includes/user.php:196
 msgid "<strong>Error</strong>: Sorry, that username is not allowed."
 msgstr "<strong>Error</strong>: srory, taht uesnrmae Is nOt allwoed."
 
@@ -7911,7 +7911,7 @@ msgstr "WE wree albe tO cnoenct tO thE dtabasae sreevr (wihch maens yuor uesnrma
 msgid "The tag cloud will not be displayed since there are no taxonomies that support the tag cloud widget."
 msgstr "ThE tAg colud wlil nOt bE dsilpyaed snice tehre ArE nO txanomoeis taht spuoprt thE tAg colud wdiegt."
 
-#: wp-includes/user.php:1810
+#: wp-includes/user.php:1814
 msgid "Nicename may not be longer than 50 characters."
 msgstr "Ncinemae mAy nOt bE lnoegr tahn 50 cahartcres."
 
@@ -8045,7 +8045,7 @@ msgid "Site names can only contain lowercase letters (a-z) and numbers."
 msgstr "Stie nmaes cAn olny cnoatin lworeacse lteetrs (A-z) And nmuebrs."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1260
-#: wp-includes/user.php:1800 wp-includes/ms-functions.php:496
+#: wp-includes/user.php:1804 wp-includes/ms-functions.php:496
 #: wp-includes/ms-functions.php:503
 msgid "Sorry, that username is not allowed."
 msgstr "Srory, taht uesnrmae Is nOt allwoed."
@@ -8405,7 +8405,7 @@ msgstr "Yuor psawsrod rseet lnik appaers tO bE ivnlaid. Pelsae rqeeust A nEw lni
 msgid "Your password reset link has expired. Please request a new link below."
 msgstr "Yuor psawsrod rseet lnik hAs epxried. Pelsae rqeeust A nEw lnik bleow."
 
-#: wp-includes/user.php:1783 wp-includes/ms-functions.php:517
+#: wp-includes/user.php:1787 wp-includes/ms-functions.php:517
 msgid "Username may not be longer than 60 characters."
 msgstr "Uesnrmae mAy nOt bE lnoegr tahn 60 cahartcres."
 
@@ -8480,7 +8480,7 @@ msgstr "Mneus cAn bE dsilpyaed In lcotaoins dfenied by yuor tehme Or In <a href=
 
 #. translators: Do not translate USERNAME, ADMIN_EMAIL, NEW_EMAIL, EMAIL,
 #. SITENAME, SITEURL: those are placeholders.
-#: wp-includes/user.php:2273
+#: wp-includes/user.php:2277
 msgid ""
 "Hi ###USERNAME###,\n"
 "\n"
@@ -8523,7 +8523,7 @@ msgstr ""
 
 #. translators: Do not translate USERNAME, ADMIN_EMAIL, EMAIL, SITENAME,
 #. SITEURL: those are placeholders.
-#: wp-includes/user.php:2215
+#: wp-includes/user.php:2219
 msgid ""
 "Hi ###USERNAME###,\n"
 "\n"
@@ -9287,7 +9287,7 @@ msgstr "BIn"
 msgid "Edit Selection"
 msgstr "Eidt Sleceiton"
 
-#: wp-includes/script-loader.php:1709 wp-includes/js/dist/components.js:41722
+#: wp-includes/script-loader.php:1709 wp-includes/js/dist/components.js:41723
 msgid "Previous"
 msgstr "Perivuos"
 
@@ -9707,7 +9707,7 @@ msgstr "Fnot Szies"
 msgid "Split table cell"
 msgstr "Slpit tbale clel"
 
-#: wp-includes/media-template.php:1143 wp-includes/js/dist/components.js:39155
+#: wp-includes/media-template.php:1143 wp-includes/js/dist/components.js:39156
 msgid "Custom Size"
 msgstr "Csuotm Szie"
 
@@ -9741,7 +9741,7 @@ msgstr "Gnere"
 
 #: wp-includes/media.php:2794
 #: wp-includes/customize/class-wp-customize-date-time-control.php:151
-#: wp-includes/js/dist/components.js:35381 wp-admin/includes/template.php:827
+#: wp-includes/js/dist/components.js:35382 wp-admin/includes/template.php:827
 msgid "Year"
 msgstr "Yaer"
 
@@ -10054,7 +10054,7 @@ msgstr "Add atlreante suocres fOr mxamium HMTL5 palbycak"
 #: wp-includes/customize/class-wp-customize-themes-panel.php:70
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:72
 #: wp-includes/class-wp-customize-nav-menus.php:1144
-#: wp-includes/js/dist/components.js:42327
+#: wp-includes/js/dist/components.js:42328
 #: wp-includes/js/dist/edit-post.js:5705 wp-admin/includes/ms.php:49
 #: wp-admin/theme-install.php:59
 msgid "Back"
@@ -10144,7 +10144,7 @@ msgstr "Ivnlaid mneu ID."
 msgid "The query argument of %s must have a placeholder."
 msgstr "ThE qeury agrmunet Of %s msut hvae A palecohdler."
 
-#: wp-includes/user.php:2455
+#: wp-includes/user.php:2459
 msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
 msgstr "Hnit: ThE psawsrod sohlud bE At laest tewvle cahartcres lnog. TO mkae It srtnoegr, UsE upper And lwoer csae lteetrs, nmuebrs, And smyobls lkie ! \" ? $ % ^ &amp; )."
 
@@ -10777,10 +10777,15 @@ msgstr "g:I A"
 #: wp-admin/includes/schema.php:426 wp-admin/includes/media.php:1692
 #: wp-admin/includes/ajax-actions.php:1564
 #: wp-admin/includes/ajax-actions.php:2802
-#: wp-admin/includes/ajax-actions.php:2805 wp-admin/includes/dashboard.php:633
-#: wp-admin/options-general.php:292 wp-admin/options-general.php:318
-#: wp-admin/update-core.php:1010 wp-admin/admin.php:113
-#: wp-admin/edit-form-advanced.php:627 wp-admin/edit-form-advanced.php:630
+#: wp-admin/includes/ajax-actions.php:2805
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:71
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:86
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:228
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:231
+#: wp-admin/includes/dashboard.php:633 wp-admin/options-general.php:292
+#: wp-admin/options-general.php:318 wp-admin/update-core.php:1010
+#: wp-admin/admin.php:113 wp-admin/edit-form-advanced.php:627
+#: wp-admin/edit-form-advanced.php:630
 msgid "F j, Y"
 msgstr "j F Y"
 
@@ -10813,7 +10818,7 @@ msgid "(more&hellip;)"
 msgstr "(more&hellip;)"
 
 #. translators: %s: Admin email address.
-#: wp-includes/user.php:2777
+#: wp-includes/user.php:2781
 msgid "<strong>Error</strong>: Couldn&#8217;t register you&hellip; please contact the <a href=\"mailto:%s\">site admin</a>!"
 msgstr "<strong>Error</strong>: couldn&#8217;t rgesietr you&hellip; pelsae cnoatct thE <a href=\"mailto:%s\">site admin</a>!"
 
@@ -10879,8 +10884,8 @@ msgstr "Stie Adderss (URL)"
 #: wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php:513
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:383
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:707
-#: wp-includes/user.php:1752 wp-includes/user.php:2145
-#: wp-includes/user.php:2151 wp-admin/user-edit.php:23
+#: wp-includes/user.php:1756 wp-includes/user.php:2149
+#: wp-includes/user.php:2155 wp-admin/user-edit.php:23
 #: wp-admin/user-edit.php:25
 msgid "Invalid user ID."
 msgstr "Ivnlaid uesr ID."
@@ -11034,7 +11039,7 @@ msgstr "Clomuns"
 
 #: wp-includes/media-template.php:856 wp-includes/media-template.php:936
 #: wp-includes/media-template.php:1127 wp-includes/media.php:3917
-#: wp-includes/js/dist/components.js:35806
+#: wp-includes/js/dist/components.js:35807
 #: wp-includes/js/dist/block-editor.js:20410
 #: wp-admin/includes/class-custom-background.php:599
 #: wp-admin/includes/media.php:1168 wp-admin/edit-form-blocks.php:228
@@ -11070,7 +11075,7 @@ msgid "Insert gallery"
 msgstr "Isnret glaelry"
 
 #: wp-includes/media-template.php:209 wp-includes/media-template.php:216
-#: wp-includes/media-template.php:253 wp-includes/js/dist/components.js:36615
+#: wp-includes/media-template.php:253 wp-includes/js/dist/components.js:36616
 #: wp-admin/includes/media.php:2231
 msgid "Drop files to upload"
 msgstr "Dorp flies tO ulpaod"
@@ -11187,22 +11192,22 @@ msgstr "ThE rqeeutsed uesr deos nOt eixst."
 msgid "Please enter a valid email address."
 msgstr "Pelsae etner A vlaid eamil adderss."
 
-#: wp-includes/user.php:2715 wp-admin/includes/user.php:189
+#: wp-includes/user.php:2719 wp-admin/includes/user.php:189
 msgid "<strong>Error</strong>: This username is already registered. Please choose another one."
 msgstr "<strong>Error</strong>: tihs uesnrmae Is arlaedy rgesieterd. Pelsae cohsoe aonhter OnE."
 
-#: wp-includes/class-wp-image-editor-gd.php:373
+#: wp-includes/class-wp-image-editor-gd.php:379
 msgid "Image rotate failed."
 msgstr "Iamge rtotae fiaeld."
 
-#: wp-includes/class-wp-image-editor-gd.php:403
+#: wp-includes/class-wp-image-editor-gd.php:409
 msgid "Image flip failed."
 msgstr "Iamge filp fiaeld."
 
-#: wp-includes/class-wp-image-editor-gd.php:441
-#: wp-includes/class-wp-image-editor-gd.php:450
-#: wp-includes/class-wp-image-editor-gd.php:454
-#: wp-includes/class-wp-image-editor-gd.php:457
+#: wp-includes/class-wp-image-editor-gd.php:447
+#: wp-includes/class-wp-image-editor-gd.php:456
+#: wp-includes/class-wp-image-editor-gd.php:460
+#: wp-includes/class-wp-image-editor-gd.php:463
 msgid "Image Editor Save Failed"
 msgstr "Iamge Eidotr Svae Fiaeld"
 
@@ -11227,7 +11232,8 @@ msgstr "Cuold nOt raed iamge szie."
 msgid "Image resize failed."
 msgstr "Iamge rsezie fiaeld."
 
-#: wp-includes/class-wp-image-editor-gd.php:346
+#: wp-includes/class-wp-image-editor-gd.php:328
+#: wp-includes/class-wp-image-editor-gd.php:352
 msgid "Image crop failed."
 msgstr "Iamge corp fiaeld."
 
@@ -11248,13 +11254,13 @@ msgid "Add to gallery"
 msgstr "Add tO glaelry"
 
 #: wp-includes/media-template.php:756 wp-includes/js/dist/components.js:30133
-#: wp-includes/js/dist/components.js:41035 wp-admin/theme-install.php:209
+#: wp-includes/js/dist/components.js:41036 wp-admin/theme-install.php:209
 #: wp-admin/theme-install.php:232 wp-admin/js/color-picker.js:154
 msgid "Clear"
 msgstr "Celar"
 
 #. translators: 1: User's first name, 2: Last name.
-#: wp-includes/user.php:1926
+#: wp-includes/user.php:1930
 msgctxt "Display name based on first name and last name"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
@@ -12323,7 +12329,7 @@ msgstr "Saecrh Lnik Ctageroeis"
 msgid "Link Category"
 msgstr "Lnik Ctageroy"
 
-#: wp-includes/user.php:3271 wp-includes/js/dist/core-data.js:2139
+#: wp-includes/user.php:3275 wp-includes/js/dist/core-data.js:2139
 msgid "User"
 msgstr "Uesr"
 
@@ -12481,7 +12487,7 @@ msgstr "Add NEw Pgae"
 msgid "<strong>Conflicting values for the constants VHOST and SUBDOMAIN_INSTALL.</strong> The value of SUBDOMAIN_INSTALL will be assumed to be your subdomain configuration setting."
 msgstr "<strong>Conflicting vlaeus fOr thE cnotsnats VOHST And SUBDOMAIN_INSTALL.</strong> ThE vlaue Of SBUODAMIN_ISNATLL wlil bE assmued tO bE yuor sbuodamin cnoifugariton steitng."
 
-#: wp-includes/user.php:2712 wp-admin/includes/user.php:185
+#: wp-includes/user.php:2716 wp-admin/includes/user.php:185
 msgid "<strong>Error</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>Error</strong>: tihs uesnrmae Is ivnlaid bceuase It uess illgeal cahartcres. Pelsae etner A vlaid uesnrmae."
 
@@ -13541,7 +13547,7 @@ msgstr "TOO mnay rdericets."
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:153 wp-includes/class-wp-locale.php:181
-#: wp-includes/js/dist/components.js:35356
+#: wp-includes/js/dist/components.js:35357
 msgid "May"
 msgstr "MAy"
 
@@ -13775,7 +13781,7 @@ msgstr "Hrozinoatl sapce"
 
 #: wp-includes/customize/class-wp-customize-background-position-control.php:47
 #: wp-includes/class-wp-editor.php:1334 wp-includes/js/dist/components.js:26489
-#: wp-includes/js/dist/components.js:37310
+#: wp-includes/js/dist/components.js:37311
 #: wp-admin/includes/class-custom-background.php:369
 msgid "Top"
 msgstr "TOp"
@@ -13798,7 +13804,7 @@ msgstr "Gnereal"
 msgid "Constrain proportions"
 msgstr "Cnotsarin poroptroins"
 
-#: wp-includes/js/dist/components.js:40941
+#: wp-includes/js/dist/components.js:40942
 #: wp-admin/includes/ajax-actions.php:2183
 msgid "Type"
 msgstr "Tpye"
@@ -13908,13 +13914,13 @@ msgstr "pm"
 
 #: wp-includes/class-wp-locale.php:193
 #: wp-includes/customize/class-wp-customize-date-time-control.php:172
-#: wp-includes/js/dist/components.js:35426
+#: wp-includes/js/dist/components.js:35427
 msgid "AM"
 msgstr "AM"
 
 #: wp-includes/class-wp-locale.php:194
 #: wp-includes/customize/class-wp-customize-date-time-control.php:173
-#: wp-includes/js/dist/components.js:35431
+#: wp-includes/js/dist/components.js:35432
 msgid "PM"
 msgstr "PM"
 
@@ -13926,7 +13932,7 @@ msgstr "Taht uesr deos nOt eixst."
 msgid "Sorry, usernames must have letters too!"
 msgstr "Srory, uesnrmaes msut hvae lteetrs tOO!"
 
-#: wp-includes/user.php:1787 wp-includes/ms-functions.php:536
+#: wp-includes/user.php:1791 wp-includes/ms-functions.php:536
 msgid "Sorry, that username already exists!"
 msgstr "Srory, taht uesnrmae arlaedy eixtss!"
 
@@ -14102,15 +14108,15 @@ msgstr "Cnoetnt, ttile, And ecxrept ArE epmty."
 msgid "Cannot create a revision of a revision"
 msgstr "Cnaont certae A rvesioin Of A rvesioin"
 
-#: wp-includes/user.php:1781
+#: wp-includes/user.php:1785
 msgid "Cannot create a user with an empty login name."
 msgstr "Cnaont certae A uesr wtih An epmty lgoin nmae."
 
-#: wp-includes/user.php:2415
+#: wp-includes/user.php:2419
 msgid "AIM"
 msgstr "AIM"
 
-#: wp-includes/user.php:2416
+#: wp-includes/user.php:2420
 msgid "Yahoo IM"
 msgstr "Yhaoo IM"
 
@@ -14225,7 +14231,7 @@ msgstr "Sdibear %d"
 msgid "Powered by WordPress"
 msgstr "Pworeed by WroPderss"
 
-#: wp-includes/user.php:2521
+#: wp-includes/user.php:2525
 msgid "Password reset is not allowed for this user"
 msgstr "Psawsrod rseet Is nOt allwoed fOr tihs uesr"
 
@@ -14296,7 +14302,7 @@ msgstr "Jsut A uesnrmae, pelsae."
 
 #: wp-includes/script-loader.php:1708
 #: wp-includes/class-wp-customize-nav-menus.php:1110 wp-signup.php:621
-#: wp-includes/js/dist/components.js:41725
+#: wp-includes/js/dist/components.js:41726
 msgid "Next"
 msgstr "Nxet"
 
@@ -14422,76 +14428,76 @@ msgstr "Ivnlaid ietm ID."
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:160 wp-includes/class-wp-locale.php:188
-#: wp-includes/js/dist/components.js:35370
+#: wp-includes/js/dist/components.js:35371
 msgid "December"
 msgstr "Dcemeebr"
 
 #. translators: Month name.
 #: wp-includes/class-wp-locale.php:149 wp-includes/class-wp-locale.php:177
-#: wp-includes/js/dist/components.js:35348
+#: wp-includes/js/dist/components.js:35349
 msgid "January"
 msgstr "Jnaaury"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:150 wp-includes/class-wp-locale.php:178
-#: wp-includes/js/dist/components.js:35350
+#: wp-includes/js/dist/components.js:35351
 msgid "February"
 msgstr "Fbeurray"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:151 wp-includes/class-wp-locale.php:179
-#: wp-includes/js/dist/components.js:35352
+#: wp-includes/js/dist/components.js:35353
 msgid "March"
 msgstr "Mrach"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:152 wp-includes/class-wp-locale.php:180
-#: wp-includes/js/dist/components.js:35354
+#: wp-includes/js/dist/components.js:35355
 msgid "April"
 msgstr "Arpil"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:154 wp-includes/class-wp-locale.php:182
-#: wp-includes/js/dist/components.js:35358
+#: wp-includes/js/dist/components.js:35359
 msgid "June"
 msgstr "Jnue"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:155 wp-includes/class-wp-locale.php:183
-#: wp-includes/js/dist/components.js:35360
+#: wp-includes/js/dist/components.js:35361
 msgid "July"
 msgstr "Jluy"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:156 wp-includes/class-wp-locale.php:184
-#: wp-includes/js/dist/components.js:35362
+#: wp-includes/js/dist/components.js:35363
 msgid "August"
 msgstr "Agusut"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:157 wp-includes/class-wp-locale.php:185
-#: wp-includes/js/dist/components.js:35364
+#: wp-includes/js/dist/components.js:35365
 msgid "September"
 msgstr "Speetbmer"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:158 wp-includes/class-wp-locale.php:186
-#: wp-includes/js/dist/components.js:35366
+#: wp-includes/js/dist/components.js:35367
 msgid "October"
 msgstr "Otcboer"
 
 #. translators: Month name.
 #. translators: Three-letter abbreviation of the month.
 #: wp-includes/class-wp-locale.php:159 wp-includes/class-wp-locale.php:187
-#: wp-includes/js/dist/components.js:35368
+#: wp-includes/js/dist/components.js:35369
 msgid "November"
 msgstr "Nvomeebr"
 
@@ -14549,7 +14555,7 @@ msgstr "Mnoady"
 msgid "Sunday"
 msgstr "Snuady"
 
-#: wp-includes/user.php:2417
+#: wp-includes/user.php:2421
 msgid "Jabber / Google Talk"
 msgstr "Jbaebr/Goolge Tlak"
 
@@ -14559,10 +14565,10 @@ msgstr "Jbaebr/Goolge Tlak"
 msgid "Sorry, you have used your space allocation of %s. Please delete some files to upload more files."
 msgstr "Srory, yOU hvae uesd yuor sapce allcotaoin Of %s. Pelsae dletee smoe flies tO ulpaod mroe flies."
 
-#: wp-includes/user.php:2584 wp-includes/user.php:2588
-#: wp-includes/user.php:2594 wp-includes/user.php:2620
-#: wp-includes/user.php:2629 wp-includes/user.php:2633
-#: wp-includes/user.php:2650
+#: wp-includes/user.php:2588 wp-includes/user.php:2592
+#: wp-includes/user.php:2598 wp-includes/user.php:2624
+#: wp-includes/user.php:2633 wp-includes/user.php:2637
+#: wp-includes/user.php:2654
 msgid "Invalid key."
 msgstr "Ivnlaid kEy."
 
@@ -14570,7 +14576,7 @@ msgstr "Ivnlaid kEy."
 msgid "Email&nbsp;Address:"
 msgstr "Email&nbsp;Address:"
 
-#: wp-includes/user.php:1861 wp-includes/ms-functions.php:541
+#: wp-includes/user.php:1865 wp-includes/ms-functions.php:541
 msgid "Sorry, that email address is already used!"
 msgstr "Srory, taht eamil adderss Is arlaedy uesd!"
 
@@ -14597,12 +14603,12 @@ msgid_plural "Documents <span class=\"count\">(%s)</span>"
 msgstr[0] "Dcomunet <span class=\"count\">(%s)</span>"
 msgstr[1] "Dcomunets <span class=\"count\">(%s)</span>"
 
-#: wp-includes/user.php:2729 wp-includes/user.php:3013
+#: wp-includes/user.php:2733 wp-includes/user.php:3017
 #: wp-admin/includes/user.php:203
 msgid "<strong>Error</strong>: The email address isn&#8217;t correct."
 msgstr "<strong>Error</strong>: thE eamil adderss isn&#8217;t croerct."
 
-#: wp-includes/user.php:2727
+#: wp-includes/user.php:2731
 msgid "<strong>Error</strong>: Please type your email address."
 msgstr "<strong>Error</strong>: pelsae tpye yuor eamil adderss."
 
@@ -14612,7 +14618,7 @@ msgstr "<strong>Error</strong>: pelsae tpye yuor eamil adderss."
 msgid "<strong>Error</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>Error</strong>: WroPderss %1$s rqeiuers MSyQL %2$s Or hgiehr"
 
-#: wp-includes/user.php:497
+#: wp-includes/user.php:501
 msgid "<strong>Error</strong>: Your account has been marked as a spammer."
 msgstr "<strong>Error</strong>: yuor accuont hAs been mraekd As A sapmmer."
 
@@ -14827,8 +14833,8 @@ msgstr "Hiehgt"
 #: wp-includes/customize/class-wp-customize-media-control.php:248
 #: wp-includes/customize/class-wp-customize-media-control.php:258
 #: wp-includes/class-wp-customize-manager.php:5201
-#: wp-includes/js/dist/components.js:35867
-#: wp-includes/js/dist/components.js:39075
+#: wp-includes/js/dist/components.js:35868
+#: wp-includes/js/dist/components.js:39076
 #: wp-includes/js/dist/block-library.js:22029
 #: wp-includes/js/dist/block-library.js:25781 wp-admin/js/color-picker.js:149
 msgid "Default"
@@ -14875,8 +14881,8 @@ msgstr "Srory, cmoemtns ArE colesd fOr tihs ietm."
 #. translators: 'Label. Used to signify a layout property (eg: margin, padding)
 #. will apply uniformly to all screensizes.'
 #: wp-includes/js/dist/components.js:26488
-#: wp-includes/js/dist/components.js:43271
-#: wp-includes/js/dist/components.js:43290
+#: wp-includes/js/dist/components.js:43272
+#: wp-includes/js/dist/components.js:43291
 #: wp-includes/js/dist/block-editor.js:38567 wp-admin/export.php:187
 #: wp-admin/export.php:199 wp-admin/export.php:224 wp-admin/export.php:246
 #: wp-admin/export.php:271
@@ -15031,11 +15037,11 @@ msgid_plural "Confirmed <span class=\"count\">(%s)</span>"
 msgstr[0] "Cnoifmred <span class=\"count\">(%s)</span>"
 msgstr[1] "Cnoifmred <span class=\"count\">(%s)</span>"
 
-#: wp-includes/user.php:2710 wp-admin/includes/user.php:146
+#: wp-includes/user.php:2714 wp-admin/includes/user.php:146
 msgid "<strong>Error</strong>: Please enter a username."
 msgstr "<strong>Error</strong>: pelsae etner A uesnrmae."
 
-#: wp-includes/user.php:2732 wp-admin/includes/user.php:207
+#: wp-includes/user.php:2736 wp-admin/includes/user.php:207
 msgid "<strong>Error</strong>: This email is already registered. Please choose another one."
 msgstr "<strong>Error</strong>: tihs eamil Is arlaedy rgesieterd. Pelsae cohsoe aonhter OnE."
 
@@ -15056,7 +15062,7 @@ msgid "Pages"
 msgstr "Pgaes"
 
 #: wp-includes/class-wp-editor.php:1209 wp-includes/theme-compat/sidebar.php:29
-#: wp-includes/js/dist/components.js:43289 wp-includes/js/dist/editor.js:7535
+#: wp-includes/js/dist/components.js:43290 wp-includes/js/dist/editor.js:7535
 #: wp-admin/includes/class-wp-debug-data.php:1083
 #: wp-admin/includes/class-wp-debug-data.php:1178
 #: wp-admin/includes/class-theme-installer-skin.php:241
@@ -15253,7 +15259,7 @@ msgstr "Svae"
 #: wp-includes/widgets/class-wp-widget-categories.php:47
 #: wp-includes/category-template.php:546
 #: wp-includes/theme-compat/sidebar.php:129
-#: wp-includes/js/dist/components.js:43276
+#: wp-includes/js/dist/components.js:43277
 #: wp-includes/js/dist/block-library.js:11640
 #: wp-includes/js/dist/block-library.js:11678
 #: wp-includes/js/dist/block-library.js:11719
@@ -15334,7 +15340,7 @@ msgstr "Dnoe"
 #: wp-includes/media-template.php:1041 wp-includes/media-template.php:1058
 #: wp-includes/media-template.php:1105 wp-includes/media-template.php:1181
 #: wp-includes/media-template.php:1301 wp-includes/media-template.php:1400
-#: wp-includes/deprecated.php:706 wp-includes/js/dist/components.js:35797
+#: wp-includes/deprecated.php:706 wp-includes/js/dist/components.js:35798
 #: wp-includes/js/dist/block-library.js:8868
 #: wp-includes/js/dist/block-library.js:9962
 #: wp-includes/js/dist/block-library.js:24429 wp-admin/edit-tags.php:467
@@ -15536,7 +15542,7 @@ msgstr "Svaed."
 #: wp-includes/media-template.php:1096
 #: wp-includes/customize/class-wp-customize-background-position-control.php:57
 #: wp-includes/class-wp-editor.php:1329 wp-includes/js/dist/components.js:26491
-#: wp-includes/js/dist/components.js:37305
+#: wp-includes/js/dist/components.js:37306
 #: wp-admin/includes/class-custom-background.php:379
 #: wp-admin/includes/media.php:1124 wp-admin/includes/media.php:2964
 msgid "Left"
@@ -15553,7 +15559,7 @@ msgstr "Rgiht"
 
 #: wp-includes/media-template.php:855 wp-includes/media-template.php:935
 #: wp-includes/media-template.php:1126 wp-includes/media.php:3916
-#: wp-includes/js/dist/components.js:35803
+#: wp-includes/js/dist/components.js:35804
 #: wp-includes/js/dist/block-editor.js:20407
 #: wp-admin/includes/class-custom-background.php:598
 #: wp-admin/includes/media.php:1167 wp-admin/edit-form-blocks.php:227
@@ -15694,7 +15700,7 @@ msgstr "Lniks"
 #: wp-includes/script-loader.php:1704
 #: wp-includes/class-wp-customize-manager.php:5692
 #: wp-includes/class-wp-editor.php:1179 wp-includes/class-wp-editor.php:1835
-#: wp-includes/js/dist/components.js:35549
+#: wp-includes/js/dist/components.js:35550
 #: wp-includes/js/dist/block-editor.js:38917
 #: wp-includes/js/dist/edit-post.js:4789 wp-includes/js/dist/edit-post.js:5121
 #: wp-includes/js/dist/edit-post.js:5384

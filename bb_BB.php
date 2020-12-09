@@ -346,8 +346,6 @@ function maybe_do_bbboing( $text, $translate=true ) {
 function do_bbboing( $text ) { 
   if ( !function_exists( "bbboing" ) ) {
   	gob();
-    //require_once( "../oik/oik_boot.inc" );
-    //oik_require( "bbboing.inc", "bbboing" );
   }  
   $text = trim( $text );
   // It's not safe to trim quotes as this could remove double quotes at the end leaving a single '\' rather than a '\"'

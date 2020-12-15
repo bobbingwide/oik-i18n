@@ -18,10 +18,13 @@
 class Pot_To_Po {
 
 	private $narrator = null;
+	private $translator = null;
 
 	private $component = null;
 	private $component_type = null;
 	private $component_path = null;
+
+	private $locale = null;
 
 	private $pot = null; // The content of the .pot file
 
@@ -29,8 +32,8 @@ class Pot_To_Po {
 	private $repl_plural;
 
 	private $first;
-	private $msgctxt;
-	private $translators_note;
+	protected $msgctxt;
+	protected $translators_note;
 
 	private $po_filename = null; // The content of the locale .po file
 
@@ -79,6 +82,11 @@ class Pot_To_Po {
 		return $pot_filename;
 	}
 
+	/**
+	 * Sets the locale.
+	 *
+	 * @param string $locale Target locale eg en_GB, bb_BB or other la_CY
+	 */
 	function setLocale( $locale ) {
 		$this->locale = $locale;
 	}
@@ -93,6 +101,12 @@ class Pot_To_Po {
 		$this->narrator->narrate( '.po', $po_filename );
 
 		return $po_filename;
+	}
+
+	function getMoFilename() {
+		$mo_filename = $this->getPoFilename();
+		$mo_filename = str_replace( '.po', '.mo', $mo_filename );
+		return $mo_filename;
 	}
 
 	function preparePo() {
@@ -358,6 +372,25 @@ class Pot_To_Po {
 	}
 
 	/**
+	 * Sets the Translator class for the locale.
+	 *
+	 * Allows each locale to extend the translator logic in order to implement locale specific logic.
+	 * Class names expected to be of form `Translator_la_CY` where `la` is the language code and `CY` is the country code.
+	 */
+	function load_translator() {
+		$className = 'Translator_' . $this->locale;
+		if ( class_exists( $className ) ) {
+			$this->translator = new $className();
+		} else {
+			$this->translator=new Translator();
+		}
+		$this->translator->set_locale( $this->locale );
+		$this->translator->set_component( $this->component );
+		$this->translator->load_translations();
+		$this->translator->load_variants();
+	}
+
+	/**
 	 * Translates the string.
 	 *
 	 * Uses:
@@ -372,7 +405,7 @@ class Pot_To_Po {
 	function translate_string( $string ) {
 		$this->narrator->narrate( "translate", $string );
 		if ( !empty( $string ) ) {
-
+			$string = $this->translator->translate_string( $string, $this->msgctxt, $this->translators_note );
 		}
 		return '"' . $string . '"' . "\n";
 	}
@@ -500,6 +533,41 @@ class Pot_To_Po {
 		}
 
 		//echo "end";
+	}
+
+	/**
+	 * Load the component's current language file.
+	 *
+	 * We assume that the textdomain is the same as the component
+	 * AND that the languages files are stored in the component's languages folder
+	 *
+	 * Note: We have to unload any previous language version first
+	 *
+	 */
+	function load_component_locale() {
+		unload_textdomain( $this->component );
+		$path = $this->getMoFilename();
+		$this->narrator->narrate( "Loading translation file", $path );
+		$result = load_textdomain( $this->component, $path );
+		$this->narrator->narrate( "Result", $result );
+	}
+
+	/**
+	 * Creates a .mo file from a .po file.
+	 *
+	 * Invoke the msgfmt program to convert the locale's .po file to the .mo file.
+	 *
+	 * Replaces bb_BB's do_msgfmt.
+	 */
+	function do_msgfmt() {
+		//$component_locale = $this->component . '-' . $this->locale;
+		$po_filename = $this->getPoFilename();
+		$mo_filename = $this->getMoFilename();
+		$cmd = "msgfmt -c -v --statistics -o $mo_filename $po_filename";
+		echo $cmd . PHP_EOL;
+		$text = system( $cmd, $res );
+		echo "$res $text" . PHP_EOL;
+		return $res;
 	}
 
 

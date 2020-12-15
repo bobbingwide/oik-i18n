@@ -27,10 +27,19 @@ if ( PHP_SAPI !== "cli" ) {
 require_once 'class-potter.php';
 require_once 'class-narrator.php';
 require_once 'class-pot-to-po.php';
+require_once 'class-translator.php';
 
 
 $component =  oik_batch_query_value_from_argv( 1, 'fizzie' );
 $locale = oik_batch_query_value_from_argv( 2, 'bb_BB' );
+
+if ( 'bb_BB' === $locale ) {
+	require_once 'class-translator-bb_BB.php';
+}
+
+if ( 'en_GB' === $locale ) {
+	require_once 'class-translator-en_GB.php';
+}
 
 $pot2po = new Pot_To_Po();
 $pot2po->setComponent( $component );
@@ -38,4 +47,7 @@ $pot2po->load_pot();
 $pot2po->count_translatable_bytes();
 $pot2po->setLocale( $locale );
 $pot2po->preparePo();
+$pot2po->load_component_locale();
+$pot2po->load_translator();
 $pot2po->control_translation();
+$pot2po->do_msgfmt();
